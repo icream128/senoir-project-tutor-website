@@ -14,10 +14,30 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/index', function () {
-    return view('welcome');
+Route::get('/home', function () {
+    return view('home');
 });
-Route::get('/index', function () {
-    return view('welcome');
+Route::get('/register', function () {
+    return view('register');
 });
+Route::get('/profile', function () {
+    return view('proflie');
+});
+Route::get('/history', function () {
+    return view('history');
+});
+Route::get('/mycourse', function () {
+    return view('mycourse');
+});
+Route::get('/showdetail', function () {
+    return view('showdetail');
+});
+Route::get('/createcourse', function () {
+    return view('createcourse');
+});
+Route::get('/favorite', function () {
+    return view('favorite');
+});
+
+
 
