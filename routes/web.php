@@ -10,61 +10,71 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// tutor
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-Route::get('/home', function () {
-    return view('home');
+
+// tutor
+Route::get('/tutorlogin', function () {
+    return view('tutor.login');
 });
-Route::get('/register', function () {
-    return view('register');
+Route::post('/loginsuccess','loginController@login');
+
+Route::get('/tutorhome', function () {
+    return view('tutor.home');
 });
-Route::get('/profile', function () {
-    return view('proflie');
+Route::get('/tutorregister', function () {
+    return view('tutor.register');
 });
-Route::get('/history', function () {
-    return view('history');
+Route::get('/tutorprofile', function () {
+    return view('tutor.proflie');
 });
-Route::get('/mycourse', function () {
-    return view('mycourse');
+Route::get('/tutorhistory', function () {
+    return view('tutor.history');
 });
-Route::get('/showdetail', function () {
-    return view('showdetail');
+Route::get('/tutormycourse', function () {
+    return view('tutor.mycourse');
 });
-Route::get('/createcourse', function () {
-    return view('createcourse');
+Route::get('/tutorshowdetail', function () {
+    return view('tutor.showdetail');
 });
-Route::get('/favorite', function () {
-    return view('favorite');
+Route::get('/tutorcreatecourse', function () {
+    return view('tutor.createcourse');
+});
+Route::get('/tutorfavorite', function () {
+    return view('tutor.favorite');
+});
+Route::get('/tutorteaching', function () {
+    return view('tutor.teaching');
 });
 // learner
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/learner', function () {
+    return view('learner.welcome');
 });
-Route::get('/home', function () {
-    return view('home');
+Route::get('/learnerhome', function () {
+    return view('learner.home');
 });
-Route::get('/register', function () {
-    return view('register');
+Route::get('/learnerregister', function () {
+    return view('learner.register');
 });
-Route::get('/profile', function () {
-    return view('proflie');
+Route::get('/learnerprofile', function () {
+    return view('learner.proflie');
 });
-Route::get('/history', function () {
-    return view('history');
+Route::get('/learnerhistory', function () {
+    return view('learner.history');
 });
-Route::get('/mycourse', function () {
-    return view('mycourse');
+Route::get('/learnermycourse', function () {
+    return view('learner.mycourse');
 });
-Route::get('/showdetail', function () {
-    return view('showdetail');
+Route::get('/learnershowdetail', function () {
+    return view('learner.showdetail');
 });
-Route::get('/createcourse', function () {
-    return view('createcourse');
+Route::get('/learnercreatecourse', function () {
+    return view('learner.createcourse');
 });
-Route::get('/favorite', function () {
-    return view('favorite');
+Route::get('/learnerfavorite', function () {
+    return view('learner.favorite');
 });
 
 

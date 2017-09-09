@@ -1,0 +1,1 @@
+<center><div id="content">History</div></center>
