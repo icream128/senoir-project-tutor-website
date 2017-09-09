@@ -110,14 +110,13 @@
             <h2 class="section-heading text-white">What your looking for?</h2>
             <hr class="light">
             <p class="text-faded">You can find out and create your course</p>
-            <div class="col-md-12">
-              <div class="col-md-6">
+            
+          
                   <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Tutor</a>
-              </div>
-              <div class="col-md-6">
+            
                   <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Learner</a>
-              </div>
-            </div>
+           
+            
           </div>
         </div>
       </div>

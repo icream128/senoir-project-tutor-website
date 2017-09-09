@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>หาติว ดีลงาน</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">หาติว ดีลงาน</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,12 +43,6 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#services">Services</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -57,27 +51,15 @@
     <header class="masthead">
       <div class="header-content">
         <div class="header-content-inner">
-          <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+          <h1 id="homeHeading">หาติว ดีลงาน</h1>
           <hr>
-          <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+          <p>เรียน/สอนพิเศษตัวต่อตัว ทุกวิชา ทุกระดับชั้น ทุกวันเวลา กับหาติว ดีลงาน</p>
+         
         </div>
       </div>
     </header>
 
-    <section class="bg-primary" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
-            <hr class="light">
-            <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
     <section id="services">
       <div class="container">
         <div class="row">
@@ -87,54 +69,95 @@
           </div>
         </div>
       </div>
+
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-              <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
-              <h3>วิชา<</h3>
-              <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+             
+              <h3>วิชา</h3>
               <select name="subject" class="form-control">
-				<?php
-					foreach(Theme::get('subject') as $sj){
-						echo '<option value='.$sj->subjects_id.'>'.$sj->subject.'</option>' ;
-					}			
-				?>
+			
+				</select>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-              <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-              <h3>Ready to Ship</h3>
-              <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+              
+              <h3>ระดับชั้น</h3>
+              <select name="level" class="form-control">
+			
+				</select>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-              <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
-              <h3>Up to Date</h3>
-              <p class="text-muted">We update dependencies to keep things fresh.</p>
+              
+              <h3>วัน</h3>
+              <select name="day" class="form-control">
+				
+				</select>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box">
-              <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-              <h3>Made with Love</h3>
-              <p class="text-muted">You have to make your websites with love these days!</p>
+              
+              <h3>ช่วงเวลา</h3>
+              <select name="duration" class="form-control">
+				
+				</select>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="row">
+        <div class="col-lg-3 col-md-3 text-center">
+            <div class="service-box">
+              <h3>แขวง</h3>
+              <input type="text" id="district" class="form-control">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 text-center">
+            <div class="service-box">
+              <h3>เขต</h3>
+              <input type="text" id="amphoe" class="form-control">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 text-center">
+            <div class="service-box">
+              <h3>จังหวัด</h3>
+              <input type="text" id="province" class="form-control">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 text-center">
+            <div class="service-box">
+              <h3>รหัสไปรษณีย์</h3>
+              <input type="text" id="zipcode" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+        
+    </section>
+     <div class="container text-center">
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="submit">สร้างคอร์สเรียน</a>
+      </div>
+      <section class="primary" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+         
+            
           </div>
         </div>
       </div>
     </section>
 
 
-    <div class="call-to-action bg-dark">
-      <div class="container text-center">
-        <a class="btn btn-default btn-xl sr-button" type="submit">สร้างคอร์สเรียน</a>
-      </div>
-    </div>
+    
 
-  
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
