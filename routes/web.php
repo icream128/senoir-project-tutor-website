@@ -46,7 +46,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/learnerhome', function () {
-    return view('learner.home');
+    return view('learner.LearnerHome');
 });
 Route::get('/learnerregister', function () {
     return view('learner.register');

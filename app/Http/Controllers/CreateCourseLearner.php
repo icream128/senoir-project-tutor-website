@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class CreateCourseTutor extends BaseController
+class CreateCourseLearner extends BaseController
 {
    
     public function __construct(){

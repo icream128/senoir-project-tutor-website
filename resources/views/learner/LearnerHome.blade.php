@@ -61,22 +61,111 @@
 
 
     <section class="bg-primary" id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">What your looking for?</h2>
-            <hr class="light">
-            <p class="text-faded">You can find out and create your course</p>
-            
-          
-                  <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Tutor</a>
-            
-                  <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Learner</a>
-           
-            
-          </div>
-        </div>
+    <div class="page-container">
+<div class="page-head">
+<hr>
+   <div class="container">
+      <div class="page-title">
+         <a href=""><button class="tag-item btn btn-sm btn-default"><h4>สร้างคอร์สเรียนที่ต้องการ</h4></button></a>
       </div>
+   </div>
+   <div class="page-content">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <center><h1>ค้นหาคอร์ส</h1></center>
+               <br>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+               <div class="row">
+                    <div class="filter-select row">
+                        <div class="col-md-3">
+                        <label>ชื่อวิชา</label>
+                            <select id="filterBySubject" class="form-control">
+                          
+                                <option value=""></option>
+                       
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                        <label>ระดับชั้น</label>
+                            <select id="filterByLevel"  class="form-control">
+                             
+                                <option value=""></option>
+                         
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="filterByDay"  class="form-control">
+                        <label>วัน</label>
+                              
+                                <option value=""></option>
+                            
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                        <label>ช่วงเวลา</label>   
+                            <select id="filterByDuration"  class="form-control">
+                            
+                                <option value=""></option>
+                               
+                            </select>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                          <label>แขวง</label>
+                            <input type="text" id="district" class="form-control">
+                          </div>
+                          <div class="col-md-3">
+                          <label>เขต</label>
+                            <input type="text" id="amphoe" class="form-control">
+                          </div>
+                          <div class="col-md-3">
+                          <label>จังหวัด</label>
+                            <input type="text" id="province" class="form-control">
+                          </div>
+                          <div class="col-md-3">
+                          <label>รหัสไปรษณีย์</label>
+                            <input type="text" id="zipcode" class="form-control">
+                          </div>
+			                </div>
+                    </div>
+                    <br>
+                    <div id="tagGroup">
+                    </div>
+               </div>
+            </div>
+         </div>
+         <br>
+         <div class="row" id="result">
+            <div class="col-md-12">
+               <table class="table">
+                  <thead>
+                     <th><h3>ชื่อวิชา</h3></th>
+                     <th><h3>ระดับชั้น</h3></th>
+                     <th><h3>วัน</h3></th>
+                     <th><h3>เวลา</h3></th>
+                  </thead>
+                  <tbody id="data-table-block">
+                    
+                     <tr class="data-table">
+                        <td><a href=""><h4 class="subject_name"></h4></a></td>
+                        <td><a href=""><h4 class="level_name"></h4></a></td>
+                        <td><a href=""><h4 class="dayfull"></h4></a></td>
+                        <td><a href=""><h4 class="duration_name"></h4></a></td>
+                        <td><a href=""><h4 class="district"></h4></a></td>
+                        <td><a href=""><h4 class="amphoe"></h4></a></td>
+                        <td><a href=""><h4 class="province"></h4></a></td>
+                        <td><a href=""><h4 class="zipcode"></h4></a></td>
+                     </tr>
+                   
+                  </tbody>
+               </table>
+            </div>
+        
+		
+      </div>
+   </div>
     </section>
 
     <section class="primary" id="about">
