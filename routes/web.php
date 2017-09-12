@@ -45,9 +45,9 @@ Route::get('/tutorfavorite', function () {
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/learnerhome', function () {
-    return view('learner.LearnerHome');
-});
+Route::get('/learnerhome','LearnerHomeController@index');
+Route::get('/learnercreatecourse','CreateCourseLearner@index');
+Route::get('/learnerhome_datatable','LearnerHomeController@showSchedule');
 Route::get('/learnerregister', function () {
     return view('learner.register');
 });
@@ -62,9 +62,6 @@ Route::get('/learnermycourse', function () {
 });
 Route::get('/learnershowdetail', function () {
     return view('learner.showdetail');
-});
-Route::get('/learnercreatecourse', function () {
-    return view('learner.createcourse');
 });
 Route::get('/learnerfavorite', function () {
     return view('learner.favorite');

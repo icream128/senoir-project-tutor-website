@@ -81,34 +81,46 @@
                     <div class="filter-select row">
                         <div class="col-md-3">
                         <label>ชื่อวิชา</label>
+                  
                             <select id="filterBySubject" class="form-control">
-                          
-                                <option value=""></option>
+                            <?php
+                                foreach($subject as $key =>$value){
+                                  echo '<option value="'.$value->subjects_id.'">'.$value->subject_name.'</option>' ;
+                                }			
+                              ?>
                        
                             </select>
                         </div>
                         <div class="col-md-3">
                         <label>ระดับชั้น</label>
                             <select id="filterByLevel"  class="form-control">
-                             
-                                <option value=""></option>
-                         
+                            <?php
+                            foreach($level as $key =>$value){
+                              echo '<option value="'.$value->levels_id.'">'.$value->level_name.'</option>' ;
+                            }			
+                          ?>
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <select id="filterByDay"  class="form-control">
                         <label>วัน</label>
-                              
-                                <option value=""></option>
+                            <select id="filterByDay"  class="form-control">
+                        
+                        <?php
+                        foreach($day as $key =>$value){
+                          echo '<option value="'.$value->day_id.'">'.$value->dayfull.'</option>' ;
+                        }			
+                      ?>
                             
                             </select>
                         </div>
                         <div class="col-md-3">
                         <label>ช่วงเวลา</label>   
                             <select id="filterByDuration"  class="form-control">
-                            
-                                <option value=""></option>
-                               
+                            <?php
+                            foreach($duration as $key =>$value){
+                              echo '<option value="'.$value->duration_id.'">'.$value->duration_name.'</option>' ;
+                            }			
+                          ?>
                             </select>
                         </div>
                         <div class="row">
@@ -139,7 +151,7 @@
          <br>
          <div class="row" id="result">
             <div class="col-md-12">
-               <table class="table">
+               <table class="table" id="datatable">
                   <thead>
                      <th><h3>ชื่อวิชา</h3></th>
                      <th><h3>ระดับชั้น</h3></th>
@@ -147,20 +159,21 @@
                      <th><h3>เวลา</h3></th>
                   </thead>
                   <tbody id="data-table-block">
-                    
+                  @foreach($tutorSchedule as $key =>$value)
                      <tr class="data-table">
-                        <td><a href=""><h4 class="subject_name"></h4></a></td>
-                        <td><a href=""><h4 class="level_name"></h4></a></td>
-                        <td><a href=""><h4 class="dayfull"></h4></a></td>
-                        <td><a href=""><h4 class="duration_name"></h4></a></td>
-                        <td><a href=""><h4 class="district"></h4></a></td>
+                        <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
+                        <td><a href=""><h4 class="level_name">{{$value->level_name}}</h4></a></td>
+                        <td><a href=""><h4 class="dayfull">{{$value->dayfull}}</h4></a></td>
+                        <td><a href=""><h4 class="duration_name">{{$value->duration_name}}</h4></a></td>
+                        <!-- <td><a href=""><h4 class="district"></h4></a></td>
                         <td><a href=""><h4 class="amphoe"></h4></a></td>
                         <td><a href=""><h4 class="province"></h4></a></td>
-                        <td><a href=""><h4 class="zipcode"></h4></a></td>
+                        <td><a href=""><h4 class="zipcode"></h4></a></td> -->
                      </tr>
-                   
+                  @endforeach
                   </tbody>
                </table>
+               {{ $tutorSchedule->appends(['sort' => 'subject_name'])->links() }}
             </div>
         
 		
@@ -191,9 +204,22 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
+
+
+    <script>
+      $.Thailand({
+    database: '{{URL::asset("themes/alchemist/assets/scripts/jquery.Thailand.js/database/db.json")}}', // path หรือ url ไปยัง database
+    $district: $('#district'), // input ของตำบล
+    $amphoe: $('#amphoe'), // input ของอำเภอ
+    $province: $('#province'), // input ของจังหวัด
+    $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
+    });
+</script>
+    </script>
 
   </body>
 

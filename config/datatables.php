@@ -39,9 +39,9 @@ return [
      * This is where you can register your custom dataTables builder.
      */
     'engines'        => [
-        'eloquent'   => \Yajra\DataTables\EloquentDataTable::class,
-        'query'      => \Yajra\DataTables\QueryDataTable::class,
-        'collection' => \Yajra\DataTables\CollectionDataTable::class,
+        'eloquent'   => \Yajra\Datatables\EloquentDataTable::class,
+        'query'      => \Yajra\Datatables\QueryDataTable::class,
+        'collection' => \Yajra\Datatables\CollectionDataTable::class,
     ],
 
     /**
@@ -64,7 +64,7 @@ return [
      * User friendly message to be displayed on user if error occurs.
      * Possible values:
      * null             - The exception message will be used on error response.
-     * 'throw'          - Throws a \Yajra\DataTables\Exceptions\Exception. Use your custom error handler if needed.
+     * 'throw'          - Throws a \Yajra\Datatables\Exceptions\Exception. Use your custom error handler if needed.
      * 'custom message' - Any friendly message to be displayed to the user. You can also use translation key.
      */
     'error'          => env('DATATABLES_ERROR', null),
