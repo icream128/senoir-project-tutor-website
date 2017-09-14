@@ -139,7 +139,7 @@
           </div>
         </div>
       </div> -->
-        
+        <form method="post" action="/createcourselearner">
      <div class="container text-center">
          <div class="col-md-8 col-md-offset-2">
                 <div class="row">
@@ -208,6 +208,7 @@
                 </div>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="submit">สร้างคอร์สเรียน</a>
               </div>
+            </form>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -232,9 +233,7 @@
     <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
-
+  
   </body>
 
 </html>
