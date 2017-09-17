@@ -152,6 +152,13 @@
                                   echo '<option value="'.$value->subjects_id.'">'.$value->subject_name.'</option>' ;
                                 }			
                               ?>
+                               @foreach (Theme::get('subject') as $obj)
+                                  <div class="col-md-4"> 
+                                <table>
+                                  <td><input type="checkbox" value="{{$obj->subjects_id}}" name="subject[]">{{$obj->subject}}</td>
+                                </table>
+                                </div>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-3">
