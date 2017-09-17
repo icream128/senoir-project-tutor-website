@@ -27,7 +27,7 @@ class LearnerHomeController extends BaseController
         ->join('levels','tutor_schedule.levels_id','=','levels.levels_id')
         ->join('day','tutor_schedule.day_id','=','day.day_id')
         ->join('duration','tutor_schedule.duration_id','=','duration.duration_id')
-        ->paginate(1);
+        ->paginate(10);
       
 
         //Set data to view

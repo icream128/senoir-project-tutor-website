@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DB;
 use Illuminate\Http\Request;
 
-class CreateCourseLearner extends BaseController
+class ProfileController extends BaseController
 {
    
     public function __construct(){

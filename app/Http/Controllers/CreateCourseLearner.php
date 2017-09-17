@@ -34,7 +34,7 @@ class CreateCourseLearner extends BaseController
         //$tutor_schedule = new TutorSchedule();
         $tutor_schedule = DB::table('tutor_schedule')->get();
                 
-         
+                $tutor_schedule->learner_id = 1 ;
                 $tutor_schedule->status_sch_id = 1 ;
                 $subject = DB::table('subject')->get();
                 $day = DB::table('day')->get();
