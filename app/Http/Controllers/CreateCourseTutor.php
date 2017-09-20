@@ -10,7 +10,7 @@ use DB;
 use Input;
 use Illuminate\Http\Request;
 
-class CreateCourseLearner extends BaseController
+class CreateCourseTutor extends BaseController
 {
    
     public function __construct(){
@@ -26,27 +26,27 @@ class CreateCourseLearner extends BaseController
   
         $data = compact('subject','day','level','duration');
 
-        return view('learner.LearnerCreateCourse',$data);
+        return view('tutor.TutorCreateCourse',$data);
     
     }
     public function insert(Request $insert){
         
         //$tutor_schedule = new TutorSchedule();
-        $learner_schedule = DB::table('learner_schedule')->get();
+        $tutor_schedule = DB::table('tutor_schedule')->get();
                 
-                $learner_schedule->learner_id = 1 ;
-                $learner_schedule->status_sch_id = 1 ;
+                $tutor_schedule->learner_id = 1 ;
+                $tutor_schedule->status_sch_id = 1 ;
                 $subject = DB::table('subject')->get();
                 $day = DB::table('day')->get();
                 $level = DB::table('levels')->get();
                 $duration = DB::table('duration')->get();
         
                
-                $learner_schedule->day_id = $insert->input('day');
-                $learner_schedule->subjects_id = $insert->input('subject');
-                $learner_schedule->levels_id = $insert->input('levels');
-                $learner_schedule->duration_id = $insert->input('duration');
-                $learner_schedule->save() ;
+                $tutor_schedule->day_id = $insert->input('day');
+                $tutor_schedule->subjects_id = $insert->input('subject');
+                $tutor_schedule->levels_id = $insert->input('levels');
+                $tutor_schedule->duration_id = $insert->input('duration');
+                $tutor_schedule->save() ;
 
                 $data = compact('subject','day','level','duration');
                 return view('learner.LearnerCreateCourse',$data);

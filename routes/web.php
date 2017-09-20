@@ -18,8 +18,10 @@ Route::get('/index', function () {
     return view('index');
 });
 Route::get('/tutorhome','TutorHomeController@index');
+Route::get('/tutorcreatecourse','CreateCourseTutor@index');
+Route::post('/createcoursetutor','CreateCourseTutor@insert');
 Route::get('/tutorregister', function () {
-    return view('tutor.register');
+    return view('tutor.TutorRegister');
 });
 Route::get('/tutorprofile', function () {
     return view('tutor.profile');
@@ -33,9 +35,9 @@ Route::get('/tutormycourse', function () {
 Route::get('/tutorshowdetail', function () {
     return view('tutor.showdetail');
 });
-Route::get('/tutorcreatecourse', function () {
-    return view('tutor.createcourse');
-});
+// Route::get('/tutorcreatecourse', function () {
+//     return view('tutor.createcourse');
+// });
 Route::get('/tutorfavorite', function () {
     return view('tutor.favorite');
 });
@@ -52,7 +54,9 @@ Route::post('/createcourselearner','CreateCourseLearner@insert');
 Route::get('/learnerhome_datatable','LearnerHomeController@showSchedule');
 //Route::get('/learnerregister','RegisterController@saveLearner');
 
-
+Route::get('/learneradddetail', function () {
+    return view('learner.LearnerAddDetail');
+});
 Route::get('/learnerprofile','ProfileController@index');
 Route::get('/learnerregister', function () {
     return view('learner.LearnerRegister');

@@ -93,12 +93,11 @@ class RegisterController extends BaseController
               DB::table('learner')->insert($data);
               return view('learner.LearnerRegister',$data);
            }
-    //    public function indexTutor(){
-    //        $subject = DB::table('subjects') 
-    //        ->get();
-    //        $this->theme->set('subject', $subject);
-    //        return $this->theme->scope('home.register_tutor')->render();
-    //    }
+       public function indexTutor(){
+        $subject = DB::table('subject')->get();
+           $data = compact('subject');
+              return view('tutor.TutorCreateCourse',$data);
+       }
     //    public function indexLearner(){
     //        $subject = DB::table('subjects') 
     //        ->get();
