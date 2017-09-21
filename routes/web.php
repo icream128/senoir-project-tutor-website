@@ -41,10 +41,15 @@ Route::get('/tutorshowdetail', function () {
 Route::get('/tutorfavorite', function () {
     return view('tutor.favorite');
 });
+Route::get('/search', function () {
+    return view('searching');
+});
 // learner
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/searching', 'SearchController@liveshow');
+
 
 
 Route::get('/learnerhome','LearnerHomeController@index');

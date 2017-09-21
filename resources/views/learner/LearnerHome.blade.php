@@ -111,7 +111,7 @@
                     ?>
                   </select>
               </div>
-              <div class="col-md-3">
+              <!-- <div class="col-md-3">
                 <label>แขวง</label>
                 <input type="text" id="district" class="form-control">
               </div>
@@ -126,7 +126,7 @@
               <div class="col-md-3">
                 <label>รหัสไปรษณีย์</label>
                 <input type="text" id="zipcode" class="form-control">
-              </div>       
+              </div>        -->
           </div>
         </div>
         <div class="row">

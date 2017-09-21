@@ -97,28 +97,32 @@
                             ?>
                             </select>
                         </div>
-                        <div class="col-lg-3 col-md-3 text-center">
+                  
                         <label>วัน</label>
-                          <select id="filterByDay"  class="form-control">
-                          
-                          <?php
-                          foreach($day as $key =>$value){
-                            echo '<option value="'.$value->day_id.'">'.$value->dayfull.'</option>' ;
-                          }			
-                          ?>
-                          </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 text-center">
-                          <label>ช่วงเวลา</label>   
-                            <select id="filterByDuration"  class="form-control">
-                            <?php
-                            foreach($duration as $key =>$value){
-                              echo '<option value="'.$value->duration_id.'">'.$value->duration_name.'</option>' ;
-                            }			
-                            ?>
-                            </select>
-                        </div>
                         <div class="row">
+                          @foreach ($day as $value)
+                            <div class="col-md-2"> 
+                                <table>
+                                    <td><input type="checkbox" value="{{$value->day_id}}" name="day[]">{{$value->dayfull}}</td>
+                                </table>
+                            </div>
+                            @endforeach
+                     </div>
+                     
+                     
+                          <label>ช่วงเวลา</label>   
+                          <div class="row">
+                            @foreach ($duration as $value)
+                            <div class="col-md-3"> 
+                                <table>
+                                    <td><input type="checkbox" value="{{$value->duration_id}}" name="duration[]">{{$value->duration_name}}</td>
+                                </table>
+                            </div>
+                            @endforeach
+                         </div>
+                        
+                       
+                        <!-- <div class="row">
                           <div class="col-lg-3 col-md-3 text-center">
                           <label>แขวง</label>
                             <input type="text" id="district" class="form-control">
@@ -135,7 +139,7 @@
                           <label>รหัสไปรษณีย์</label>
                             <input type="text" id="zipcode" class="form-control">
                           </div>
-			                  </div>
+			                  </div> -->
                     </div>
                   </div>
                 </div>
