@@ -17,14 +17,14 @@ class LearnerHomeController extends BaseController
     public function index(){
         //Get data from database
         $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-        $day = DB::table('day')->orderBy('dayfull','asc')->get();
-        $level = DB::table('levels')->orderBy('level_name','asc')->get();
+        $day = DB::table('day')->orderBy('day_name','asc')->get();
+        $level = DB::table('level')->orderBy('level_name','asc')->get();
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
 
         $tutorSchedule = DB::table('tutor_schedule')
-        ->select(['subject_name', 'dayfull', 'level_name', 'duration_name'])
-        ->join('subject','tutor_schedule.subjects_id','=','subject.subjects_id')
-        ->join('levels','tutor_schedule.levels_id','=','levels.levels_id')
+        ->select(['subject_name', 'day_name', 'level_name', 'duration_name'])
+        ->join('subject','tutor_schedule.subject_id','=','subject.subject_id')
+        ->join('level','tutor_schedule.level_id','=','level.level_id')
         ->join('day','tutor_schedule.day_id','=','day.day_id')
         ->join('duration','tutor_schedule.duration_id','=','duration.duration_id')
         ->paginate(10);
@@ -36,17 +36,17 @@ class LearnerHomeController extends BaseController
 
         return view('learner.LearnerHome',$data);
     }
-    public function showSchedule(){
-        $tutorSchedule = DB::table('tutor_schedule')
-        ->select(['subject_name', 'dayfull', 'level_name', 'duration_name'])
-        ->join('subject','tutor_schedule.subjects_id','=','subject.subjects_id')
-        ->join('levels','tutor_schedule.levels_id','=','levels.levels_id')
-        ->join('day','tutor_schedule.day_id','=','day.day_id')
-        ->join('duration','tutor_schedule.duration_id','=','duration.duration_id')
-        ->get() ;
-        $showData = json_encode($tutorSchedule);
-        $showData = compact('showData');
-        return view('learner.LearnerHome',$showData);
-       //return Datatables::of($tutorSchedule)->make();
-    }
+    // public function showSchedule(){
+    //     $tutorSchedule = DB::table('tutor_schedule')
+    //     ->select(['subject_name', 'dayfull', 'level_name', 'duration_name'])
+    //     ->join('subject','tutor_schedule.subjects_id','=','subject.subjects_id')
+    //     ->join('levels','tutor_schedule.levels_id','=','levels.levels_id')
+    //     ->join('day','tutor_schedule.day_id','=','day.day_id')
+    //     ->join('duration','tutor_schedule.duration_id','=','duration.duration_id')
+    //     ->get() ;
+    //     $showData = json_encode($tutorSchedule);
+    //     $showData = compact('showData');
+    //     return view('learner.LearnerHome',$showData);
+    //    //return Datatables::of($tutorSchedule)->make();
+    // }
 }
