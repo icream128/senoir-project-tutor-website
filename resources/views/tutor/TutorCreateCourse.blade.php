@@ -71,7 +71,7 @@
       </div>
 
     
-        <form method="post" action="/createcourselearner">
+        <form method="post" action="/tutorsavecourse">
      <div class="container text-center">
     
                 <div class="row">
@@ -81,7 +81,7 @@
                             @foreach ($subject as $obj)
                             <div class="col-md-3"> 
                                 <table>
-                                    <td><input type="checkbox" value="{{$obj->subjects_id}}" name="subject[]">{{$obj->subject_name}}</td>
+                                    <td><input type="checkbox" value="{{$obj->subject_id}}" name="subject[]">{{$obj->subject_name}}</td>
                                 </table>
                             </div>
                             @endforeach
@@ -92,7 +92,7 @@
                             @foreach ($level as $obj)
                             <div class="col-md-3"> 
                                 <table>
-                                    <td><input type="checkbox" value="{{$obj->levels_id}}" name="level[]">{{$obj->level_name}}</td>
+                                    <td><input type="checkbox" value="{{$obj->level_id}}" name="level[]">{{$obj->level_name}}</td>
                                 </table>
                             </div>
                             @endforeach
@@ -103,7 +103,7 @@
                             @foreach ($day as $obj)
                             <div class="col-md-2"> 
                                 <table>
-                                    <td><input type="checkbox" value="{{$obj->day_id}}" name="day[]">{{$obj->dayfull}}</td>
+                                    <td><input type="checkbox" value="{{$obj->day_id}}" name="day[]">{{$obj->day_name_full}}</td>
                                 </table>
                             </div>
                             @endforeach
@@ -143,7 +143,7 @@
                     
                   </div>
                 </div>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="submit">สร้างคอร์สเรียน</a>
+                <button class="btn btn-primary js-scroll-trigger" type="submit" style="font-size: 17px;">create course</button>
               
             </form>
       <div class="container">

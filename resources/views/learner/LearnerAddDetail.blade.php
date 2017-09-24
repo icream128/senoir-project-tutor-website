@@ -1,137 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.learnerheader')
 
-  <head>
+<!-- link modal popup page -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<style>
+    div h5 {
+        font-size:15px;
+    }
 
-    <title>หาติว ดีลงาน</title>
+    .navbar-hight{
+        higth:50px;
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    .pad{
+        padding-bottom:15px;
+    }
+    
+    div label {
+        font-size: 20px;
+    }
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+</style>
 
-    <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+@section('content')
 
-    <!-- Custom styles for this template -->
-    <link href="css/creative.min.css" rel="stylesheet">
-
-  </head>
-
-  <body id="page-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">หาติว ดีลงาน</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <header class="masthead">
-    <div class="header-content">
-      <div class="header-content-inner">
-        <h1 id="homeHeading">หาติว ดีลงาน</h1>
-        <hr>
-        <p>เรียน/สอนพิเศษตัวต่อตัว ทุกวิชา ทุกระดับชั้น ทุกวันเวลา กับหาติว ดีลงาน</p>
-       
-      </div>
-    </div>
-  </header>
-
-    <section id="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">เพิ่มรายละเอียดคอร์ส</h2>
-            <hr class="primary">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-      <form action="{{ url('/')}}" method='post' enctype="multipart/form-data">    
-      <div class="row">
-          <div class="col-md-6">
-          <label>รายละเอียดบทเรียน</label>
-          <textarea placeholder="รายละเอียดบทเรียน" rows="4" cols="50" name="detail" form="usrform" class="form-control"></textarea>
-          </div>
-          <div class="col-md-6">
-          <label>รายละเอียดสถานที่</label>
-          <textarea placeholder="รายละเอียดสถานที่" rows="4" cols="50" name="detail" form="usrform" class="form-control"></textarea>
-          </div>
-         <div class="col-md-6">
-         <label>รายละเอียดการเดินทาง</label>
-         <textarea placeholder="รายละเอียดการเดินทาง" rows="4" cols="50" name="detail" form="usrform" class="form-control"></textarea>
-          </div>
-          
-          <div class="col-md-6">
-              <label>วันที่เริ่มเรียน</label>
-              <input type="date" name="startdate"  class="form-control"/>  
-          </div>
-          <div class="col-md-6">
-              <label>เวลาที่เริ่ม</label>
-              <input type="time" name="starttime"  class="form-control" />   
-          </div>
-          <div class="col-md-6">
-              <label>เวลาที่จบ</label>
-              <input type="time" name="endtime
-              "  class="form-control" />   
-          </div>
-          <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit">เพิ่มรายละเอียดคอร์ส</button>
-          </div>    
-          </form>
-          
-      </div>
+    <section id="services" class="text-center">   
+        <h1>เพิ่มรายละเอียดคอร์ส</h1>
+        <center><hr></center>      
     </section>
 
-  
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            
+            <div class="col-md-10">
+            <form action="{{ url('/learnersavedetail')}}" method='post' enctype="multipart/form-data">    
+            {{ csrf_field() }}
+            <div class="container">
+                    <div class="row"> 
+                  
+                        <div class="col-md-12"  style="background-color:#D8D8D8;border-radius:25px;padding:10px;">
+
+
+                            <div class="container">
+                                    <div class="row">
+                                    
+                                        <div class="col-md-6" style="margin-top:10px;">
+                                            <label>รายละเอียดบทเรียน</label>
+                                            <textarea placeholder="รายละเอียดบทเรียน" rows="4" cols="50" name="leasson_information" form="usrform" class="form-control"
+                                                style="border-radius:10px;"></textarea>
+                                        </div>
+
+                                        <div class="col-md-6" style="margin-top:10px;">
+                                            <label>รายละเอียดสถานที่</label>
+                                            <textarea placeholder="รายละเอียดสถานที่" rows="4" cols="50" name="location_information" form="usrform" class="form-control" 
+                                                style="border-radius:10px;"></textarea>
+                                        </div>
+
+                                        <div class="col-md-6" style="margin-top:10px;">
+                                            <label>รายละเอียดการเดินทาง</label>
+                                            <textarea placeholder="รายละเอียดการเดินทาง" rows="4" cols="50" name="transport_information" form="usrform" class="form-control"
+                                                style="border-radius:10px;"></textarea>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top:10px;">
+                                            <label>ราคาต่อชั่วโมง</label>
+                                            <input placeholder="ราคาต่อชั่วโมง" name="price"  class="form-control"
+                                                style="border-radius:10px;"/>
+                                        </div>
+
+
+                                        <!-- Time Zone -->
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-4" style="margin-top:10px;">
+                                                    <label class="fontsize">วันที่เริ่มเรียน</label>
+                                                    <input type="date" name="start_date" class="form-control" style="border-radius:10px;"/>  
+                                                </div>
+
+                                                <div class="col-md-4" style="margin-top:10px;">
+                                                    <label>เวลาที่เริ่ม</label>
+                                                    <input type="time" name="start_time" class="form-control" style="border-radius:10px;"/>   
+                                                </div>
+
+                                                <div class="col-md-4" style="margin-top:10px;">
+                                                    <label>เวลาที่จบ</label>
+                                                    <input type="time" name="end_time" class="form-control" style="border-radius:10px;"/>   
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                            <div class="col-md-4" style="margin-top:10px;">
+                                            <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>   
+                                                <h4>ชั่วโมง</h4>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:10px;">
+                                                <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>   
+                                                <h4>บาท</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Time Zone -->
+                                    </div>    
+                                   
+                            </div>
+                        </div>
+                       
+                    </div>
+                   
+                </div>
+                <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit" style="font-size: 17px;">เพิ่มรายละเอียดคอร์ส</button>
+</form>    
+            </div>
+            
+            
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+
+        
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
 
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
+    
 
-
-    <script>
-      $.Thailand({
-    database: '{{URL::asset("themes/alchemist/assets/scripts/jquery.Thailand.js/database/db.json")}}', // path หรือ url ไปยัง database
-    $district: $('#district'), // input ของตำบล
-    $amphoe: $('#amphoe'), // input ของอำเภอ
-    $province: $('#province'), // input ของจังหวัด
-    $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
-    });
+@endsection
+@section('script')
+<script>
+function diff(start, end) {
+    //console.log(end);
+    start = start.split(":");
+    end = end.split(":");
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    diff -= hours * 1000 * 60 * 60;
+    var minutes = Math.floor(diff / 1000 / 60);
+    var time = hours+':'+minutes;
+    if(!isNaN(hours)){
+        $('input[name="time"]').val(time)
+        var price = $('input[name="price"]').val();
+        var total = (hours*price)+((price/60)*minutes);
+        $('input[name="total"]').val(total)
+    }
+    
+    // console.log(hours+':'+minutes)
+    console.log(time)
+    //console.log(hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+}
+$(document).ready(function(){
+    $('input[name="start_time"]').change(function(){
+        diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
+        
+ })
+    $('input[name="end_time"]').change(function(){
+        diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
+        
+    })
+    $('input[name="price"]').keyup(function(){
+        diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
+    })
+})
 </script>
-    </script>
 
-  </body>
-
-</html>
-
+@endsection

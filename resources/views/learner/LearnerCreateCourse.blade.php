@@ -71,7 +71,7 @@
       </div>
 
     
-        <form method="post" action="/createcourselearner">
+        <form method="post" action="/learnersavecourse">
      <div class="container text-center">
          <div class="col-md-8 col-md-offset-2">
                 <div class="row">
@@ -81,7 +81,7 @@
                             <select id="filterBySubject" class="form-control">
                             <?php
                                 foreach($subject as $key =>$value){
-                                  echo '<option value="'.$value->subjects_id.'">'.$value->subject_name.'</option>' ;
+                                  echo '<option value="'.$value->subject_id.'">'.$value->subject_name.'</option>' ;
                                 }			
                               ?>
                                
@@ -92,7 +92,7 @@
                             <select id="filterByLevel"  class="form-control">
                             <?php
                             foreach($level as $key =>$value){
-                              echo '<option value="'.$value->levels_id.'">'.$value->level_name.'</option>' ;
+                              echo '<option value="'.$value->level_id.'">'.$value->level_name.'</option>' ;
                             }			
                             ?>
                             </select>
@@ -103,7 +103,7 @@
                           @foreach ($day as $value)
                             <div class="col-md-2"> 
                                 <table>
-                                    <td><input type="checkbox" value="{{$value->day_id}}" name="day[]">{{$value->dayfull}}</td>
+                                    <td><input type="checkbox" value="{{$value->day_id}}" name="day[]">{{$value->day_name_full}}</td>
                                 </table>
                             </div>
                             @endforeach
