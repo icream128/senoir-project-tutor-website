@@ -50,28 +50,23 @@ class HistoryController extends BaseController
             }
             public function indexTutor() {
                 
-                        //Get data from database
-                        $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-                        $day = DB::table('day')->orderBy('day_name_full','asc')->get();
-                        $level = DB::table('level')->orderBy('level_name','asc')->get();
-                        $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
-                
-                        $tutorSchedule = DB::table('tutor_schedule')
-                        ->select(['learner_img_profile', 'learner_firstname', 'learner_lastname', 'subject_name', 'start_time', 'day_name_full', 'level_name', 'duration_name', 'status_name', 'learner_tel'])
-                        ->join('subject','tutor_schedule.subject_id','=','subject.subject_id')
-                        ->join('level','tutor_schedule.level_id','=','level.level_id')
-                        ->join('day','day.day_id','=','learner_day.day_id')
-                        ->join('tutor_day','tutor_schedule.tutor_schedule_id','=','tutor_day.tutor_schedule_id')
-                        ->join('duration','tutor_schedule.duration_id','=','duration.duration_id')
-                        ->join('learner','tutor_schedule.learner_id','=','learner.learner_id')
-                        ->join('tutor','tutor_schedule.tutor_id','=','tutor.tutor_id')
-                        ->join('schedule_status','tutor_schedule.schedule_status_id','=','schedule_status.schedule_status_id')
-                        ->where('tutor_schedule.schedule_status_id',5)
-                        ->orWhere('tutor_schedule.schedule_status_id',6)
-                        ->paginate(10);
-                
-                        //Set data to view
-                        $data = compact('subject', 'day','level','duration','tutorSchedule');
+                $agreement = DB::table('agreement')
+                ->select(['detail_lesson', 'detail_transport', 'detail_location'])
+                ->join('frequency','agreement.agreement_id','=','frequency.agreement_id')
+                ->join('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
+                ->join('user','learner_schedule.user_id','=','user.user_id')
+                ->join('subject','learner_schedule.subject_id','=','subject.subject_id')
+                ->join('level','learner_schedule.level_id','=','level.level_id')
+                ->join('status','learner_schedule.status_id','=','status.status_id')
+                ->join('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+                ->join('day','learner_schedule_time.day_id','=','day.day_id')
+                ->join('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+                ->where('learner_schedule.status_id',6)
+                ->orWhere('learner_schedule.status_id',7)
+                ->paginate(10);
+        
+                //Set data to view
+                $data = compact('agreement');
                      
                         return view('tutor.TutorHistory',$data);
             }

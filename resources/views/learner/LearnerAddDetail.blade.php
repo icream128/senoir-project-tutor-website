@@ -47,19 +47,19 @@
                                     
                                         <div class="col-md-6" style="margin-top:10px;">
                                             <label>รายละเอียดบทเรียน</label>
-                                            <textarea placeholder="รายละเอียดบทเรียน" rows="4" cols="50" name="leasson_information" form="usrform" class="form-control"
+                                            <textarea placeholder="รายละเอียดบทเรียน" rows="4" cols="50" name="detail_lesson" form="usrform" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                         </div>
 
                                         <div class="col-md-6" style="margin-top:10px;">
                                             <label>รายละเอียดสถานที่</label>
-                                            <textarea placeholder="รายละเอียดสถานที่" rows="4" cols="50" name="location_information" form="usrform" class="form-control" 
+                                            <textarea placeholder="รายละเอียดสถานที่" rows="4" cols="50" name="detail_location" form="usrform" class="form-control" 
                                                 style="border-radius:10px;"></textarea>
                                         </div>
 
                                         <div class="col-md-6" style="margin-top:10px;">
                                             <label>รายละเอียดการเดินทาง</label>
-                                            <textarea placeholder="รายละเอียดการเดินทาง" rows="4" cols="50" name="transport_information" form="usrform" class="form-control"
+                                            <textarea placeholder="รายละเอียดการเดินทาง" rows="4" cols="50" name="detail_transport" form="usrform" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                         </div>
                                         <div class="col-md-6" style="margin-top:10px;">

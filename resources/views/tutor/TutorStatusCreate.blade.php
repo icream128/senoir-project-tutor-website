@@ -27,7 +27,7 @@
 @section('content')
     <br>
     <section class="text-center">   
-        <h1>สถานะการจองคอร์ส</h1>
+        <h1>สถานะของคอร์สที่ฉันสร้าง</h1>
         <center><hr class="btn-tutor"></center>      
     </section>
 
@@ -50,7 +50,7 @@
             </thead>
 
             <tbody id="data-table-block">
-              @foreach($agreement as $key =>$value)
+              @foreach($tutorSchedule as $key =>$value)
                 <tr class="data-table">
                     <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
                     <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
@@ -114,7 +114,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-12">
-                  {{ $agreement->appends(['sort' => 'subject_name'])->links() }}
+                  {{ $tutorSchedule->appends(['sort' => 'subject_name'])->links() }}
                 </div>
               </div>
             </div>

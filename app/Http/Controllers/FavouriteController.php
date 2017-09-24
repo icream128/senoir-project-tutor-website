@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DB;
 use Illuminate\Http\Request;
 
-class MyCourseController extends BaseController
+class FavouriteController extends BaseController
 {
    
     public function __construct(){
@@ -66,7 +66,7 @@ class MyCourseController extends BaseController
                 ->join('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
                 ->join('day','learner_schedule_time.day_id','=','day.day_id')
                 ->join('duration','learner_schedule_time.duration_id','=','duration.duration_id')
-                ->where('learner_schedule.status_id',5)
+                ->where('learner_schedule.status_id',8)
                 // ->orWhere('tutor_schedule.status_sch_id',4)
                 ->paginate(10);
         

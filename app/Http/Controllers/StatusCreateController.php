@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DB;
 use Illuminate\Http\Request;
 
-class MyCourseController extends BaseController
+class StatusCreateController extends BaseController
 {
    
     public function __construct(){
@@ -55,24 +55,29 @@ class MyCourseController extends BaseController
                 // $level = DB::table('level')->orderBy('level_name','asc')->get();
                 // $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
         
-                $agreement = DB::table('agreement')
+                $tutorSchedule = DB::table('tutor_schedule')
                 ->select(['detail_lesson', 'detail_transport', 'detail_location'])
-                ->join('frequency','agreement.agreement_id','=','frequency.agreement_id')
-                ->join('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
-                ->join('user','learner_schedule.user_id','=','user.user_id')
-                ->join('subject','learner_schedule.subject_id','=','subject.subject_id')
-                ->join('level','learner_schedule.level_id','=','level.level_id')
-                ->join('status','learner_schedule.status_id','=','status.status_id')
-                ->join('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
-                ->join('day','learner_schedule_time.day_id','=','day.day_id')
-                ->join('duration','learner_schedule_time.duration_id','=','duration.duration_id')
-                ->where('learner_schedule.status_id',5)
+                ->join('user','tutor_schedule.user_id','=','user.user_id')
+                ->join('subject','tutor_schedule.subject_id','=','subject.subject_id')
+       
+                ->join('status','tutor_schedule.status_id','=','status.status_id')
+
+                // ->join('tutor_schedule_day','tutor_schedule.tutor_schedule_day_id','=','tutor_schedule_day.tutor_schedule_day_id')
+                // ->join('day','tutor_schedule_time.day_id','=','day.day_id')
+                
+                ->join('tutor_schedule_level','tutor_schedule.tutor_schedule_id','=','tutor_schedule_level.tutor_schedule_id')
+                ->join('level','tutor_schedule_level.level_id','=','level.level_id')
+
+                ->join('tutor_schedule_time','tutor_schedule.tutor_schedule_id','=','tutor_schedule_time.tutor_schedule_id')
+                ->join('duration','tutor_schedule_time.duration_id','=','duration.duration_id')
+
+                ->where('tutor_schedule.status_id',1)
                 // ->orWhere('tutor_schedule.status_sch_id',4)
                 ->paginate(10);
         
                 //Set data to view
-                $data = compact('agreement');
+                $data = compact('tutorSchedule');
              
-                return view('tutor.TutorMycourse',$data);
+                return view('tutor.TutorStatusCreate',$data);
             }
 }

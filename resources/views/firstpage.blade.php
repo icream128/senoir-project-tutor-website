@@ -13,7 +13,6 @@
 
     .masthead{
      position:relative;
-     background-color:#222;
      width:100%;
      min-height:auto;
      text-align:center;
@@ -28,6 +27,22 @@
     .btn-size{
       width:200;
     }
+
+    body {
+      
+      background-image: url("/img/learner.png"), url("/img/tutor.png");
+      background-color: #000000;
+      background-size: auto auto;
+      background-repeat: no-repeat, no-repeat;
+      background-position: left, right;
+
+    }
+
+    img {
+    width: auto;
+    height: auto;
+}
+
 </style>
 
 @section('content')
@@ -35,12 +50,13 @@
     <header class="masthead">
     <div class="header-content">
         <div class="header-content-inner">
-          <h1 id="homeHeading">หาติวดีลงาน</h1><br>
+          
+          <img class="panel-heading" src="/img/piclogo.png" alt="Logo" style="width:260px;height:145px;">
           <hr>
-          <p>หากคุณเป็นนักเรียนที่ต้องการหาติวเตอร์ ให้กดปุ่ม"ค้นหาติวเตอร์" <br>
+          <p style="color: #000000;font-size:20px;">หากคุณเป็นนักเรียนที่ต้องการหาติวเตอร์ ให้กดปุ่ม"ค้นหาติวเตอร์" <br>
             หากคุณเป็นติวเตอร์ที่ต้องการสอนพิเศษ ให้กดปุ่ม"ค้นหาคอร์สสอน" </p>
-          <a class="btn btn-tutor btn-xl btn-size js-scroll-trigger" href="/tutorhome">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
           <a class="btn btn-student btn-xl btn-size js-scroll-trigger" href="/learnerhome">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
+          <a class="btn btn-tutor btn-xl btn-size js-scroll-trigger" href="/tutorhome">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
         </div>
       </div>
     </header>

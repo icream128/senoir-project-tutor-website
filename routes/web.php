@@ -12,10 +12,10 @@
 */
 // tutor
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('firstpage');
 });
-Route::get('/index', function () {
-    return view('index');
+Route::get('/firstpage', function () {
+    return view('firstpage');
 });
 Route::get('/tutorhome','TutorHomeController@index');
 
@@ -25,20 +25,18 @@ Route::post('/tutorsavecourse','CreateCourseController@insertTutor');
 Route::get('/tutorprofile', function () {
     return view('tutor.profile');
 });
-Route::get('/tutorfavorite', function () {
-    return view('tutor.favorite');
-});
+Route::get('/tutorstatuscreate','StatusCreateController@indexTutor');
 Route::get('/tutorstatusrequest','StatusRequestController@indexTutor');
-
+Route::get('/tutorfav','FavouriteController@indexTutor');
 Route::get('/tutorhistory','HistoryController@indexTutor');
-
 Route::get('/tutormycourse','MycourseController@indexTutor');
+Route::get('/tutordeal', function () {
+    return view('tutor.TutorDeal');
+});
 ///
 
 // learner
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/learnercreatecourse','CreateCourseController@indexLearner');
 Route::post('/learnersavecourse','CreateCourseControllerr@insertLearner');
@@ -63,7 +61,9 @@ Route::get('/adddetail', function () {
     return view('learner.LearnerAddDetail');
 });
 Route::post('/learnersavedetail','AddDetailController@saveDetailLearner');
-
+Route::get('/learnerdeal', function () {
+    return view('learner.LearnerDeal');
+});
 
 //visitor
 Auth::routes();
@@ -81,10 +81,6 @@ Route::post('/registersave','RegisterController@save');
 // Route::get('/', function () {
 //     return redirect('firstpage');
 // });
-// firstpage
-Route::get('/firstpage',function(){
-    return view('firstpage');
-});
-///
+
 
 

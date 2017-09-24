@@ -82,13 +82,13 @@
                                     <div class="row">
                                         <label>ประเภท</label>
                                         <div class="col-md-1" style="margin-top:26px;">
-                                            <input type="radio" value="tutor" name="type"/>                    
+                                            <input type="radio" value="2" name="role"/>                    
                                         </div>
                                         <div class="col-md-3" style="margin-top:20px;">        
                                             <p>ติวเตอร์</p>
                                         </div>
                                         <div class="col-md-1" style="margin-top:26px;">
-                                            <input type="radio" value="learner" name="type"/>                  
+                                            <input type="radio" value="1" name="role"/>                  
                                         </div>
                                         <div class="col-md-3" style="margin-top:20px;">        
                                             <p>ผู้เรียน</p>
@@ -119,7 +119,7 @@
 
                                 <div class="col-md-6 marginnaja">
                                     <label>เลขบัตรประชาชาน</label>
-                                    <input type="text" placeholder="เลขบัตรประชาชาน" name="id_card"  class="form-control" style="border-radius:10px;"/>
+                                    <input type="text" placeholder="เลขบัตรประชาชาน" name="card_id"  class="form-control" style="border-radius:10px;"/>
                                 </div>
 
                                 <div class="col-md-6 marginnaja">
@@ -180,7 +180,7 @@
 
                                 <div class="col-md-6 marginnaja">
                                     <label>ที่อยู่ปัจจุบัน</label>
-                                    <textarea placeholder="ที่อยู่ปัจจุบัน" rows="4" cols="50" name="address" form="usrform" class="form-control"
+                                    <textarea placeholder="ที่อยู่ปัจจุบัน" rows="4" cols="50" name="place" form="usrform" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                 </div>
                                 
@@ -207,7 +207,7 @@
                                 <div class="col-md-12 marginnaja"><h2>บุคคลอ้างอิงที่ติดต่อได้</h2></div>
                                 <div class="col-md-6 marginnaja">
                                     <label>ชื่อ-นามสกุล</label>
-                                    <input type="text" placeholder="ชื่อจริง-นามสกุล" name="reference" class="form-control" style="border-radius:10px;"/>
+                                    <input type="text" placeholder="ชื่อจริง-นามสกุล" name="ref_name" class="form-control" style="border-radius:10px;"/>
                                 </div>
                                 
                                 <div class="col-md-6 marginnaja">
@@ -216,7 +216,7 @@
                                 </div>
                                 <div class="col-md-6 marginnaja tutor-only" style="display:none">
                                     <label>ประสบการณ์</label>
-                                    <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="exp" form="usrform" class="form-control"
+                                    <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="experience" form="usrform" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                 </div>
                                 
@@ -273,8 +273,8 @@ $.validator.setDefaults({
 })
 $(document).ready(function(){
 
-    $('input[name="type"]').click(function(){
-        if($(this).val() == 'tutor'){
+    $('input[name="role"]').click(function(){
+        if($(this).val() == '2'){
             $('.tutor-only').show();
         }
         else{
@@ -303,27 +303,119 @@ $(document).ready(function(){
                 equalTo: "#password"
             },
             email: {
+				required: true,
+				mail: true
+			},
+            img_card: {
+				required: true,
+				
+			},
+            img_profile: {
+				required: true,
+				
+			},
+
+            tel: {
                 required: true,
-                email: true
+                minlength: 9
             },
+            place: {
+                required: true
+            },
+            school: {
+                required: true
+              
+            },
+            level: {
+                required: true
+              
+            },
+            grade: {
+                required: true
+            
+            },
+            ref_relation: {
+                required: true
+            
+            },
+            ref_name: {
+                required: true
+            
+            },
+            ref_tel: {
+                required: true
+            
+            },
+            gender: {
+                required: true
+            
+            },
+            birthday: {
+                required: true,
+            
+            },
+            card_id: {
+                required: true,
+                minlength: 13
+            },
+            nickname: {
+                required: true
+            },
+            firstname: {
+                required: true
+            },
+            lastname: {
+                required: true
+            },
+            role: {
+                required: true
+            },
+            
             
         },
         messages: {
         
             username: {
-                required: "Please enter a username",
-                minlength: "Your username must consist of at least 2 characters"
+                required: "กรุณากรอกชื่อผู้ใช้",
+               
             },
             password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long"
+                required: "กรุณากรอกรหัสผ่าน",
+                minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว"
             },
             confirm_password: {
-                required: "Please provide a password",
-                minlength: "Your password must be at least 5 characters long",
-                equalTo: "Please enter the same password as above"
+                required: "กรุณากรอกยืนยันรหัสผ่าน",
+                minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว",
+                equalTo: "รหัสผ่านไม่ตรงกัน"
             },
-            email: "Please enter a valid email address",		
+            email: {
+				required: "กรุณากรอกอีเมล์",
+				mail: "กรุณากรอกอีเมล์"
+			},
+            
+            img_profile: "กรุณาเลือกรูปโปรไฟล์",
+            img_card: "กรุณาเลือกรูปบัตรประชาชน",
+            tel: {
+                required: "กรุณากรอกเบอร์โทรศัพท์",
+                minlength: "รหัสผ่านต้องมีอย่างน้อย 9 ตัว"
+            },
+            card_id: {
+                required: "กรุณากรอกเลขบัตรประชาชน",
+                minlength: "กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก"
+            },
+            place: "กรุณากรอกที่อยู่",
+            school: "กรุณากรอกสถานศึกษา",
+            level: "กรุณากรอกระดับการศึกษา",
+            grade: "กรุณากรอกเกรดเฉลี่ยสะสม",
+            ref_relation: "กรุณากรอกความสัมพันธ์กับบุคคลอ้างอิง",
+            ref_name: "กรุณากรอกชื่อบุคคลอ้างอิง",
+            ref_tel: "กรุณากรอกเบอร์โทรศัพท์บุคคลอ้างอิง",
+            gender: "กรุณาระบุเพศ",	
+            birthday: "กรุณากรอกวันเดือนปีเกิด",
+            nickname: "กรุณากรอกชื่อเล่น",
+            firstname: "กรุณากรอกชื่อจริง",
+            lastname: "กรุณากรอกนามสกุล",
+            role: "กรุณาระบุประเภท"
 		}
 	});
     $('input[name="birthday"]').change(function(){
@@ -405,3 +497,20 @@ function readURL2(input) {
 </script>
 @endsection
 
+<Style>
+   #nickname-error,#firstname-error,#tel-error
+   ,#school-error,#level-error,#grade-error,#ref_relation-error,#ref_name-error
+    ,#card_id-error,#role-error,#address-error
+    ,#ref_tel-error,#gender-error ,#birthday-error
+    ,#lastname-error,#imgInp_card-error, #email-error ,#username-error,#confirm_password-error
+    ,#password-error,#lastname-error,#imgInp_profile-error, #email-error
+     ,#username-error,#confirm_password-error,#password-error {
+        font-size:13px;
+        color:#ff0000;
+    }
+</Style>
+,#password-error
+   
+   
+    
+   
