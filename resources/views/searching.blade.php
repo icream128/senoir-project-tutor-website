@@ -244,6 +244,8 @@
 
   }
 
+ 
+
   function appendTag(type,text,id){
     var chkvalue = [0,0,0,0];
     var params = "";

@@ -46,6 +46,7 @@ Route::get('/testsearch', function () {
     return view('searching');
 });
 Route::get('/searching', 'SearchController@liveshow');
+Route::get('/showdetail', 'SearchController@showdetail');
 
 Route::get('/learnerhome','LearnerHomeController@index');
 Route::get('/learnerhome_datatable','LearnerHomeController@showSchedule');

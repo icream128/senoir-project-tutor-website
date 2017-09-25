@@ -83,8 +83,6 @@
                             
                         </div>          
                     </div>
-                    <a class="btn btn-primary " style="background:red;font-size:17px;margin:10px;padding:10px 25px 10px 25px;" href="#" >ยกเลิก</a> 
-                    <a class="btn btn-primary " style="background:green;font-size:17px;margin:10px;padding:10px 25px 10px 25px;" href="#" >ยืนยัน</a>
 
                 </div>
                 <div class="col-md-1"></div>
@@ -93,7 +91,8 @@
         </div>
     
 
-            <input type="button" name="next" class="next action-button" value="Next" onclick = ""/>
+            <input type="button" name="next" style="background:red" class="next action-button" value="ปฏิเสธ" onclick = ""/>
+            <input type="button" name="next" style="background:green"  class="next action-button" value="ยอมรับ" onclick = ""/>
         </fieldset>
         <!-- <fieldset  style="background-color:#D8D8D8;padding:20px;border-radius:25px;">
             <h2 class="fs-title">Social Profiles</h2>
@@ -179,6 +178,8 @@
                                         </div>
                                             <!-- End Time Zone -->
                                             
+                                        <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
+                                            
                                         </div>    
                                     </form>
                                 </div>
@@ -191,8 +192,7 @@
             </div>
         </div>
         
-        <input type="button" name="previous" class="previous action-button-previous" value="ย้อนกลับ"/>
-        <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
+        
         <!-- <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit" style="font-size: 17px;">เพิ่มรายละเอียดคอร์ส</button> -->
             
         </fieldset>

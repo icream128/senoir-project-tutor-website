@@ -42,7 +42,7 @@
 
         <!-- fieldsets -->
         <fieldset  style="background-color:#D8D8D8;padding:20px;border-radius:25px;">
-            <h1>รอสักครู่</h1>
+            <h1>รอตอบจากผู้รียน</h1>
     
 
             <input type="button" name="next" class="next action-button" value="Next" onclick = ""/>
@@ -123,8 +123,8 @@
 
             </div>
         </div>
-        <input type="button" name="previous" class="previous action-button-previous" value="ย้อนกลับ"/>
-        <input type="submit" name="submit" class="submit action-button" value="ตกลง"/>
+        <input type="button" name="previous" style="background:red" class="previous action-button-previous" value="ปฏิเสธ"/>
+        <input type="submit" name="submit" style="background:green" class="submit action-button" value="ยอมรับ"/>
         <!-- <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit" style="font-size: 17px;">เพิ่มรายละเอียดคอร์ส</button> -->
             
         </fieldset>

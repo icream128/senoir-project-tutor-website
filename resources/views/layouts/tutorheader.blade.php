@@ -27,7 +27,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="{{url('/tutorhome')}}" style="color: #FF8000;">หาติว ดีลงาน</a>
+                <a class="navbar-brand js-scroll-trigger" href="{{url('/firstpage')}}" style="color: #FF8000;">หาติว ดีลงาน</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorfav')}}">คอร์สที่สนใจ</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorhistory')}}">ประวัติการสอน</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorstatusrequest')}}">สถานะการจองคอร์ส</a></li>
-                    <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorstatusแพำฟะำ')}}">สถานะของคอร์สที่ฉันสร้าง</a></li>
+                    <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorstatusrequest')}}">สถานะของคอร์สที่ฉันสร้าง</a></li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #FF8000;" href="{{url('/login')}}">ลงชื่อเข้าใช้งาน</a></li>

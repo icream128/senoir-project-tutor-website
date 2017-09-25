@@ -20,7 +20,7 @@ class CreateCourseController extends BaseController
     public function indexLearner(){
       
         $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-        $day = DB::table('day')->orderBy('day_name_full','asc')->get();
+        $day = DB::table('day')->orderBy('day_name','asc')->get();
         $level = DB::table('level')->orderBy('level_name','asc')->get();
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
   
@@ -32,7 +32,7 @@ class CreateCourseController extends BaseController
     public function indexTutor(){
         
           $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-          $day = DB::table('day')->orderBy('day_name_full','asc')->get();
+          $day = DB::table('day')->orderBy('day_name','asc')->get();
           $level = DB::table('level')->orderBy('level_name','asc')->get();
           $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
     
@@ -54,12 +54,12 @@ class CreateCourseController extends BaseController
                 $level = DB::table('level')->get();
                 $duration = DB::table('duration')->get();
                 
-                $data = array();
-                $data['day_id'] = $request->day;
-                $data['subject_id'] = $request->subject;
-                $data['level_id'] = $request->level;
-                $data['duration_id'] = $request->duration;
-                $data = DB::table('learner_schedule')->insert($data);
+                // $data = array();
+                // $data['day_id'] = $request->day;
+                // $data['subject_id'] = $request->subject;
+                // $data['level_id'] = $request->level;
+                // $data['duration_id'] = $request->duration;
+                // $data = DB::table('learner_schedule')->insert($data);
         
                
                 
@@ -68,19 +68,19 @@ class CreateCourseController extends BaseController
       public function insertTutor(Request $insert){
         
         //$tutor_schedule = new TutorSchedule();
-        $tutor_schedule = DB::table('tutor_schedule')->get();
+        // $tutor_schedule = DB::table('tutor_schedule')->get();
                 
-                $tutor_schedule->learner_id = 1 ;
-                $tutor_schedule->status_sch_id = 1 ;
+        //         $tutor_schedule->learner_id = 1 ;
+        //         $tutor_schedule->status_sch_id = 1 ;
                
 
 
-                $data = array();
-                $data['day_id'] = $request->day;
-                $data['subject_id'] = $request->subject;
-                $data['level_id'] = $request->level;
-                $data['duration_id'] = $request->duration;
-                $data = DB::table('tutor_schedule')->insert($data);
+        //         $data = array();
+        //         $data['day_id'] = $request->day;
+        //         $data['subject_id'] = $request->subject;
+        //         $data['level_id'] = $request->level;
+        //         $data['duration_id'] = $request->duration;
+        //         $data = DB::table('tutor_schedule')->insert($data);
         
                
       

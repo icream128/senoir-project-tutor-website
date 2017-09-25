@@ -1,176 +1,243 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.learnerheader')
 
-  <head>
+@section('content') 
+<style>
+    .closebtn {
+      margin-top: 53px;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    div h5 {
+        font-size:17px;
+    }
 
-    <title>หาติว ดีลงาน</title>
+    .pad{
+        padding-bottom:15px;
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</style>
+<br>
+    <section class="text-center">   
+      <h1>สร้างคอร์สเรียน</h1>
+      <center><hr></center>      
+    </section>
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <div class="container">
+      <div class="row" id="result">
 
-    <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+        <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
+          <div class="container">
+            <div class="row">
 
-    <!-- Custom styles for this template -->
-    <link href="css/creative.min.css" rel="stylesheet">
-
-  </head>
-
-  <body id="page-top">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">หาติว ดีลงาน</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <header class="masthead">
-      <div class="header-content">
-        <div class="header-content-inner">
-          <h1 id="homeHeading">หาติว ดีลงาน</h1>
-          <hr>
-          <p>เรียน/สอนพิเศษตัวต่อตัว ทุกวิชา ทุกระดับชั้น ทุกวันเวลา กับหาติว ดีลงาน</p>
-         
-        </div>
-      </div>
-    </header>
-
-    
-    <section id="services">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading">สร้างคอร์สเรียนของฉัน</h2>
-            <hr class="primary">
-          </div>
-        </div>
-      </div>
-
-    
-        <form method="post" action="/learnersavecourse">
-     <div class="container text-center">
-         <div class="col-md-8 col-md-offset-2">
+              <div class="col-md-6 text-center">
+                <div class="container">
                 <div class="row">
-                    <div class="filter-select row">
-                        <div class="col-lg-3 col-md-3 text-center">
-                          <label>ชื่อวิชา</label>
-                            <select id="filterBySubject" class="form-control">
-                            <?php
-                                foreach($subject as $key =>$value){
-                                  echo '<option value="'.$value->subject_id.'">'.$value->subject_name.'</option>' ;
-                                }			
-                              ?>
-                               
-                            </select>
-                        </div>
-                        <div class="col-lg-3 col-md-3 text-center">
-                          <label>ระดับชั้น</label>
-                            <select id="filterByLevel"  class="form-control">
-                            <?php
-                            foreach($level as $key =>$value){
-                              echo '<option value="'.$value->level_id.'">'.$value->level_name.'</option>' ;
-                            }			
-                            ?>
-                            </select>
-                        </div>
-                  
-                        <label>วัน</label>
-                        <div class="row">
-                          @foreach ($day as $value)
-                            <div class="col-md-2"> 
-                                <table>
-                                    <td><input type="checkbox" value="{{$value->day_id}}" name="day[]">{{$value->day_name_full}}</td>
-                                </table>
-                            </div>
-                            @endforeach
-                     </div>
-                     
-                     
-                          <label>ช่วงเวลา</label>   
-                          <div class="row">
-                            @foreach ($duration as $value)
-                            <div class="col-md-3"> 
-                                <table>
-                                    <td><input type="checkbox" value="{{$value->duration_id}}" name="duration[]">{{$value->duration_name}}</td>
-                                </table>
-                            </div>
-                            @endforeach
-                         </div>
+
+                  <div class="  col-md-6 text-center">
+                    <div class="service-box">
+                    
+                      <h3>วิชา</h3>
+                      <select name="subject" class="form-control">
+                      <?php
+                                  foreach($subject as $key =>$value){
+                                    echo '<option value="'.$value->subject_id.'">'.$value->subject_name.'</option>' ;
+                                  }			
+                                ?>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="  col-md-6 text-center">
+                    <div class="service-box">
+                      
+                      <h3>ระดับชั้น</h3>
+                      <select name="level" class="form-control">
+                      <?php
+                                  foreach($level as $key =>$value){
+                                    echo '<option value="'.$value->level_id.'">'.$value->level_name.'</option>' ;
+                                  }			
+                                ?>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+                </div>
+              </div>
+
+              <!-- ul -->
+              <div class="col-md-6 text-center">
+                <div class="container">
+                <div class="row" id="addtime">
+                
+              <!-- li -->
+                <div class="col-md-12 text-center">
+                  <div class="container">
+                  <div class="row">
+
+                    <div class="col-md-5 text-center">
+                      <div class="service-box">
+                      
+                        <h3>วัน</h3>
+                        <select name="day" class="form-control">
+                        <?php
+                                  foreach($day as $key =>$value){
+                                    echo '<option value="'.$value->day_id.'">'.$value->day_name.'</option>' ;
+                                  }			
+                                ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 text-center">
+                      <div class="service-box">
                         
-                       
-                        <!-- <div class="row">
-                          <div class="col-lg-3 col-md-3 text-center">
-                          <label>แขวง</label>
-                            <input type="text" id="district" class="form-control">
-                          </div>
-                          <div class="col-lg-3 col-md-3 text-center">
-                          <label>เขต</label>
-                            <input type="text" id="amphoe" class="form-control">
-                          </div>
-                          <div class="col-lg-3 col-md-3 text-center">
-                          <label>จังหวัด</label>
-                            <input type="text" id="province" class="form-control">
-                          </div>
-                          <div class="col-lg-3 col-md-3 text-center">
-                          <label>รหัสไปรษณีย์</label>
-                            <input type="text" id="zipcode" class="form-control">
-                          </div>
-			                  </div> -->
+                        <h3>ช่วงเวลา</h3>
+                        <select name="duration" class="form-control">
+                        <?php
+                                  foreach($duration as $key =>$value){
+                                    echo '<option value="'.$value->duration_id.'">'.$value->duration_name.'</option>' ;
+                                  }			
+                                ?>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2 text-center"></div>
+                  
+                  </div>
+                  </div>
+                </div>
+                
+                </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 text-center"></div>
+              <div class="col-md-6 text-center" style="margin-top:20px;">
+                <div class="container">
+                  <div class="row">
+                
+                    <div class="col-md-12 text-center">
+                      <div class="container">
+                      <div class="row">
+
+                        <div class="col-md-5 text-center"></div>
+                        <div class="col-md-5 text-center">
+                          <button class="btn btn-primary btn-xl js-scroll-trigger" onclick="myFunction()" style="font-size:15px;color:#ffffff;font-weight:normal;margin-bottom:20px;">เพิ่มเวลา</button>
+                        </div>
+                        <div class="col-md-2 text-center"></div>
+
+                      </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              
+
+              <!-- <div class="container">
+                <div class="row">
+                <div class="col-lg-3 col-md-3 text-center">
+                    <div class="service-box">
+                      <h3>ตำบล/แขวง</h3>
+                      <input type="text" id="district" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 text-center">
+                    <div class="service-box">
+                      <h3>อำเภอ/เขต</h3>
+                      <input type="text" id="amphoe" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 text-center">
+                    <div class="service-box">
+                      <h3>จังหวัด</h3>
+                      <input type="text" id="province" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 text-center">
+                    <div class="service-box">
+                      <h3>รหัสไปรษณีย์</h3>
+                      <input type="text" id="zipcode" class="form-control">
                     </div>
                   </div>
                 </div>
-                <a class="btn btn-primary btn-xl js-scroll-trigger" href="submit">สร้างคอร์สเรียน</a>
+              </div> -->
+
+              <div class="container text-center" style="margin-top:25px;margin-bottom:10px">
+                <button class="btn btn-primary btn-xl js-scroll-trigger" href="{{url('/learnermycourse')}}">สร้างคอร์สเรียน</button>
               </div>
-            </form>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-         
-            
+
+            </div>
           </div>
         </div>
+      
       </div>
-    </section>
+    </div>
+
+    <script>
+      var count = 1;
+      function myFunction() {
+          var diva = document.createElement("div");
+          diva.setAttribute("id", "div"+count);
+          diva.setAttribute("class", "col-md-12 text-center");
+          var divb = document.createElement("div");
+          divb.setAttribute("class", "container");
+          var divc = document.createElement("div");
+          divc.setAttribute("class", "row");
+          var divd = document.createElement("div");
+          divd.setAttribute("class", "col-md-5 text-center");          
+          var dive = document.createElement("div");
+          dive.setAttribute("class", "service-box");
+          var divf = document.createElement("div");
+          divf.setAttribute("class", "col-md-5 text-center");
+          var divg = document.createElement("div");
+          divg.setAttribute("class", "service-box");
+          var ha = document.createElement("h3");
+          var text1 = document.createTextNode("วัน");
+          var hb = document.createElement("h3");
+          var text2 = document.createTextNode("ช่วงเวลา");
+          var sel1 = document.createElement("select");
+          sel1.setAttribute("name", "day");
+          sel1.setAttribute("class", "form-control");
+          var sel2 = document.createElement("select");
+          sel2.setAttribute("name", "duration");
+          sel2.setAttribute("class", "form-control");
+          var close = document.createElement("SPAN");
+          close.setAttribute("id", "close" + count);
+          close.setAttribute("class", "closebtn col-md-2 text-center");
+          close.setAttribute("onclick", "noDis('"+count+"')");
 
 
+          diva.appendChild(divb);
+          divb.appendChild(divc);
+
+          divc.appendChild(divd);
+          divd.appendChild(dive);
+          dive.appendChild(ha);
+          ha.appendChild(text1);
+          dive.appendChild(sel1);
+
+          divc.appendChild(divf);
+          divf.appendChild(divg);
+          divg.appendChild(hb);
+          hb.appendChild(text2);
+          divg.appendChild(sel2);
+
+          divc.appendChild(close);
+          
+          document.getElementById("addtime").appendChild(diva);
+          document.getElementById("close" + count).innerHTML = "&times";
+          count++;
+        }
+        function noDis(x){
+            document.getElementById("div"+x).style.display = 'none';
+            document.getElementById("input"+x).value = "";
+        }
+    </script>
     
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-  
-  </body>
-
-</html>
+@endsection

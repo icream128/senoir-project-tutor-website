@@ -18,13 +18,14 @@ class RegisterController extends BaseController
     
         public function save(Request $request){
            
+            // $data = array();
+       
+            // $user_id = DB::table('user')->insertGetId($data,'user_id');
+            
             $data = array();
             $data['username'] = $request->username;
             $data['password'] = $request->password;
-            $user_id = DB::table('user')->insertGetId($data,'user_id');
-            
-            $data = array();
-            $data['user_id'] = $user_id;
+            // $data['user_id'] = $user_id;
             $time = date('YmdHis');
             
             $file = explode('.',$_FILES['img_card']['name']);
@@ -58,19 +59,19 @@ class RegisterController extends BaseController
             $data['grade'] = $request->grade;
             $data['experience'] = $request->experience;
             $data['status_user_id'] = 1;
-            DB::table('user')->insert($data);
+            // DB::table('user')->insert($data);
             if($request->role == '1'){//learner
                 
                 $data['role_id'] = $request->role;
-                DB::table('user')->insert($data);
+                // $user_id = DB::table('user')->insertGetId($data,'user_id');
                   
             }
             elseif($request->role == '2'){//tutor
               
                 $data['role_id'] = $request->role;
-                DB::table('role_id')->insert($data);
-                
+                // $user_id = DB::table('user')->insertGetId($data,'user_id');
                 
             }
+            DB::table('user')->insert($data);
         }
 }

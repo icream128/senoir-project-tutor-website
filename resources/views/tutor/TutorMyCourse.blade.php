@@ -75,8 +75,7 @@
                                     <div class="col-lg-3 col-md-8 text-center" style="padding-bottom=10px;">
                                         <div class="service-box">              
                                             <div class="container">   
-                                                <img src="{{$value->img_profile}}" class="img-circle img-responsive" 
-                                                    style="border-radius:50%;object-position:center;object-fit: cover;" alt="Cinque Terre" width="150" height="150"> 
+                                                
                                             </div>
                                         </div>
                                     </div>
