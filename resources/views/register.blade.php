@@ -264,7 +264,7 @@
 @endsection
 
 @section('script')
-<script src="{{url('script/jquery-validation-1.17.0/dist/jquery.validate.js')}}"></script>
+<script src="{{url('/script/jquery-validation-1.17.0/dist/jquery.validate.js')}}"></script>
 <script>
 $.validator.setDefaults({
     submitHandler: function(form){
@@ -509,8 +509,7 @@ function readURL2(input) {
         color:#ff0000;
     }
 </Style>
-,#password-error
-   
+
    
     
    

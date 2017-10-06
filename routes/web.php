@@ -27,6 +27,7 @@ Route::get('/tutorprofile', function () {
 });
 Route::get('/tutorstatuscreate','StatusCreateController@indexTutor');
 Route::get('/tutorstatusrequest','StatusRequestController@indexTutor');
+
 Route::get('/tutorfav','FavouriteController@indexTutor');
 Route::get('/tutorhistory','HistoryController@indexTutor');
 Route::get('/tutormycourse','MycourseController@indexTutor');

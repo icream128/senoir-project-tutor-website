@@ -55,7 +55,7 @@
           <hr>
           <p style="color: #000000;font-size:20px;">หากคุณเป็นนักเรียนที่ต้องการหาติวเตอร์ ให้กดปุ่ม"ค้นหาติวเตอร์" <br>
             หากคุณเป็นติวเตอร์ที่ต้องการสอนพิเศษ ให้กดปุ่ม"ค้นหาคอร์สสอน" </p>
-          <a class="btn btn-student btn-xl btn-size js-scroll-trigger" href="/learnerhome">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
+          <a class="btn btn-student btn-xl btn-size js-scroll-trigger" href="/learnermycourse">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
           <a class="btn btn-tutor btn-xl btn-size js-scroll-trigger" href="/tutorhome">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
         </div>
       </div>

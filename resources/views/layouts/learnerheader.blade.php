@@ -34,11 +34,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnerhome')}}">หน้าหลัก</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnerhome')}}">หน้าหลัก</a></li> -->
                     <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnermycourse')}}">คอร์สของฉัน</a></li>
                     <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnercreatecourse')}}">สร้างคอร์สเรียน</a></li>
                     <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnerhistory')}}">ประวัติการเรียน</a></li>
-                    <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnercoursestatus')}}">สถานะคอร์สเรียน</a></li>
+                    <li class="nav-item"><a class="nav-link" style="color:#f05f40;" href="{{url('/learnercoursestatus')}}">สถานะคอร์สเรียนที่ฉันสร้าง</a></li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color:#f05f40;" href="{{ url('/login') }}">ลงชื่อเข้าใช้งาน</a></li>

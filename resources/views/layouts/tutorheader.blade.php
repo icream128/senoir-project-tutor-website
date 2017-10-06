@@ -39,7 +39,7 @@
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorfav')}}">คอร์สที่สนใจ</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorhistory')}}">ประวัติการสอน</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorstatusrequest')}}">สถานะการจองคอร์ส</a></li>
-                    <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorstatusrequest')}}">สถานะของคอร์สที่ฉันสร้าง</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorstatusrequest')}}">สถานะของคอร์สที่ฉันสร้าง</a></li> -->
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #FF8000;" href="{{url('/login')}}">ลงชื่อเข้าใช้งาน</a></li>

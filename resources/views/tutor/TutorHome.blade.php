@@ -51,9 +51,9 @@
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6"></div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <a href="{{url('/tutorcreatecourse')}}"><button class="tag-item btn btn-lg btn-danger" style="background-color: #FF8000;">สร้างคอร์สเรียนที่ต้องการ</button></a> 
-        </div>
+        </div> -->
       </div>
     <div>
 
@@ -276,14 +276,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn"  data-dismiss="modal">ปิดหน้าต่าง</button>
-        <button type="button" class="btn " style="background-color:#FF8000;color:#ffffff;">ส่งคำขอ</button>
+        <button type="button" class="btn"  href="{{url('/tutordeal')}}"  style="background-color:#FF8000;color:#ffffff;">ส่งคำขอ</button>
       </div>
     </div>
   </div>
 </div>
 
 
-  
     <section class="primary" id="about">
       <div class="container">
         <div class="row">
@@ -722,7 +721,7 @@ function moreDetail(key){
     document.getElementById("name").innerHTML = "ชื่อ: "+results[0].firstname+" "+results[0].lastname ;
     document.getElementById("nickname").innerHTML = "ชื่อเล่น: "+results[0].nickname ;
     document.getElementById("age").innerHTML = "อายุ: "+results[0].age ;
-    document.getElementById("gender").innerHTML = "grL: "+results[0].gender ;
+    document.getElementById("gender").innerHTML = "เพศ: "+results[0].gender ;
     document.getElementById("tel").innerHTML = "เบอร์โทรศัพท์: "+results[0].tel ;
     document.getElementById("school").innerHTML = "โรงเรียน: "+results[0].school ;
     document.getElementById("level").innerHTML = "ระดับชั้น: "+results[0].level ;
