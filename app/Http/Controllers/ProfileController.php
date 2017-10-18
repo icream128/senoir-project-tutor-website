@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -23,21 +25,42 @@ class ProfileController extends BaseController
     */
 
     public function indexLearner() {
+
+        //header
+        $learnerProfile = DB::table('user')
+        ->select(['img_profile'])
+        ->where('user_id', Auth::user()->user_id)->first();
+
         //Get data from database
-
-        $learnerProfile = DB::table('users')
-        ->select(['name'])
-        // ->join('subject','learner_schedule.subjects_id','=','subject.subjects_id')
-        // ->join('levels','learner_schedule.levels_id','=','levels.levels_id')
-        // ->join('day','learner_schedule.day_id','=','day.day_id')
-        // ->join('duration','learner_schedule.duration_id','=','duration.duration_id')
-        // ->join('tutor','learner_schedule.tutor_id','=','tutor.tutor_id')
-        // ->join('schedule_status','learner_schedule.status_sch_id','=','schedule_status.status_sch_id')
-        ->where('id', Auth::user()->id)->first();
-
+        $learnerProfilePage = DB::table('user')
+        ->select(['firstname', 'lastname', 'nickname', 'school', 'level', 'grade', 'age', 'gender'
+            ,'email','tel','address','ref_name','ref_relation','ref_tel','img_card','card_id','birthday'])
+        ->where('user_id', Auth::user()->user_id)->first();
+        
         //Set data to view
-        $data = compact('learnerProfile');
-     
+        $data = compact('learnerProfile', 'learnerProfilePage');
+        
         return view('learner.LearnerProfile',$data);
   
+    }
+
+    public function indexTutor() {
+
+        //header
+        $tutorProfile = DB::table('user')
+        ->select(['img_profile'])
+        ->where('user_id', Auth::user()->user_id)->first();
+        
+        //Get data from database
+        $tutorProfilePage = DB::table('user')
+        ->select(['firstname', 'lastname', 'nickname', 'school', 'level', 'grade', 'experience', 'age', 'gender'
+            ,'email','tel','address','ref_name','ref_relation','ref_tel','img_card','card_id','birthday','experience'])
+        ->where('user_id', Auth::user()->user_id)->first();
+
+        //Set data to view
+        $data = compact('tutorProfile', 'tutorProfilePage');
+     
+        return view('tutor.TutorProfile',$data);
+    }
+
 }

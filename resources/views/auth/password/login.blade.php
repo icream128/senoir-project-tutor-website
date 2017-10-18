@@ -1,4 +1,4 @@
-@extends('layouts.tutorheader')
+@extends('layouts.loginheader')
 
 <title>Login</title>
 
@@ -8,7 +8,7 @@
     <div style="background-color:#D8D8D8;padding:50px;border-radius:25px;">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <img class="panel-heading" src="/img/piclogo.png" alt="Logo" style="width:250px;height:135px;">
+                <img class="panel-heading" src="{{ url('/img/piclogo.png') }}" alt="Logo" style="width:250px;height:135px;">
                 <br><br>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="">
@@ -22,7 +22,7 @@
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                        <label style="font-size: 14px;color: red">{{ $errors->first('username') }}</label>
                                     </span>
                                 @endif
                             </div>
@@ -36,7 +36,7 @@
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <label style="font-size: 14px;color: red">{{ $errors->first('password') }}</label>
                                     </span>
                                 @endif
                             </div>

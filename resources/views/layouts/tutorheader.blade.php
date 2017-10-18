@@ -9,6 +9,8 @@
 
     <title>หาติว ดีลงาน</title>
 
+    <link rel="shortcut icon" href="{{url('/img/shortLogoHTDNG.png')}}">
+
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,6 +24,9 @@
     <!-- Custom styles for this template -->
     <link href="css/creative.min.css" rel="stylesheet">
 
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
   </head>
 <body>
         <!-- Navigation -->
@@ -34,7 +39,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                 
+                    <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorhome')}}">หน้าหลัก</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutormycourse')}}">คอร์สของฉัน</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorfav')}}">คอร์สที่สนใจ</a></li>
                     <li class="nav-item"><a class="nav-link " style="color: #FF8000;" href="{{url('/tutorhistory')}}">ประวัติการสอน</a></li>
@@ -53,10 +58,10 @@
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
-                            </form>
+                            </form> 
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('/learnerprofile')}}"><img border="0" src="img/17545230_1657098020972827_6332980447632524496_o.jpg" class="img-circle img-responsive" 
+                            <a href="{{url('/tutorprofile')}}"><img border="0" src="{{$tutorProfile->img_profile}}" class="img-circle img-responsive" 
                                 style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px" alt="Cinque Terre" width="40px" height="40px"></a>
                         </li>
                     @endguest

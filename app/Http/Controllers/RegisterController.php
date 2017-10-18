@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Hash;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -62,10 +63,10 @@ class RegisterController extends BaseController
             // DB::table('user')->insert($data);
                 $data = array();
                 $data['username'] = $request->username;
-                $data['password'] = $request->password;
+                $data['password'] = Hash::make($request->password);
                 // $data['user_id'] = $user_id;
                 $time = date('YmdHis');
-                
+
                 $file = explode('.',$_FILES['img_card']['name']);
                 $file = $time.'.'.end($file);
                 $path = public_path('image_card');
@@ -88,7 +89,8 @@ class RegisterController extends BaseController
                 $data['img_profile'] = 'image_profile/'.$file1;
                // $bdate = explode('/', $request->birthday);
                 $data['tel'] = $request->tel;
-                $data['address'] = $request->place;
+                $data['address'] = $request->address;
+
                 $data['ref_name'] = $request->ref_name;
                 $data['ref_relation'] = $request->ref_relation;
                 $data['ref_tel'] = $request->ref_tel;
@@ -98,7 +100,7 @@ class RegisterController extends BaseController
                 $data['role_id'] = $request->role;
                 DB::table('user')->insert($data);
                 // $user_id = DB::table('user')->insertGetId($data,'user_id');
-                if($request->role == '2'){//learner
+                if($request->role == '2'){
                     $data['experience'] = $request->experience;
                 }
                 dd($data);

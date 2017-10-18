@@ -67,11 +67,15 @@ class SearchController extends Controller
     if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 1 && $chkvalue[3] == 1){ //15 = 1111
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
@@ -81,11 +85,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 1 && $chkvalue[3] == 0){ //14 = 1110
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
@@ -94,11 +102,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 0 && $chkvalue[3] == 1){ //13 = 1101
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
@@ -107,11 +119,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 0 && $chkvalue[3] == 0){ //12 = 1100
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->get();
@@ -119,11 +135,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 0 && $chkvalue[2] == 1 && $chkvalue[3] == 1){ //11 = 1011
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
@@ -132,11 +152,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 0 && $chkvalue[2] == 1 && $chkvalue[3] == 0){ //10 = 1010
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->get();
@@ -144,11 +168,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 0 && $chkvalue[2] == 0 && $chkvalue[3] == 1){ //9 = 1001
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
       ->get();
@@ -156,22 +184,30 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 0 && $chkvalue[2] == 0 && $chkvalue[3] == 0){ //8 = 1000
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.subject_id', array_unique($subject_tags))
       ->get();
 
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 1 && $chkvalue[3] == 1){ //7 = 0111
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
@@ -180,11 +216,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 1 && $chkvalue[3] == 0){ //6 = 0110
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->get();
@@ -192,11 +232,15 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 0 && $chkvalue[1] == 1 && $chkvalue[2] == 0 && $chkvalue[3] == 1){ //5 = 0101
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
       ->get();
@@ -204,22 +248,30 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 0 && $chkvalue[1] == 1 && $chkvalue[2] == 0 && $chkvalue[3] == 0){ //4 = 0100
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->get();
 
     }else if($chkvalue[0] == 0 && $chkvalue[1] == 0 && $chkvalue[2] == 1 && $chkvalue[3] == 1){ //3 = 0011
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
       ->get();
@@ -227,33 +279,45 @@ class SearchController extends Controller
     }else if($chkvalue[0] == 0 && $chkvalue[1] == 0 && $chkvalue[2] == 1 && $chkvalue[3] == 0){ //2 = 0010
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->get();
 
     }else if($chkvalue[0] == 0 && $chkvalue[1] == 0 && $chkvalue[2] == 0 && $chkvalue[3] == 1){ //1 = 0001
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
       ->get();
 
     }if($chkvalue[0] == 0 && $chkvalue[1] == 0 && $chkvalue[2] == 0 && $chkvalue[3] == 0){ //0 = 0000
 
       $queries = DB::table('learner_schedule')
-      ->join('learner_schedule_time', 'learner_schedule.learner_schedule_id', '=', 'learner_schedule_time.learner_schedule_id')
-      ->join('subject', 'learner_schedule.subject_id', '=', 'subject.subject_id')
-      ->join('level', 'learner_schedule.level_id', '=', 'level.level_id')
-      ->join('duration', 'learner_schedule_time.duration_id', '=', 'duration.duration_id')
-      ->join('day', 'learner_schedule_time.day_id', '=', 'day.day_id')
+      ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
+      ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
+      
+      ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
+      ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
+      ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+      ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
+      ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
+      ->whereIn('learner_schedule.status_id', [1, 8])
       ->get();
 
     }

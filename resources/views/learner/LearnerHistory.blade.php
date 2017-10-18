@@ -3,19 +3,12 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<link rel="stylesheet" href="css/paginationtutor.css">
+
 <style>
     div h5 {
         font-size:17px;
     }
-
-    .navbar-hight{
-        higth:50px;
-    }
-
-    .pad{
-        padding-bottom:15px;
-    }
-    
 
 
 </style>
@@ -33,14 +26,13 @@
       <div class="row" id="result">
         <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
          
-          <table class="table" id="datatable">
+            <table class="table" id="datatable">
             <thead style="background-color:#f05f40;color:#ffffff;">
                 <th><h3>ชื่อติวเตอร์</h3></th>
                 <th><h3>ชื่อวิชา</h3></th>
                 <th><h3>ระดับชั้น</h3></th>
                 <th><h3>วัน</h3></th>
                 <th><h3>เวลา</h3></th>
-                <th><h3>สถานะ</h3></th>
                 <th><h3></h3></th>
               
             </thead>
@@ -50,10 +42,9 @@
                 <tr class="data-table">
                     <td><h4 class="tutor_name">{{$value->firstname}} {{$value->lastname}}</h4></td>
                     <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
-                    <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
-                    <td><h4 class="day_name">{{$value->day_name}}</h4></a></td>
-                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></a></td>
-                    <td><h4 class="status_name">{{$value->status_name}}</h4></a></td>
+                    <td><h4 class="level_name">{{$value->level_name}}</h4></td>
+                    <td><h4 class="day_name">{{$value->day_name}}</h4></td>
+                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></td>
                     <td><a class="btn btn-primary" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
                   <!-- <td><a href=""><h4 class="district"></h4></a></td>
                   <td><a href=""><h4 class="amphoe"></h4></a></td>
@@ -84,7 +75,7 @@
                                             <h5>ชื่อ :</h5>
                                             <h5>วิชา :</h5>
                                             <h5>วัน :</h5>
-                                            <h5>เวลาเริ่ม :</h5>
+                                            <h5>เวลา :</h5>
                                             <h5>สถานที่ :</h5>
                                             <h5>ราคา/ชั่วโมง :</h5>
                                             <h5>สถานะ :</h5>
@@ -98,7 +89,7 @@
                                             <h5>{{$value->firstname}} {{$value->lastname}}</h5>
                                             <h5>{{$value->subject_name}}</h5>
                                             <h5>{{$value->day_name}}</h5>
-                                            <h5>{{date('H:i', strtotime($value->start_time))}}</h5>
+                                            <h5>{{date('H:i', strtotime($value->start_time))}} - {{date('H:i', strtotime($value->end_time))}} </h5>
                                             <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
                                             <h5>{{$value->price}}</h5>
                                             <h5>{{$value->status_name}}</h5>
@@ -108,7 +99,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>          
+                        </div>
+                        <br><br>          
                     </div>
                 </div>
               @endforeach
@@ -119,7 +111,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-12">
-                  {{ $agreement->appends(['sort' => 'subject_name'])->links() }}
+                    {{ $agreement->links('vendor.pagination.custom') }}
                 </div>
               </div>
             </div>

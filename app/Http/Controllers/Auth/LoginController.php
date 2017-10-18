@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
+use DB;
+use Illuminate\Support\Facades\Lang;
 
 class LoginController extends Controller
 {
@@ -25,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/tutorhome';
+    protected $redirectTo = '/firstpage';
 
     /**
      * Create a new controller instance.
@@ -35,5 +39,32 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    public function login(Request $req) {
+
+        $username = $req->input('username');
+        $password = $req->input('password');
+
+        if(\Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password], $req->remember)){
+
+            return redirect('firstpage');
+
+        }
+        if (! \Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password],$req->remember)){
+
+            return redirect()->back()
+                ->withInput($req->only($this->username(), 'remember'))
+                ->withErrors([
+                    'password' => Lang::get('auth.password'),
+                ]);
+        }
+
     }
 }
