@@ -1,4 +1,5 @@
 @extends('layouts.learnerheader')
+
 @section('content')
 <style>
     div h5 {
@@ -125,25 +126,21 @@
 
                                             <div class="col-md-6" style="margin-top:10px;">
                                                 <label>รายละเอียดบทเรียน</label>
-                                                <textarea placeholder="รายละเอียดบทเรียน" rows="4" cols="50" name="detail_lesson" form="usrform" class="form-control"
-                                                    style="border-radius:10px;"></textarea>
+                                                <textarea placeholder="รายละเอียดบทเรียน" rows="4" cols="50" name="detail_lesson" form="usrform" class="form-control" style="border-radius:10px;"></textarea>
                                             </div>
 
                                             <div class="col-md-6" style="margin-top:10px;">
                                                 <label>รายละเอียดสถานที่</label>
-                                                <textarea placeholder="รายละเอียดสถานที่" rows="4" cols="50" name="detail_location" form="usrform" class="form-control" 
-                                                    style="border-radius:10px;"></textarea>
+                                                <textarea placeholder="รายละเอียดสถานที่" rows="4" cols="50" name="detail_location" form="usrform" class="form-control" style="border-radius:10px;"></textarea>
                                             </div>
 
                                             <div class="col-md-6" style="margin-top:10px;">
                                                 <label>รายละเอียดการเดินทาง</label>
-                                                <textarea placeholder="รายละเอียดการเดินทาง" rows="4" cols="50" name="detail_transport" form="usrform" class="form-control"
-                                                    style="border-radius:10px;"></textarea>
+                                                <textarea placeholder="รายละเอียดการเดินทาง" rows="4" cols="50" name="detail_transport" form="usrform" class="form-control" style="border-radius:10px;"></textarea>
                                             </div>
                                             <div class="col-md-6" style="margin-top:10px;">
-                                            <label>ราคาต่อชั่วโมง</label>
-                                            <input placeholder="ราคาต่อชั่วโมง" name="price"  class="form-control"
-                                                style="border-radius:10px;"/>
+                                                <label>ราคาต่อชั่วโมง</label>
+                                                <input placeholder="ราคาต่อชั่วโมง" name="price"  class="form-control" style="border-radius:10px;"/>
                                             </div>
 
                                             <!-- Time Zone -->
@@ -165,21 +162,32 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-4" style="margin-top:10px;">
-                                                    <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>   
-                                                    <h4>ชั่วโมง</h4>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-12" style="margin-top:10px;">
+                                                        <label>รวมทั้งหมด</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-2" style="margin-top:10px;"></div>
+                                                    <div class="col-md-4" style="margin-top:10px;">
+                                                        <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>   
+                                                        <label>ชั่วโมง</label>
                                                     </div>
                                                     <div class="col-md-4" style="margin-top:10px;">
-                                                    <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>   
-                                                    <h4>บาท</h4>
+                                                        <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>   
+                                                        <label>บาท</label>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top:10px;"></div>
                                                 </div>
                                             </div>
                                         </div>
                                             <!-- End Time Zone -->
-                                            
-                                        <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
-                                            
+                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+
+                                            <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
                                         </div>    
                                     </form>
                                 </div>

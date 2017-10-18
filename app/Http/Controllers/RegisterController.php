@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Hash;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -62,10 +63,10 @@ class RegisterController extends BaseController
             // DB::table('user')->insert($data);
                 $data = array();
                 $data['username'] = $request->username;
-                $data['password'] = $request->password;
+                $data['password'] = Hash::make($request->password);
                 // $data['user_id'] = $user_id;
                 $time = date('YmdHis');
-                
+
                 $file = explode('.',$_FILES['img_card']['name']);
                 $file = $time.'.'.end($file);
                 $path = public_path('image_card');

@@ -3,6 +3,8 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<link rel="stylesheet" href="css/paginationtutor.css">
+
 <style>
     div h5 {
         font-size:17px;
@@ -35,8 +37,7 @@
     <!-- Table -->
     <div class="container">
       <div class="row" id="result">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
+        <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
          
           <table class="table" id="datatable">
             <thead style="background-color:#FF8000;color:#ffffff;">
@@ -50,7 +51,7 @@
             </thead>
 
             <tbody id="data-table-block">
-              @foreach($agreement as $key =>$value)
+              @foreach($learnerSchedule as $key =>$value)
                 <tr class="data-table">
                     <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
                     <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
@@ -96,10 +97,18 @@
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 text-left" style="padding-left: 0px;">
-                                        <div class="service-box">              
-                                               
-                                        </div>
+                                    <div class="service-box">              
+                                        <h5>{{$value->firstname}} {{$value->lastname}}</h5>
+                                        <h5>{{$value->subject_name}}</h5>
+                                        <h5>{{$value->day_name}}</h5>
+                                        <h5>--</h5>
+                                        <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
+                                        <h5>--</h5>
+                                        <h5>{{$value->status_name}}</h5>
+                                        <h5>{{$value->tel}}</h5>    
+                                        <h5>อยากให้มีข้อสอบตัวอย่างมาให้ฝึกทำด้วย</h5><br>         
                                     </div>
+                                </div>
                                 </div>
                             </div>
                         </div>          
@@ -107,19 +116,18 @@
                 </div>
               @endforeach
             </tbody>            
-          </table>
+            </table>
           
 
             <div class="container">
               <div class="row">
                 <div class="col-md-12">
-                  {{ $agreement->appends(['sort' => 'subject_name'])->links() }}
+                    {{ $learnerSchedule->appends(['sort' => 'subject_name'])->links('vendor.pagination.custom') }}
                 </div>
               </div>
             </div>
 
         </div>
-        <div class="col-md-1"></div>
       </div>
     </div>
         

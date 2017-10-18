@@ -45,171 +45,97 @@
 <body onload="show()">
 
 @section('content')
-  <br>
+    <br>
     <center>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6"></div>
-        <!-- <div class="col-md-3">
-          <a href="{{url('/tutorcreatecourse')}}"><button class="tag-item btn btn-lg btn-danger" style="background-color: #FF8000;">สร้างคอร์สเรียนที่ต้องการ</button></a> 
-        </div> -->
-      </div>
-    <div>
-
-    <!-- Modal popup -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel" style="center">แจ้งเตือน</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            
-          </div>
-          <div class="modal-body">
-            ไม่พบติวเตอร์ที่ตรงกับความต้องการของผู้ใช้
-          </div>
-          <div class="modal-footer">
-            <a class="btn btn-primary btn-xl " href="{{url('/tutorcreatecourse')}}" style="background-color: #FF8000;">เพิ่มคอร์สสอน</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Modal -->
-
     <section class="text-center" style="padding-bottom: 0px;">   
       <h1>ค้นหาคอร์ส</h1>
       <center><hr class="btn-tutor"></center>      
     </section>  
 
     <div class="container">
-    <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px">
-      <!-- first line -->  
-      <div class="container">  
-        <div class="filter-select row">
+      <div class="row">
+        <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px">
+          <!-- first line -->  
+          <div class="container">  
+            <div class="filter-select row">
 
-          <div class="col-md-3 ">
-            <label>ชื่อวิชา</label>
-            <select id="filterBySubject" class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;" value="choose">
-
+            <div class="col-md-3 ">
+              <label>ชื่อวิชา</label>
+              <select id="filterBySubject" class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;" value="choose">
                 @foreach($subject as $key =>$value)
                   <option value="subject|{{$value->subject_name}}|{{$value->subject_id}}">{{ $value->subject_name }}</option>
                 @endforeach
-            </select>
-          </div>
+              </select>
+            </div>
                     
-          <div class="col-md-3">
-            <label>ระดับชั้น</label>
-            <select id="filterByLevel"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
-                @foreach($level as $key =>$value)
-                  <option value="level|{{$value->level_name}}|{{$value->level_id}}">{{$value->level_name}}</option>
+            <div class="col-md-3">
+              <label>ระดับชั้น</label>
+              <select id="filterByLevel"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
+                  @foreach($level as $key =>$value)
+                    <option value="level|{{$value->level_name}}|{{$value->level_id}}">{{$value->level_name}}</option>
+                  @endforeach
+              </select>
+            </div>
+                        
+            <div class="col-md-3">
+              <label>วัน</label>
+              <select id="filterByDay"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">                       
+                @foreach($day as $key =>$value)
+                    <option value="day|{{$value->day_name}}|{{$value->day_id}}">{{$value->day_name}}</option>  		
                 @endforeach
-            </select>
-          </div>
+              </select>
+            </div>
                         
-          <div class="col-md-3">
-            <label>วัน</label>
-            <select id="filterByDay"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">                       
-              @foreach($day as $key =>$value)
-                  <option value="day|{{$value->day_name}}|{{$value->day_id}}">{{$value->day_name}}</option>  		
-              @endforeach
-            </select>
-          </div>
-                        
-          <div class="col-md-3">
-            <label>ช่วงเวลา</label>   
-            <select id="filterByDuration"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
-              @foreach($duration as $key =>$value)
-                  <option value="duration|{{$value->duration_name}}|{{$value->duration_id}}">{{$value->duration_name}}</option>  		
-              @endforeach
-            </select>
-          </div>
-
-         
-
+            <div class="col-md-3">
+              <label>ช่วงเวลา</label>   
+              <select id="filterByDuration"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
+                @foreach($duration as $key =>$value)
+                    <option value="duration|{{$value->duration_name}}|{{$value->duration_id}}">{{$value->duration_name}}</option>  		
+                @endforeach
+              </select>
+            </div>
+          
         </div>
-      </div>
-      <!-- End first line -->
-                  
-      <!-- second line -->  
-      <!-- <div class="container">
-        <div class="row">
-
-          <div class="col-md-3">
-            <label>แขวง</label>
-            <input type="text" id="district" class="form-control">
-          </div>
-                  
-          <div class="col-md-3">
-            <label>เขต</label>
-            <input type="text" id="amphoe" class="form-control">
-          </div>
-                  
-          <div class="col-md-3">
-            <label>จังหวัด</label>
-            <input type="text" id="province" class="form-control">
-          </div>
-                  
-          <div class="col-md-3">
-            <label>รหัสไปรษณีย์</label>
-            <input type="text" id="zipcode" class="form-control">
-          </div>
-
-        </div>
-      </div> -->
-      <!-- End second line -->
-    </div>
-    <div class="container">
-    <div class="row">
-    <div class="col-md-1"></div><br>
-
-    </div>
-    </div>  
-
-    <div class="container">
-    <div class="row">
-    <div class="col-md-1"></div>
-    <h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> Subjects Found</h3><br><br>
-    </div>
-    </div>  
-    <!-- <div id="tagGroup"></div> -->
-    <div class="container">
-    <div class="row">
-    <div class="col-md-1"></div>
-    <div class="" id="alltags" align="left">
-        Selected Filters:
+        <!-- End first line -->
       </div>
     </div>
-    </div>
-
-    <div class="container">
-    <div class="row">
-    <div class="col-md-1"></div><br>
-  </div>
-    </div>
-
-    <div class="container">
-    <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10 rows" >
+     
     
-    <table class="table"  id="showall">
-      <thead>
-        <tr style="background-color:#FF8000;color:#ffffff;">
-          <th>Subject</th>
-          <th>Level</th>
-          <th>Day</th>
-          <th>Duration</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+
+    <div class="container">
+      <div class="row">
+        <h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>
+      </div>
     </div>
-  </div>
+
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-1"></div>
+                  <div class="" id="alltags" align="left">
+                      Selected Filters:
+                  </div>
+              </div>
+          </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 rows" >
+    
+          <table class="table"  id="showall">
+            <thead>
+              <tr style="background-color:#FF8000;color:#ffffff;">
+                <th>วิชา</th>
+                <th>ระดับชั้น</th>
+                <th>วัน</th>
+                <th>เวลา</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     
 <!-- 
@@ -252,7 +178,7 @@
             </div>
         </div>          
     </div> -->
-
+    @if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2)
     <div class="modal fade" id="seemore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -275,13 +201,90 @@
       </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn"  data-dismiss="modal">ปิดหน้าต่าง</button>
         <button type="button" class="btn"  href="{{url('/tutordeal')}}"  style="background-color:#FF8000;color:#ffffff;">ส่งคำขอ</button>
       </div>
     </div>
   </div>
 </div>
+          @elseif(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1)
+          <div class="modal fade" id="filterUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header" style="background-color:#FF8000;color:#ffffff;">
+                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                      </div>
+                      <div class="modal-body">
+                          <h2>ข้อมูลสำหรับติวเตอร์เท่านั้น</h2>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        @else
+              <div class="modal fade" id="loginfirst" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header" style="background-color:#FF8000;color:#ffffff;">
+                              <h5 class="modal-title" id="exampleModalLabel">กรุณาเข้าสู่ระบบ</h5>
+                          </div>
+                          <div class="modal-body">
+                              <form class="form-horizontal" method="POST" action="{{ url('/modal-login') }}">
+                                  {{ csrf_field() }}
 
+                                  <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                      <label for="username" class="col-md-4 control-label">บัญชีผู้ใช้</label>
+
+                                      <div class="col-md-6">
+                                          <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+
+                                          @if ($errors->has('username'))
+                                              <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                          @endif
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                      <label for="password" class="col-md-4 control-label">รหัสผ่าน</label>
+
+                                      <div class="col-md-6">
+                                          <input id="password" type="password" class="form-control" name="password" required>
+
+                                          @if ($errors->has('password'))
+                                              <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                          @endif
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-md-6 col-md-offset-4">
+                                          <div class="checkbox">
+                                              <label>
+                                                  <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> จำรหัสผ่าน
+                                              </label>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-md-8 col-md-offset-4">
+                                          <button type="submit" class="btn btn-primary">
+                                              เข้าสู่ระบบ
+                                          </button>
+
+                                          <a class="btn btn-link" href="{{ route('password.request') }}">
+                                              ลืมรหัสผ่าน?
+                                          </a>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          @endif
 
     <section class="primary" id="about">
       <div class="container">
@@ -364,12 +367,16 @@
       cell2.innerHTML = results[i].level_name;
       cell3.innerHTML = results[i].day_name_full;
       cell4.innerHTML = results[i].duration_name;
-      cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
-
-     
+        <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+        <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a>";
+        <?php } else { ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a>";
+     <?php } ?>
     }
 
-    subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> Subjects Found";
+    subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
 
   }
 
@@ -555,12 +562,16 @@
       cell2.innerHTML = results[i].level_name;
       cell3.innerHTML = results[i].day_name_full;
       cell4.innerHTML = results[i].duration_name;
-      cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
-
-      
+        <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+        <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a>";
+        <?php } else { ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a>";
+        <?php } ?>
     }
 
-    subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> Subjects Found";
+    subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
 
   }
 
@@ -688,11 +699,17 @@
       cell2.innerHTML = results[i].level_name;
       cell3.innerHTML = results[i].day_name_full;
       cell4.innerHTML = results[i].duration_name;
-      cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+        <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+        <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a>";
+        <?php } else { ?>
+            cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a>";
+        <?php } ?>
 
     }
 
-    subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> Subjects Found";
+    subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
 
   }
 
@@ -735,6 +752,13 @@ function moreDetail(key){
 
 }
 
+  function loginfirst(){
+      $('#loginfirst').modal('show');
+  }
+
+  function filterUser(){
+      $('#filterUser').modal('show');
+  }
 
 
   $(document).ready(function(){
@@ -746,3 +770,30 @@ function moreDetail(key){
 
 </script>
 @endsection
+<!-- second line -->  
+      <!-- <div class="container">
+        <div class="row">
+
+          <div class="col-md-3">
+            <label>แขวง</label>
+            <input type="text" id="district" class="form-control">
+          </div>
+                  
+          <div class="col-md-3">
+            <label>เขต</label>
+            <input type="text" id="amphoe" class="form-control">
+          </div>
+                  
+          <div class="col-md-3">
+            <label>จังหวัด</label>
+            <input type="text" id="province" class="form-control">
+          </div>
+                  
+          <div class="col-md-3">
+            <label>รหัสไปรษณีย์</label>
+            <input type="text" id="zipcode" class="form-control">
+          </div>
+
+        </div>
+      </div> -->
+      <!-- End second line -->

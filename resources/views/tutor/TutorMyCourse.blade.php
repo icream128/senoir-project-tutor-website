@@ -3,6 +3,8 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<link rel="stylesheet" href="css/paginationtutor.css">
+
 <style>
     div h5 {
         font-size:17px;
@@ -35,8 +37,7 @@
     <!-- Table -->
     <div class="container">
       <div class="row" id="result">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
+        <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
          
           <table class="table" id="datatable">
             <thead style="background-color:#FF8000;color:#ffffff;">
@@ -111,7 +112,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>          
+                        </div>
+                        <br><br>          
                     </div>
                 </div>
               @endforeach
@@ -120,15 +122,14 @@
           
 
             <div class="container">
-              <div class="row">
+            <div class="row">
                 <div class="col-md-12">
-                  {{ $agreement->appends(['sort' => 'subject_name'])->links() }}
+                    {{ $agreement->links('vendor.pagination.custom') }}
                 </div>
-              </div>
+            </div>
             </div>
 
         </div>
-        <div class="col-md-1"></div>
       </div>
     </div>
         

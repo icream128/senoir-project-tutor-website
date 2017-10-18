@@ -16,62 +16,91 @@
         padding-bottom:15px;
     }
     
-
+    div p {
+        font-size: 1.5rem;
+    }
 
 </style>
 
 @section('content')
+
+    <br>
+    
     <section class="text-center">   
         <h1>ประวัติส่วนตัว</h1>
         <center><hr></center>      
     </section>
-    <form action="{{ url('/learnereditprofile')}}" method='post' enctype="multipart/form-data">    
-            {{ csrf_field() }}
+    
     <div class="container">
         <div class="row">
-        <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit" style="font-size: 17px;">แก้ไขโปรไฟล์</button>
             <div class="col-md-4 text-center">
-                <img border="0" src="img/17545230_1657098020972827_6332980447632524496_o.jpg" class="img-circle img-responsive" 
-                    style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px;margin-bottom:10px" alt="Cinque Terre" width="300px" height="300px">
+                <img border="0" class="img-circle img-responsive infinite pulse" src="{{$learnerProfile->img_profile}}" 
+                style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px;margin-bottom:10px" alt="Cinque Terre" width="300px" height="300px">
+                <br><br>
+                <a class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" href="/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
             </div>
-            <div class="col-md-2 text-right">
-                <p>ชื่อ :</p>
-                <p>ชื่อเล่น :</p>
-                <p>สถานศึกษา :</p>
-                <p>ระดับชั้น :</p>
-                <p>ประสบการณ์สอน :</p>
-                <p>อายุ :</p>
-                <p>เพศ :</p>
-            </div>
-            <div class="col-md-2 text-left">
-                <p>{{$learnerProfile->name}}</p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
-                <p></p>
+
+            <div class="col-md-4 text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            <br>
+                            <p>ชื่อ :</p>
+                            <p>ชื่อเล่น :</p>
+                            <p>เพศ :</p>
+                            <p>ระดับชั้น :</p>
+                            <p>สถานศึกษา :</p>
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <br>
+                            <p>{{$learnerProfilePage->firstname}}</p>
+                            <p>{{$learnerProfilePage->nickname}}</p>
+                            <p>{{$learnerProfilePage->gender}}</p>
+                            <p>{{$learnerProfilePage->level}}</p>
+                            <p>{{$learnerProfilePage->school}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="col-md-2 text-right">
-                <p>นามสกุล :</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p>เกรดเฉลี่ยสะสม :</p>
-            </div>
-            <div class="col-md-2 text-left">
-                <p>ใช้สิทธิชัย</p>
-                <p>&nbsp</p>
-                <p>&nbsp</p>
-                <p></p>
+            <div class="col-md-4 text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-right">
+                            <br>
+                            <p>นามสกุล :</p>
+                            <p>อายุ :</p>
+                            <p>&nbsp</p>
+                            <p>เกรดเฉลี่ย :</p>
+                        </div>
+                        <div class="col-md-6 text-left">
+                            <br>
+                            <p>{{$learnerProfilePage->lastname}}</p>
+                            <p>{{$learnerProfilePage->age}}</p>
+                            <p>&nbsp</p>
+                            <p>{{$learnerProfilePage->grade}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
         </div>
     </div>
 
-</form>
+    <script>
+      var current_button = 0;
+        setInterval(function () {
+            if (current_button === $('.pulse').length) {
+                $('.pulse').addClass('animated');
+                current_button = 0;
+            }
+            else {
+                $('.pulse').removeClass('animated');
+                $('.pulse:eq(' + current_button + ')');
 
-        
+                current_button++;
+            }
+        }, 1000)
+    </script>
 
-        
 @endsection

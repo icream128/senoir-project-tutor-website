@@ -9,6 +9,8 @@
 
     <title>หาติว ดีลงาน</title>
 
+    <link rel="shortcut icon" href="/img/shortLogoHTDNG.png">
+    
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,6 +23,9 @@
 
     <!-- Custom styles for this template -->
     <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
   </head>
 <body>
@@ -55,7 +60,7 @@
                             </form>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('/learnerprofile')}}"><img border="0" src="img/17545230_1657098020972827_6332980447632524496_o.jpg" class="img-circle img-responsive" 
+                            <a href="{{url('/learnerprofile')}}"><img border="0" src="{{$learnerProfile->img_profile}}" class="img-circle img-responsive" 
                                 style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px" alt="Cinque Terre" width="40px" height="40px"></a>
                         </li>
                     @endguest

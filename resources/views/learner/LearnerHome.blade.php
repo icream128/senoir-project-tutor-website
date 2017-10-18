@@ -108,7 +108,7 @@
             </select>
           </div>
                         
-          <div class="col-md-2">
+          <div class="col-md-3">
             <label>ช่วงเวลา</label>   
             <select id="filterByDuration"  class="form-control" style="padding: 5px;">
               <?php
@@ -118,16 +118,7 @@
               ?>
             </select>
           </div>
-          <div class="col-md-2">
-            <label>เพศ</label>   
-            <select id="filterByGender"  class="form-control" style="padding: 5px;">
-             
-            </select>
-          </div>
-
-
-         
-
+          
         </div>
       </div>
       <!-- End first line -->

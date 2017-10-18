@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -11,7 +13,18 @@ use Datatables;
 
 class TutorHomeController extends BaseController
 {
+    public function __construct(){
+
+    }
+
     public function index() {
+        //header
+        $tutorProfile = [];
+        if(Auth::check()) {
+            $tutorProfile = DB::table('user')
+                ->select(['img_profile'])
+                ->where('user_id', Auth::user()->user_id)->first();
+        }
         //Get data from database
         $subject = DB::table('subject')->orderBy('subject_id','asc')->get();
         $day = DB::table('day')->orderBy('day_id','asc')->get();
@@ -30,7 +43,7 @@ class TutorHomeController extends BaseController
         ->paginate(10);
       
         //Set data to view
-        $data = compact('subject','day','level','duration','learnerSchedule');
+        $data = compact('subject','day','level','duration','tutorProfile','learnerSchedule');
      
         return view('tutor.TutorHome',$data);
     }
