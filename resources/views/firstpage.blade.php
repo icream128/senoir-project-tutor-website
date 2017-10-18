@@ -56,11 +56,7 @@
           <hr>
           <p style="color: #000000;font-size:20px;">หากคุณเป็นนักเรียนที่ต้องการหาติวเตอร์ ให้กดปุ่ม"ค้นหาติวเตอร์" <br>
             หากคุณเป็นติวเตอร์ที่ต้องการสอนพิเศษ ให้กดปุ่ม"ค้นหาคอร์สสอน" </p>
-<<<<<<< HEAD
           <a class="btn btn-student btn-xl btn-size js-scroll-trigger" href="{{ url('/learnermycourse') }}">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
-=======
-          <a class="btn btn-student btn-xl btn-size js-scroll-trigger"  href="{{ url('/learnermycourse') }}">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
           <a class="btn btn-tutor btn-xl btn-size js-scroll-trigger" href="{{ url('/tutorhome') }}">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
         </div>
       </div>
@@ -80,9 +76,5 @@
                 current_button++;
             }
         }, 1000)
-<<<<<<< HEAD
-=======
-
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     </script>
 @endsection

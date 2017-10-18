@@ -37,11 +37,7 @@ class HistoryController extends BaseController
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
         
         $agreement = DB::table('agreement')
-<<<<<<< HEAD
         ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
-=======
-        ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time','end_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
         ->leftJoin('user','agreement.user_id_request','=','user.user_id')

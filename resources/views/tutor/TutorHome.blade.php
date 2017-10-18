@@ -98,13 +98,8 @@
 
           <div class="container">
               <div class="row">
-<<<<<<< HEAD
                   <div class="col-md-1"></div>
                   <div class="" id="alltags" align="left">
-=======
-
-                  <div class="text-left" id="alltags">
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                       Selected Filters:
                   </div>
               </div>
@@ -112,11 +107,7 @@
 
     <div class="container">
       <div class="row">
-<<<<<<< HEAD
         <div class="col-md-12 rows" >
-=======
-        <div class="col-md-12 rows" style="margin-top:15px">
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     
           <table class="table"  id="showall">
             <thead>
@@ -212,11 +203,6 @@
                       </div>
                       <div class="modal-body">
                           <h2>ข้อมูลสำหรับติวเตอร์เท่านั้น</h2>
-<<<<<<< HEAD
-=======
-                          <button type="button" class="btn btn-primary"  href="{{url('/firstpage')}}"
-                                  style="background-color:#FF8000;color:#ffffff;">ไปยังฝั่งของผู้เรียน</button>
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                       </div>
                   </div>
               </div>

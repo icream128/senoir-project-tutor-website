@@ -16,11 +16,7 @@ class MyCourseController extends BaseController
    
     public function __construct(){
         $this->middleware('auth');
-<<<<<<< HEAD
         $this->middleware('student')->only('indexLearnor');
-=======
-        $this->middleware('student')->only('indexLearner');
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     }
 
     /**
@@ -76,11 +72,7 @@ class MyCourseController extends BaseController
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
        
         $agreement = DB::table('agreement')
-<<<<<<< HEAD
         ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
-=======
-        ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time','end_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
         ->leftJoin('user','agreement.user_id_request','=','user.user_id')
@@ -91,15 +83,8 @@ class MyCourseController extends BaseController
         ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
         ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
         ->where('learner_schedule.user_id', Auth::user()->user_id)
-<<<<<<< HEAD
-        ->whereIn('learner_schedule.status_id', [3, 5])
-=======
         ->whereIn('learner_schedule.status_id', [ 3, 5])
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
         ->paginate(10);
-
-        //Set data to view
-        $data = compact('subject', 'day','level','duration','learnerProfile' ,'agreement');
                              
         return view('learner.LearnerMyCourse',$data);
     }

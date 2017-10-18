@@ -161,7 +161,6 @@
                                                 <div class="row">
                                                     <div class="col-md-12" style="margin-top:10px;">
                                                         <label>รวมทั้งหมด</label>
-<<<<<<< HEAD
                                                     </div>
                                                 </div>
                                             </div>
@@ -171,51 +170,24 @@
                                                     <div class="col-md-4" style="margin-top:10px;">
                                                         <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>   
                                                         <label>ชั่วโมง</label>
-=======
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-4" style="margin-top:10px;">
-<<<<<<< HEAD
                                                         <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>   
                                                         <label>บาท</label>
                                                     </div>
                                                     <div class="col-md-2" style="margin-top:10px;"></div>
-=======
-                                                        <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>
-                                                    </div>
-                                                    <div class="col-md-2 text-left" style="margin-top:10px;">
-                                                        <label>ชั่วโมง</label>
-                                                    </div>
-                                                    <div class="col-md-4" style="margin-top:10px;">
-                                                        <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>
-                                                    </div>
-                                                    <div class="col-md-2 text-left" style="margin-top:10px;">
-                                                        <label>บาท</label>
-                                                    </div>
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                                                 </div>
                                             </div>
 
                                             <!-- End Time Zone -->
-<<<<<<< HEAD
                                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
 
                                             <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
                                         </div>    
-=======
-
-                                        </div>
-                                        <div class="text-center">
-                                            <input type="button" name="previous" class="previous action-button-previous" value="ย้อนกลับ"/>
-
-                                            <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
-                                        </div>
-
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                                     </form>
                                 </div>
                             </div>
