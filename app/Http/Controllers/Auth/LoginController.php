@@ -7,6 +7,10 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\Lang;
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
 
 class LoginController extends Controller
 {
@@ -40,10 +44,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     public function username()
     {
         return 'username';
     }
+<<<<<<< HEAD
     
     public function login(Request $req) {
         $username = $req->input('username');
@@ -54,5 +63,27 @@ class LoginController extends Controller
         }else{
             echo "fail";
         }
+=======
+
+    public function login(Request $req) {
+
+        $username = $req->input('username');
+        $password = $req->input('password');
+
+        if(\Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password], $req->remember)){
+
+            return redirect('firstpage');
+
+        }
+        if (! \Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password],$req->remember)){
+
+            return redirect()->back()
+                ->withInput($req->only($this->username(), 'remember'))
+                ->withErrors([
+                    'password' => Lang::get('auth.password'),
+                ]);
+        }
+
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     }
 }

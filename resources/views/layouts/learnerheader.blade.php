@@ -9,7 +9,11 @@
 
     <title>หาติว ดีลงาน</title>
 
+<<<<<<< HEAD
     <link rel="shortcut icon" href="/img/shortLogoHTDNG.png">
+=======
+    <link rel="shortcut icon" href="{{url('/img/shortLogoHTDNG.png')}}">
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

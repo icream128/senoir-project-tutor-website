@@ -10,10 +10,6 @@
 
   }
 
-.btn-size{
-  width:150px;
-  height:40px;
-}
 
 .rows {
     display: -ms-flexbox;
@@ -31,7 +27,7 @@
 </style>
 @section('content')
   <br>
-    <center>
+
     <div class="container">
       <div class="row">
         <div class="col-md-3"></div>
@@ -253,21 +249,9 @@
         </div>
       </div>
     </section>
-    </center>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
 
 
    
@@ -275,13 +259,17 @@
 @endsection
 
 @section('script')
-<script>
+
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script>
   
-  $(document).ready(function(){
-    $('#btn-search').click(function(){
-      $('#myModal').modal('show');
-    })
-   
-  })
-</script>
+          $(document).ready(function(){
+            $('#btn-search').click(function(){
+              $('#myModal').modal('show');
+            })
+
+          })
+    </script>
 @endsection

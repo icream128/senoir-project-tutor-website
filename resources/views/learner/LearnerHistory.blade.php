@@ -10,15 +10,6 @@
         font-size:17px;
     }
 
-    .navbar-hight{
-        higth:50px;
-    }
-
-    .pad{
-        padding-bottom:15px;
-    }
-    
-
 
 </style>
 
@@ -51,9 +42,15 @@
                 <tr class="data-table">
                     <td><h4 class="tutor_name">{{$value->firstname}} {{$value->lastname}}</h4></td>
                     <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
+<<<<<<< HEAD
                     <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
                     <td><h4 class="day_name">{{$value->day_name}}</h4></a></td>
                     <td><h4 class="duration_name">{{$value->duration_name}}</h4></a></td>
+=======
+                    <td><h4 class="level_name">{{$value->level_name}}</h4></td>
+                    <td><h4 class="day_name">{{$value->day_name}}</h4></td>
+                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></td>
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                     <td><a class="btn btn-primary" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
                   <!-- <td><a href=""><h4 class="district"></h4></a></td>
                   <td><a href=""><h4 class="amphoe"></h4></a></td>
@@ -84,7 +81,7 @@
                                             <h5>ชื่อ :</h5>
                                             <h5>วิชา :</h5>
                                             <h5>วัน :</h5>
-                                            <h5>เวลาเริ่ม :</h5>
+                                            <h5>เวลา :</h5>
                                             <h5>สถานที่ :</h5>
                                             <h5>ราคา/ชั่วโมง :</h5>
                                             <h5>สถานะ :</h5>
@@ -98,7 +95,7 @@
                                             <h5>{{$value->firstname}} {{$value->lastname}}</h5>
                                             <h5>{{$value->subject_name}}</h5>
                                             <h5>{{$value->day_name}}</h5>
-                                            <h5>{{date('H:i', strtotime($value->start_time))}}</h5>
+                                            <h5>{{date('H:i', strtotime($value->start_time))}} - {{date('H:i', strtotime($value->end_time))}} </h5>
                                             <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
                                             <h5>{{$value->price}}</h5>
                                             <h5>{{$value->status_name}}</h5>

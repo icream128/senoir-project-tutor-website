@@ -89,7 +89,8 @@ class RegisterController extends BaseController
                 $data['img_profile'] = 'image_profile/'.$file1;
                // $bdate = explode('/', $request->birthday);
                 $data['tel'] = $request->tel;
-                $data['address'] = $request->place;
+                $data['address'] = $request->address;
+
                 $data['ref_name'] = $request->ref_name;
                 $data['ref_relation'] = $request->ref_relation;
                 $data['ref_tel'] = $request->ref_tel;
@@ -99,7 +100,7 @@ class RegisterController extends BaseController
                 $data['role_id'] = $request->role;
                 DB::table('user')->insert($data);
                 // $user_id = DB::table('user')->insertGetId($data,'user_id');
-                if($request->role == '2'){//learner
+                if($request->role == '2'){
                     $data['experience'] = $request->experience;
                 }
                 dd($data);

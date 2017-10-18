@@ -9,14 +9,6 @@
     div h5 {
         font-size:17px;
     }
-
-    .navbar-hight{
-        higth:50px;
-    }
-
-    .pad{
-        padding-bottom:15px;
-    }
     
     .btn-tutor {
         color: #fff;
@@ -55,9 +47,15 @@
               @foreach($agreement as $key =>$value)
                 <tr class="data-table">
                     <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
+<<<<<<< HEAD
                     <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
                     <td><h4 class="dayfull">{{$value->day_name}}</h4></a></td>
                     <td><h4 class="duration_name">{{$value->duration_name}}</h4></a></td>
+=======
+                    <td><h4 class="level_name">{{$value->level_name}}</h4></td>
+                    <td><h4 class="dayfull">{{$value->day_name}}</h4></td>
+                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></td>
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                     <td><a class="btn btn-tutor" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
                   <!-- <td><a href=""><h4 class="district"></h4></a></td>
                   <td><a href=""><h4 class="amphoe"></h4></a></td>
@@ -113,10 +111,14 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>  
                     <div class="modal-footer">
                         <button type="submit" class="btn"  href="{{url('/learnerdeal')}}"  style="background-color:#FF8000;color:#ffffff;">ส่งคำขอ</button>
                     </div> 
+=======
+                    </div>
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                 </div>
             </div>
               @endforeach

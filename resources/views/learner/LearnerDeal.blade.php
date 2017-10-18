@@ -6,10 +6,6 @@
         font-size:15px;
     }
 
-    .navbar-hight{
-        higth:50px;
-    }
-
     .pad{
         padding-bottom:15px;
     }
@@ -34,7 +30,7 @@
         <div class="col-md-6">
             <!-- progressbar -->
             <ul id="progressbar" style="padding:15px;">
-                <li class="active" >Personal Details</li>
+                <li class="active" >ข้อมูลผู้ส่งคำร้อง</li>
                 <li style="font-size: 14px;">เพิ่มรายละเอียดคอร์ส</li>
             </ul>
         </div>
@@ -73,12 +69,12 @@
 
                             <div class="col-lg-6 col-sm-5 text-left pad" style="padding-left: 0px;">
                                 <div class="service-box">              
-                                <h5>d</h5>
-                                <h5>d</h5>
-                                <h5>d</h5>
-                                <h5>d</h5>
+                                <h5 id="name"></h5>
+                                <h5 id="subject"></h5>
+                                <h5 id="day"></h5>
+                                <h5 id="startTime"></h5>
                                 <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
-                                <h5>d</h5>              
+                                <h5 id="สถานะ"></h5>
                                 </div>
                             </div>
                             
@@ -88,13 +84,12 @@
                 </div>
                 <div class="col-md-1"></div>
             </div>
-              
         </div>
-    
 
             <input type="button" name="next" style="background:red" class="next action-button" value="ปฏิเสธ" onclick = ""/>
             <input type="button" name="next" style="background:green"  class="next action-button" value="ยอมรับ" onclick = ""/>
         </fieldset>
+
         <!-- <fieldset  style="background-color:#D8D8D8;padding:20px;border-radius:25px;">
             <h2 class="fs-title">Social Profiles</h2>
             <h3 class="fs-subtitle">Your presence on the social network</h3>
@@ -166,6 +161,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12" style="margin-top:10px;">
                                                         <label>รวมทั้งหมด</label>
+<<<<<<< HEAD
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,20 +171,51 @@
                                                     <div class="col-md-4" style="margin-top:10px;">
                                                         <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>   
                                                         <label>ชั่วโมง</label>
+=======
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
                                                     <div class="col-md-4" style="margin-top:10px;">
+<<<<<<< HEAD
                                                         <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>   
                                                         <label>บาท</label>
                                                     </div>
                                                     <div class="col-md-2" style="margin-top:10px;"></div>
+=======
+                                                        <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>
+                                                    </div>
+                                                    <div class="col-md-2 text-left" style="margin-top:10px;">
+                                                        <label>ชั่วโมง</label>
+                                                    </div>
+                                                    <div class="col-md-4" style="margin-top:10px;">
+                                                        <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>
+                                                    </div>
+                                                    <div class="col-md-2 text-left" style="margin-top:10px;">
+                                                        <label>บาท</label>
+                                                    </div>
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                                                 </div>
                                             </div>
-                                        </div>
+
                                             <!-- End Time Zone -->
+<<<<<<< HEAD
                                             <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
 
                                             <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
                                         </div>    
+=======
+
+                                        </div>
+                                        <div class="text-center">
+                                            <input type="button" name="previous" class="previous action-button-previous" value="ย้อนกลับ"/>
+
+                                            <input type="submit" name="submit" class="submit action-button" value="เพิ่มรายละเอียดคอร์ส"/>
+                                        </div>
+
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                                     </form>
                                 </div>
                             </div>
@@ -223,41 +250,41 @@
 
 @section('script')
 <script>
-function diff(start, end) {
-    //console.log(end);
-    start = start.split(":");
-    end = end.split(":");
-    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
-    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
-    var diff = endDate.getTime() - startDate.getTime();
-    var hours = Math.floor(diff / 1000 / 60 / 60);
-    diff -= hours * 1000 * 60 * 60;
-    var minutes = Math.floor(diff / 1000 / 60);
-    var time = hours+':'+minutes;
-    if(!isNaN(hours)){
-        $('input[name="time"]').val(time)
-        var price = $('input[name="price"]').val();
-        var total = (hours*price)+((price/60)*minutes);
-        $('input[name="total"]').val(total)
+    function diff(start, end) {
+        //console.log(end);
+        start = start.split(":");
+        end = end.split(":");
+        var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+        var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+        var diff = endDate.getTime() - startDate.getTime();
+        var hours = Math.floor(diff / 1000 / 60 / 60);
+        diff -= hours * 1000 * 60 * 60;
+        var minutes = Math.floor(diff / 1000 / 60);
+        var time = hours+':'+minutes;
+        if(!isNaN(hours)){
+            $('input[name="time"]').val(time)
+            var price = $('input[name="price"]').val();
+            var total = (hours*price)+((price/60)*minutes);
+            $('input[name="total"]').val(total)
+        }
+
+        // console.log(hours+':'+minutes)
+        console.log(time)
+        //console.log(hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
     }
-    
-    // console.log(hours+':'+minutes)
-    console.log(time)
-    //console.log(hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
-}
-$(document).ready(function(){
-    $('input[name="start_time"]').change(function(){
-        diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
-        
- })
-    $('input[name="end_time"]').change(function(){
-        diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
-        
+    $(document).ready(function(){
+        $('input[name="start_time"]').change(function(){
+            diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
+
+     });
+        $('input[name="end_time"]').change(function(){
+            diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
+
+        });
+        $('input[name="price"]').keyup(function(){
+            diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
+        })
     })
-    $('input[name="price"]').keyup(function(){
-        diff($('input[name="start_time"]').val(), $('input[name="end_time"]').val())
-    })
-})
 </script>
 
 @endsection

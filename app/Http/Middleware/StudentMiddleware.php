@@ -18,6 +18,10 @@ class StudentMiddleware
     {
         if(Auth::user()->role_id == 1)
             return $next($request);
+<<<<<<< HEAD
         return redirect('/you-are-not-student');
+=======
+        return redirect('/notstudent');
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     }
 }

@@ -7,13 +7,19 @@
     div h5 {
         font-size:15px;
     }
-
-    .navbar-hight{
-        higth:50px;
+    
+    div p {
+        font-size: 1.5rem;
     }
 
-    .pad{
-        padding-bottom:15px;
+    .margin-naja {
+        margin-top:10px;
+    }
+    .img-circle {
+        border-radius: 50%;
+    }
+    label{
+        font-size: 20px;
     }
     
     div p {
@@ -28,10 +34,14 @@
     
     <section class="text-center">   
         <h1>ประวัติส่วนตัว</h1>
-        <center><hr></center>      
+        <center><hr></center>
+
     </section>
     
     <div class="container">
+        <div class="text-right" style="margin: 10px">
+            <button class="btn btn-primary js-scroll-trigger" id="edit" type="submit" style="font-size: 20px">แก้ไขข้อมูลส่วนตัว</button>
+        </div>
         <div class="row">
             <div class="col-md-4 text-center">
                 <img border="0" class="img-circle img-responsive infinite pulse" src="{{$learnerProfile->img_profile}}" 
@@ -83,7 +93,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 

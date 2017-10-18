@@ -7,14 +7,6 @@
     div h5 {
         font-size:15px;
     }
-
-    .navbar-hight{
-        higth:50px;
-    }
-
-    .pad{
-        padding-bottom:15px;
-    }
     
     div label {
         font-size: 20px;

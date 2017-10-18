@@ -1,4 +1,4 @@
-@extends('layouts.tutorheader')
+@extends('layouts.loginheader')
 
 <title>Login</title>
 
@@ -22,7 +22,7 @@
 
                                 @if ($errors->has('username'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
+                                        <label style="font-size: 14px;color: red">{{ $errors->first('username') }}</label>
                                     </span>
                                 @endif
                             </div>
@@ -36,7 +36,7 @@
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <label style="font-size: 14px;color: red">{{ $errors->first('password') }}</label>
                                     </span>
                                 @endif
                             </div>

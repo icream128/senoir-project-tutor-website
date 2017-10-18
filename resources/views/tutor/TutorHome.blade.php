@@ -2,18 +2,6 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
-  .search-input{
-    max-width:500px;
-    margin-top:50px;
-    margin-bottom:50px;
-    margin-right:10px
-
-  }
-
-.btn-size{
-  width:150px;
-  height:40px;
-}
 
 .rows {
     display: -ms-flexbox;
@@ -110,8 +98,13 @@
 
           <div class="container">
               <div class="row">
+<<<<<<< HEAD
                   <div class="col-md-1"></div>
                   <div class="" id="alltags" align="left">
+=======
+
+                  <div class="text-left" id="alltags">
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                       Selected Filters:
                   </div>
               </div>
@@ -119,7 +112,11 @@
 
     <div class="container">
       <div class="row">
+<<<<<<< HEAD
         <div class="col-md-12 rows" >
+=======
+        <div class="col-md-12 rows" style="margin-top:15px">
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
     
           <table class="table"  id="showall">
             <thead>
@@ -215,6 +212,11 @@
                       </div>
                       <div class="modal-body">
                           <h2>ข้อมูลสำหรับติวเตอร์เท่านั้น</h2>
+<<<<<<< HEAD
+=======
+                          <button type="button" class="btn btn-primary"  href="{{url('/firstpage')}}"
+                                  style="background-color:#FF8000;color:#ffffff;">ไปยังฝั่งของผู้เรียน</button>
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
                       </div>
                   </div>
               </div>
@@ -295,29 +297,22 @@
     </section>
     </center>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
-
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
    
 
 @endsection
 
 @section('script')
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+            integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+            integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+            crossorigin="anonymous"></script>
   
   <script type="text/javascript">
 

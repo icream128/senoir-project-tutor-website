@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"learner_schedule_id":74,"firstname":"ธรรมธร","lastname":"กังวาลวงศ์","nickname":"ป๊อป","age":21,"gender":"ผู้ชาย","tel":"023434556","school":"มจธ","level":"ปี3","grade":"3.00","ref_name":"สมชาย สายหมอก","ref_relation":"ลุง","ref_tel":"023434556"}]
+=======
+[{"learner_schedule_id":1,"firstname":"ธัชชพร","lastname":"เจริญสุข","nickname":"จีโอ","age":23,"gender":"ผู้หญิง","tel":"0983433211","school":"-","level":"-","grade":"-","ref_name":"ฟิ้งเองจ้ะ","ref_relation":"น้อง","ref_tel":"0925810987"}]
+>>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
