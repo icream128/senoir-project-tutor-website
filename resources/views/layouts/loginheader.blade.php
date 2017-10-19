@@ -28,9 +28,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
   </head>
+
+  <style>
+    #mainNavt {
+        border-color:rgba(255,255,255,.3);
+        background-color:#F98717;
+
+       }
+  </style>
 <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNavt">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger" href="{{url('/firstpage')}}" style="color: white;">หาติว ดีลงาน</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" 
