@@ -28,6 +28,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
   </head>
+
+  <style>
+    body {
+      
+      background-image: url("/img/tutor.png");
+      background-attachment: fixed;
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: right;
+
+    }
+  </style>
 <body>
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">

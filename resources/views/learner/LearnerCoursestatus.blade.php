@@ -36,75 +36,75 @@
         <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
          
             <table class="table" id="datatable">
-            <thead style="background-color:#f05f40;color:#ffffff;">
-                <th><h3>ชื่อวิชา</h3></th>
-                <th><h3>ระดับชั้น</h3></th>
-                <th><h3>วัน</h3></th>
-                <th><h3>เวลา</h3></th>
-                <th><h3></h3></th>
-              
-            </thead>
-
-            <tbody id="data-table-block">
-              @foreach($learnerSchedule as $key =>$value)
-                <tr class="data-table">
-                    <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
-                    <td><h4 class="level_name">{{$value->level_name}}</h4></td>
-                    <td><h4 class="day_name">{{$value->day_name}}</h4></td>
-                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></td>
-                    <td><a class="btn btn-primary" style="font-size:12px;" href="{{url('/learnerdeal')}}">ตรวจสอบคำขอ</a></td>
-                  <!-- <td><a href=""><h4 class="district"></h4></a></td>
-                  <td><a href=""><h4 class="amphoe"></h4></a></td>
-                  <td><a href=""><h4 class="province"></h4></a></td>
-                  <td><a href=""><h4 class="zipcode"></h4></a></td> -->
-                </tr>
+                <thead style="background-color:#f05f40;color:#ffffff;">
+                    <th><h3>ชื่อวิชา</h3></th>
+                    <th><h3>ระดับชั้น</h3></th>
+                    <th><h3>วัน</h3></th>
+                    <th><h3>เวลา</h3></th>
+                    <th><h3></h3></th>
                 
-                <!-- Modal Popup -->
-                <div id="{{$key}}" class="w3-modal">
-                    <div class="w3-modal-content w3-animate-opacity" style="padding:35px 35px;">
-                        <header class="w3-container w3-teal"> 
-                            <span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright" style="background-color:#f05f40;">&times;</span>
-                        </header>
-                        <div class="w3-container">
-                            <div class="container">
-                                <div class="row">        
-                                    <div class="col-lg-3 col-md-8 text-center" style="padding-bottom=10px;">
-                                        <div class="service-box">              
-                                            <div class="container">   
-                                                <!-- image -->
+                </thead>
+
+                <tbody id="data-table-block">
+                @foreach($learnerSchedule as $key =>$value)
+                    <tr class="data-table">
+                        <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
+                        <td><h4 class="level_name">{{$value->level_name}}</h4></td>
+                        <td><h4 class="day_name">{{$value->day_name}}</h4></td>
+                        <td><h4 class="duration_name">{{$value->duration_name}}</h4></td>
+                        <td><a class="btn btn-primary" style="font-size:12px;" href="{{url('/learnerdeal')}}">ตรวจสอบคำขอ</a></td>
+                    <!-- <td><a href=""><h4 class="district"></h4></a></td>
+                    <td><a href=""><h4 class="amphoe"></h4></a></td>
+                    <td><a href=""><h4 class="province"></h4></a></td>
+                    <td><a href=""><h4 class="zipcode"></h4></a></td> -->
+                    </tr>
+                    
+                    <!-- Modal Popup -->
+                    <div id="{{$key}}" class="w3-modal">
+                        <div class="w3-modal-content w3-animate-opacity" style="padding:35px 35px;">
+                            <header class="w3-container w3-teal"> 
+                                <span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright" style="background-color:#f05f40;">&times;</span>
+                            </header>
+                            <div class="w3-container">
+                                <div class="container">
+                                    <div class="row">        
+                                        <div class="col-lg-3 col-md-8 text-center" style="padding-bottom=10px;">
+                                            <div class="service-box">              
+                                                <div class="container">   
+                                                    <!-- image -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>        
+                                        <div class="col-lg-3 col-md-8 text-right">
+                                            <div class="service-box">
+                                                <h5>วิชา :</h5>
+                                                <h5>วัน :</h5>
+                                                <h5>สถานที่ :</h5>
+                                                <h5>สถานะ :</h5>
+                                                <h5>ติดต่อ :</h5>
+                                                <h5>รายละเอียดการสอน :</h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 text-left" style="padding-left: 0px;">
+                                            <div class="service-box">
+                                                <h5>{{$value->subject_name}}</h5>
+                                                <h5>{{$value->day_name}}</h5>
+                                                <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
+                                                <h5>{{$value->status_name}}</h5>
+                                                <h5>{{$value->tel}}</h5>    
+                                                <h5>อยากให้มีข้อสอบตัวอย่างมาให้ฝึกทำด้วย</h5><br>         
                                             </div>
                                         </div>
                                     </div>
-                                    <br>        
-                                    <div class="col-lg-3 col-md-8 text-right">
-                                        <div class="service-box">
-                                            <h5>วิชา :</h5>
-                                            <h5>วัน :</h5>
-                                            <h5>สถานที่ :</h5>
-                                            <h5>สถานะ :</h5>
-                                            <h5>ติดต่อ :</h5>
-                                            <h5>รายละเอียดการสอน :</h5>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 text-left" style="padding-left: 0px;">
-                                        <div class="service-box">
-                                            <h5>{{$value->subject_name}}</h5>
-                                            <h5>{{$value->day_name}}</h5>
-                                            <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
-                                            <h5>{{$value->status_name}}</h5>
-                                            <h5>{{$value->tel}}</h5>    
-                                            <h5>อยากให้มีข้อสอบตัวอย่างมาให้ฝึกทำด้วย</h5><br>         
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>          
+                            </div>          
+                        </div>
                     </div>
-                </div>
-              @endforeach
-            </tbody>            
-          </table>
+                @endforeach
+                </tbody>            
+            </table>
           
 
             <div class="container">
@@ -118,4 +118,6 @@
         </div>
       </div>
     </div>
+
+    <br><br>
 @endsection

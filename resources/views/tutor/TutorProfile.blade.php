@@ -26,6 +26,10 @@
         background-color: #FF8000;
     }
 
+    a:focus, a:hover {
+        color: #ffffff;
+    }
+
 </style>
 
 @section('content')
@@ -46,6 +50,7 @@
                 <a class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #FF8000;" href="/tutoreditprofile&<?php echo $tutorProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
             </div>
             <div class="col-md-2 text-right">
+                <br>
                 <p>ชื่อ :</p>
                 <p>ชื่อเล่น :</p>
                 <p>เพศ :</p>
@@ -54,6 +59,7 @@
                 <p>ประสบการณ์สอน :</p>
             </div>
             <div class="col-md-2 text-left">
+                <br>
                 <p>{{$tutorProfilePage->firstname}}</p>
                 <p>{{$tutorProfilePage->nickname}}</p>
                 <p>{{$tutorProfilePage->gender}}</p>
@@ -63,12 +69,14 @@
             </div>
             
             <div class="col-md-2 text-right">
+                <br>
                 <p>นามสกุล :</p>
                 <p>อายุ :</p>
                 <p>&nbsp</p>
                 <p>เกรดเฉลี่ยสะสม :</p>
             </div>
             <div class="col-md-2 text-left">
+                <br>
                 <p>{{$tutorProfilePage->lastname}}</p>
                 <p>{{$tutorProfilePage->age}}</p>
                 <p>&nbsp</p>

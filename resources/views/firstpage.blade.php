@@ -31,11 +31,11 @@
 
     body {
       
-      background-image: url("/public/img/learner.png"), url("/public/img/tutor.png");
+      background-image: url("/img/learner.png"), url("/img/tutor.png");
       background-color: #000000;
       background-size: auto auto;
       background-repeat: no-repeat, no-repeat;
-      background-position: left, right
+      background-position: left, right;
 
     }
 

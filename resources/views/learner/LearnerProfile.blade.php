@@ -26,6 +26,10 @@
         font-size: 1.5rem;
     }
 
+    a:focus, a:hover {
+        color: #ffffff;
+    }
+
 </style>
 
 @section('content')
@@ -39,15 +43,12 @@
     </section>
     
     <div class="container">
-        <div class="text-right" style="margin: 10px">
-            <button class="btn btn-primary js-scroll-trigger" id="edit" type="submit" style="font-size: 20px">แก้ไขข้อมูลส่วนตัว</button>
-        </div>
         <div class="row">
             <div class="col-md-4 text-center">
                 <img border="0" class="img-circle img-responsive infinite pulse" src="{{$learnerProfile->img_profile}}" 
                 style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px;margin-bottom:10px" alt="Cinque Terre" width="300px" height="300px">
                 <br><br>
-                <a class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" href="/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
+                <a class="btn btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" href="/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
             </div>
 
             <div class="col-md-4 text-center">
@@ -96,6 +97,8 @@
         </div>
     </div>
 
+    <br><br>
+    
     <script>
       var current_button = 0;
         setInterval(function () {
