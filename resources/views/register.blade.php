@@ -266,7 +266,7 @@
 @endsection
 
 @section('script')
-        <script src="{{url('/script/jquery-validation-1.17.0/dist/jquery.validate.js')}}"></script>
+        <script src="{{url('/js/jquery.validate.js')}}"></script>
 
         <script>
         $.validator.setDefaults({
