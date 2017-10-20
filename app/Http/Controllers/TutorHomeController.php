@@ -26,7 +26,7 @@ class TutorHomeController extends BaseController
                 ->where('user_id', Auth::user()->user_id)->first();
         }
         //Get data from database
-        $subject = DB::table('subject')->orderBy('subject_id','asc')->get();
+        $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
         $day = DB::table('day')->orderBy('day_id','asc')->get();
         $level = DB::table('level')->orderBy('level_id','asc')->get();
         $duration = DB::table('duration')->orderBy('duration_id','asc')->get();

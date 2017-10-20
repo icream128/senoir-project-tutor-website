@@ -31,12 +31,23 @@ class LearnerEditProfileController extends BaseController
  
     public function updated(Request $request, $user_id) {
         $learnerProfile = users::where('user_id', $user_id)->first();
+
+        $time = date('YmdHis');
         
+        $file = explode('.',$_FILES['img_card']['name']);
+        $file = $time.'.'.end($file);
+        $path = public_path('image_card');
+        $request->file('img_card')->move($path,$file);
+
+        $file1 = explode('.',$_FILES['img_profile']['name']);
+        $file1 = $time.'.'.end($file1);
+        $path1 = public_path('image_profile');
+        $request->file('img_profile')->move($path1,$file1);
+
         $learnerProfile->firstname = $request->firstname;
         $learnerProfile->lastname = $request->lastname;
         $learnerProfile->nickname = $request->nickname;
         $learnerProfile->username = $request->username;
-        $learnerProfile->password = Hash::make($request->password);
         $learnerProfile->birthday = $request->birthday;
         $learnerProfile->age = $request->age;
         $learnerProfile->gender = $request->gender;
@@ -50,8 +61,8 @@ class LearnerEditProfileController extends BaseController
         $learnerProfile->school = $request->school;
         $learnerProfile->level = $request->level;
         $learnerProfile->grade = $request->grade;
-        $learnerProfile->img_profile = $request->img_profile;
-        $learnerProfile->img_card = $request->img_card;
+        $learnerProfile->img_profile = 'image_profile/'.$file1;
+        $learnerProfile->img_card ='image_card/'.$file;
         $learnerProfile->card_id = $request->card_id;
         
         $learnerProfile->update();

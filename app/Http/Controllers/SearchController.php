@@ -80,6 +80,7 @@ class SearchController extends Controller
       ->whereIn('learner_schedule.level_id', array_unique($level_tags))
       ->whereIn('learner_schedule_time.duration_id', array_unique($duration_tags))
       ->whereIn('learner_schedule_time.day_id', array_unique($day_tags))
+      ->paginate(10)
       ->get();
 
     }else if($chkvalue[0] == 1 && $chkvalue[1] == 1 && $chkvalue[2] == 1 && $chkvalue[3] == 0){ //14 = 1110

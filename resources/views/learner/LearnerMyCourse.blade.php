@@ -42,7 +42,7 @@
                 <th><h3>ชื่อวิชา</h3></th>
                 <th><h3>ระดับชั้น</h3></th>
                 <th><h3>วัน</h3></th>
-                <th><h3>เวลา</h3></th>
+                <th><h3>เริ่มเรียน</h3></th>
                 <th><h3></h3></th>
             </thead> 
 
@@ -53,7 +53,7 @@
                     <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
                     <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
                     <td><h4 class="day_name">{{$value->day_name}}</h4></a></td>
-                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></a></td>
+                    <td><h4 class="time">{{date('H:i', strtotime($value->start_time))}}-{{date('H:i', strtotime($value->end_time))}}</h4></a></td>
                     <td><a class="btn btn-primary" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
                   <!-- <td><a href=""><h4 class="district"></h4></a></td>
                   <td><a href=""><h4 class="amphoe"></h4></a></td>
@@ -131,5 +131,7 @@
     </div>
         
     <br><br>
+
+ 
         
 @endsection

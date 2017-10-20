@@ -17,7 +17,7 @@
     }
     .img-circle {
     border-radius: 50%;
-}
+    }
 
      #nickname-error,#firstname-error,#tel-error
      ,#school-error,#level-error,#grade-error,#ref_relation-error,#ref_name-error
@@ -36,7 +36,7 @@
 
     <section id="services" class="text-center">   
         <h1>สมัครสมาชิก</h1>
-        <center><hr></center>      
+        <center><hr style="border-color:#F98717;"></center>      
     </section>
     
     <div class="container">
@@ -49,7 +49,7 @@
                             {{ csrf_field() }}
                             <!-- Username and Password -->
                             <div class="row" style="background-color:#D8D8D8;border-radius:25px;padding:20px;">
-                                <div class="col-md-12"><h2>บัญชีผู้ใช้</h2></div>
+                                <div class="col-md-12"><h2>ข้อมูลผู้ใช้</h2></div>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <label>รูปโปรไฟล์</label>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="col-md-6 margin-naja">
                                     <div class="row">
-                                        <label>ชื่อสำหรับเข้าสู่ระบบ</label>
+                                        <label>บัญชีผู้ใช้</label>
                                         <input placeholder="ชื่อสำหรับเข้าสู่ระบบ" name="username" class="form-control" style="border-radius:10px;"/>
                                     </div>
                                     <div class="row">
@@ -183,7 +183,7 @@
                                 <div class="col-md-6 marginnaja">
                                     <label>ที่อยู่ปัจจุบัน</label>
                                     <textarea name="address" id="address" placeholder="ที่อยู่ปัจจุบัน" rows="4" cols="50"
-                                              form="usrform" class="form-control"
+                                              class="form-control"
                                               style="border-radius:10px"></textarea>
                                 </div>
                                 
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="col-md-6 margin-naja tutor-only" style="display:none">
                                     <label>ประสบการณ์</label>
-                                    <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="experience" form="usrform" class="form-control"
+                                    <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="experience" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                 </div>
                                 
@@ -230,7 +230,7 @@
                             </div>
                             <br>
                                 <div class="text-center">
-                                    <button class="btn btn-primary js-scroll-trigger" type="submit" style="font-size: 17px;">สมัครสมาชิก</button>
+                                    <button class="btn btn-primary js-scroll-trigger" type="submit" style="font-size: 20px;background-color:#F98717;">สมัครสมาชิก</button>
                                 </div>
                         </form>
                     </div>

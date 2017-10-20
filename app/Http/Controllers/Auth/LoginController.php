@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Lang;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/firstpage';
+    // protected $redirectTo = '/firstpage';
 
     /**
      * Create a new controller instance.
@@ -49,10 +50,26 @@ class LoginController extends Controller
         $username = $req->input('username');
         $password = $req->input('password');
 
-        if(Auth::attempt(['username'=>$username,'password'=>$password], $req->remember)){
-            return redirect('firstpage');
+        if(\Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password], $req->remember)){
+            return $this->redirectTo();
         }else{
-            echo "fail";
+
+            return redirect()->back()
+            ->withInput($req->only($this->username(), 'remember'))
+            ->withErrors([
+                'password' => Lang::get('auth.password'),
+            ]);
+        }
+    }
+
+    public function redirectTo() {
+        $userRoleId =Auth::user()->role_id;
+
+        if($userRoleId == 1){
+            return redirect('learnermycourse');
+        }
+        if($userRoleId == 2){
+            return redirect('tutorhome');
         }
     }
 }

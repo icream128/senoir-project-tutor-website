@@ -18,6 +18,9 @@ class TutorMiddleware
     {
         if(Auth::user()->role_id == 2)
             return $next($request);
-        return redirect('/yor-are-not-a-tutor');
+
+            echo '<script>alert("คุณเป็นนักเรียน เข้าฝั่งติวเตอร์ไม่ได้");window.location = "/firstpage"</script>';
     }
 }
+
+?>

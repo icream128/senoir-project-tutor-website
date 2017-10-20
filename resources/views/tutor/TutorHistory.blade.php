@@ -61,7 +61,7 @@
                 <div id="{{$key}}" class="w3-modal">
                 <div class="w3-modal-content w3-animate-opacity">
                     <header class="w3-container" style="background-color:#ffffff;">
-                        <h3 style="color:#000000;margin:20px 40px">ข้อมูลติวเตอร์</h3>
+                        <h3 style="color:#000000;margin:20px 40px">ข้อมูลนักเรียน</h3>
                         <span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright" style="background-color:#FF8000">&times;</span>
                     </header>
                     <div class="w3-container">
@@ -86,7 +86,6 @@
                                         <h5>ราคา/ชั่วโมง :</h5>
                                         <h5>สถานะ :</h5>
                                         <h5>ติดต่อ :</h5>
-                                        <h5>รายละเอียดการสอน :</h5>
                                     </div>
                                 </div>
 
@@ -100,15 +99,12 @@
                                         <h5>{{$value->price}}</h5>
                                         <h5>{{$value->status_name}}</h5>
                                         <h5>{{$value->tel}}</h5>    
-                                        <h5>อยากให้มีข้อสอบตัวอย่างมาให้ฝึกทำด้วย</h5><br>         
+                                        <br>         
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>  
-                    <div class="modal-footer">
-                        <button type="submit" class="btn"  href="{{url('/learnerdeal')}}"  style="background-color:#FF8000;color:#ffffff;">ส่งคำขอ</button>
-                    </div> 
                 </div>
             </div>
               @endforeach

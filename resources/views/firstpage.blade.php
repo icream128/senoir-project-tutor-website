@@ -77,4 +77,8 @@
             }
         }, 1000)
     </script>
+
+    <scritp>
+      
+    </script>
 @endsection

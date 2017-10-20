@@ -16,7 +16,7 @@ class MyCourseController extends BaseController
    
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('student')->only('indexLearnor');
+        $this->middleware('learner')->only('indexLearner');
     }
 
     /**
@@ -38,7 +38,7 @@ class MyCourseController extends BaseController
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
        
         $agreement = DB::table('agreement')
-        ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
+        ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'end_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
         ->leftJoin('user','learner_schedule.user_id','=','user.user_id')

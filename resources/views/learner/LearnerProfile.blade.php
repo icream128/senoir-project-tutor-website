@@ -21,14 +21,7 @@
     label{
         font-size: 20px;
     }
-    
-    div p {
-        font-size: 1.5rem;
-    }
 
-    a:focus, a:hover {
-        color: #ffffff;
-    }
 
 </style>
 
@@ -41,56 +34,138 @@
         <center><hr></center>
 
     </section>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <img border="0" class="img-circle img-responsive infinite pulse" src="{{$learnerProfile->img_profile}}" 
-                style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px;margin-bottom:10px" alt="Cinque Terre" width="300px" height="300px">
-                <br><br>
-                <a class="btn btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" href="/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
-            </div>
 
-            <div class="col-md-4 text-center">
+    <div class="container">
+        <div class="text-right" style="margin: 10px">
+            <a class="btn btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" href="/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 text-right">
+                    <div class="row" style="background-color:#D8D8D8;border-radius:25px;padding:20px">
+                        <!-- Username and Password -->
+
+                                <div class="col-md-12 margin-naja"><h2 >บัญชีผู้ใช้</h2></div>
+
+                                <div class="col-md-12 margin-naja">
+                                        <label>รูปโปรไฟล :</label>
+                                        <div class="text-center" style="margin-top:20px;">
+                                            <img src="{{$learnerProfile->img_profile}}" width="200px" height="200px" class="img-circle text-center">
+                                        </div>
+                                </div>
+                                <div class="col-md-12 margin-naja">
+                                        <label>อีเมล :</label>
+                                        <label>{{$learnerProfilePage->email}}</label>
+                                </div>
+
+
                             <br>
-                            <p>ชื่อ :</p>
-                            <p>ชื่อเล่น :</p>
-                            <p>เพศ :</p>
-                            <p>ระดับชั้น :</p>
-                            <p>สถานศึกษา :</p>
-                        </div>
-                        <div class="col-md-6 text-left">
+
+                            <!-- Profile -->
+
+                                <div class="col-md-12 margin-naja"><h2 style="margin-top:10px">ข้อมูลส่วนตัว</h2></div>
+                                <div class="col-md-6 margin-naja">
+                                    <label>ชื่อจริง :</label>
+                                    <label>{{$learnerProfilePage->firstname}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>นามสกุล :</label>
+                                    <label>{{$learnerProfilePage->lastname}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>ชื่อเล่น :</label>
+                                    <label>{{$learnerProfilePage->nickname}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>เลขบัตรประชาชน :</label>
+                                    <label>{{$learnerProfilePage->card_id}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>วันเดือนปีเกิด :</label>
+                                    <label>{{$learnerProfilePage->birthday}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>อายุ :</label>
+                                    <label>{{$learnerProfilePage->age}}</label>
+                                    <label>ปี</label>
+
+
+                                </div>
+
+                                <div class="container margin-naja">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+
+                                                <div class="col-md-12">
+                                                    <label>เพศ :</label>
+                                                    <label>{{$learnerProfilePage->gender}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>รูปบัตรประชาชน :</label>
+                                                </div>
+                                                <div class="col-md-7" style="margin-top:20px;">
+                                                    <img src="{{$learnerProfilePage->img_card}}" width="150px" height="150px" class="img-circle">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>เบอร์โทรศัพท์ :</label>
+                                    <label>{{$learnerProfilePage->tel}}</label>
+                                </div>
+
+                                <div class="col-md-6 marginnaja">
+                                    <label>ที่อยู่ปัจจุบัน :</label>
+                                    <label>{{$learnerProfilePage->address}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>สถานศึกษาปัจจุบัน :</label>
+                                    <label>{{$learnerProfilePage->school}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>ระดับชั้น :</label>
+                                    <label>{{$learnerProfilePage->level}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>เกรดเฉลี่ยสะสม :</label>
+                                    <label>{{$learnerProfilePage->grade}}</label>
+                                </div>
+
+
                             <br>
-                            <p>{{$learnerProfilePage->firstname}}</p>
-                            <p>{{$learnerProfilePage->nickname}}</p>
-                            <p>{{$learnerProfilePage->gender}}</p>
-                            <p>{{$learnerProfilePage->level}}</p>
-                            <p>{{$learnerProfilePage->school}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-md-4 text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 text-right">
-                            <br>
-                            <p>นามสกุล :</p>
-                            <p>อายุ :</p>
-                            <p>&nbsp</p>
-                            <p>เกรดเฉลี่ย :</p>
-                        </div>
-                        <div class="col-md-6 text-left">
-                            <br>
-                            <p>{{$learnerProfilePage->lastname}}</p>
-                            <p>{{$learnerProfilePage->age}}</p>
-                            <p>&nbsp</p>
-                            <p>{{$learnerProfilePage->grade}}</p>
-                        </div>
+
+                            <!-- Reference -->
+
+                                <div class="col-md-12 margin-naja"><h2 style="margin-top:10px">บุคคลอ้างอิงที่ติดต่อได้</h2></div>
+                                <div class="col-md-6 margin-naja">
+                                    <label>ชื่อ-นามสกุล :</label>
+                                    <label>{{$learnerProfilePage->ref_name}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>ความสัมพันธ์ :</label>
+                                    <label>{{$learnerProfilePage->ref_relation}}</label>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>เบอร์โทรศัพท์ :</label>
+                                    <label>{{$learnerProfilePage->ref_tel}}</label>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -98,7 +173,7 @@
     </div>
 
     <br><br>
-    
+
     <script>
       var current_button = 0;
         setInterval(function () {

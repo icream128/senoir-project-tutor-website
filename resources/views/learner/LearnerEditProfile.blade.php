@@ -75,10 +75,6 @@
                                         <label>อีเมล</label>
                                         <input placeholder="อีเมล" name="email"  class="form-control" style="border-radius:10px;" value="{{$learnerProfile->email}}"/>
                                     </div>
-                                    <div class="marginnaja">
-                                        <label>รหัสผ่าน</label>
-                                        <input placeholder="รหัสผ่าน" name="password" id="password"  class="form-control" type="password" style="border-radius:10px;"/>
-                                    </div>
                                     
                                 </div>
                                 
@@ -209,7 +205,7 @@
                             </div>
                             <br><br>
                             <center>
-                                <input type="submit" class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" name="update" value="Update"/>
+                                <input type="submit" class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" name="update" value="อัพเดต"/>
                             </center>
                         </form>
                     </div>

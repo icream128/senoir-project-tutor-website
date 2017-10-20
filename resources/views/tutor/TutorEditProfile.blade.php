@@ -214,7 +214,7 @@
                             </div>
                             <br><br>
                             <center>
-                                <input type="submit" class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #FF8000;" name="update" value="Update"/>
+                                <input type="submit" class="btn btn-tutor btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #FF8000;" name="update" value="อัพเดต"/>
                             </center>
                         </form>
                     </div>

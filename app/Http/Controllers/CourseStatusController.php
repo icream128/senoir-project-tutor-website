@@ -32,18 +32,19 @@ class CourseStatusController extends BaseController
         
         //Get data from database
         $learnerSchedule = DB::table('learner_schedule')
-        ->select(['img_profile', 'subject_name', 'level_name', 'duration_name', 'day_name', 'status_name', 'user.tel'])
+        ->select(['learner_schedule_id','img_profile', 'subject_name', 'level_name', 'status_name', 'user.tel'])
         ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
         ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
-        
         ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
         ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
-        ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
-        ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
-        ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
         ->where('learner_schedule.user_id', Auth::user()->user_id)
-        ->whereIn('learner_schedule.status_id', [1, 2])
-        ->paginate(10);
+        ->whereIn('learner_schedule.status_id', [1,2])->get();
+
+//        $learnerSchedule = DB::select('select * from learner_schedule');
+        foreach ($learnerSchedule as $ls){
+            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d , duration du where lst.day_id = d.day_id and lst.duration_id = du.duration_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            $ls->learnerScheduleTime = $learnerScheduleTime;
+        }
 
         //Set data to view
         $data = compact('learnerProfile' ,'learnerSchedule');

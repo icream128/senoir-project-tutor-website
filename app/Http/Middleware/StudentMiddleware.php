@@ -18,10 +18,8 @@ class StudentMiddleware
     {
         if(Auth::user()->role_id == 1)
             return $next($request);
-<<<<<<< HEAD
-        return redirect('/you-are-not-student');
-=======
-        return redirect('/notstudent');
->>>>>>> 0a6d2a7c3e5967de5dbe37712bb912fe2be31244
+            
+            echo '<script>alert("คุณเป็นติวเตอร์ เข้าฝั่งนักเรียนไม่ได้");window.location = "/firstpage"</script>';
+        // return redirect('/firstpage');
     }
 }
