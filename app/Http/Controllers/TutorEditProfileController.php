@@ -33,6 +33,7 @@ class TutorEditProfileController extends BaseController
         $tutorProfile = users::where('user_id', $user_id)->first();
 
         $time = date('YmdHis');
+        
         $file = explode('.',$_FILES['img_card']['name']);
         $file = $time.'.'.end($file);
         $path = public_path('image_card');
@@ -47,10 +48,8 @@ class TutorEditProfileController extends BaseController
         $tutorProfile->lastname = $request->lastname;
         $tutorProfile->nickname = $request->nickname;
         $tutorProfile->username = $request->username;
-        $tutorProfile->password = Hash::make($request->password);
         $tutorProfile->birthday = $request->birthday;
         $tutorProfile->age = $request->age;
-        $tutorProfile->gender = $request->gender;
         $tutorProfile->email = $request->email;
         $tutorProfile->tel = $request->tel;
         $tutorProfile->address = $request->input('address');
@@ -64,6 +63,7 @@ class TutorEditProfileController extends BaseController
         $tutorProfile->img_profile = 'image_profile/'.$file1;
         $tutorProfile->img_card = 'image_card/'.$file;
         $tutorProfile->card_id = $request->card_id;
+        $tutorProfile->experience = $request->experience;
         
         $tutorProfile->update();
         return redirect('tutorprofile');

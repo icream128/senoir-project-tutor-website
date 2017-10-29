@@ -3,9 +3,20 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
 <link rel="stylesheet" href="js/Datatables-1.10.15/media/css/dataTables.bootstrap4.css">
+
+@section('content')
+
+
 <style>
-    .rows {
-        display: -ms-flexbox;
+    .h4 h4 {
+        font-size: 1.5rem;
+    }
+    
+
+    div h5 {
+        font-size:17px;
+    }
+    .rows { 
         display: flex;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -17,6 +28,13 @@
         border-color: #FF8000;
         background-color: #FF8000;
     }
+
+    .btn-requested {
+        color: #fff;
+        border-color: limegreen;
+        background-color: limegreen;
+    }
+
     .filtertitle {
         border: 1.2px solid #e6e6e6;
         padding: 0.2cm 0.3cm 0.2cm;
@@ -26,11 +44,31 @@
         color:#999999;
     }
 
+    .page-item.active .page-link {
+        z-index: 2;
+        color: #fff;
+        background-color: #FF8000;
+        border-color: #FF8000;
+    }
+
+    .page-link {
+        position: relative;
+        display: block;
+        padding: .5rem .75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #000000;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+    div.dataTables_wrapper div.dataTables_info {
+        text-align: left;
+    }
+    .dataTables_length{
+        text-align: left;
+    }
 </style>
-
-<body onload="show()">
-
-@section('content')
+<body>
     <br>
     <center>
         <section class="text-center" style="padding-bottom: 0px;">
@@ -40,9 +78,10 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px">
+                
+                <!-- <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px"> -->
                     <!-- first line -->
-                    <div class="container">
+                    <!-- <div class="container">
                         <div class="filter-select row">
 
                             <div class="col-md-3 ">
@@ -82,29 +121,29 @@
                             </div>
 
                         </div>
-                        <!-- End first line -->
-                    </div>
-                </div>
+                    </div> -->
+                    <!-- End first line -->
+                <!-- </div> -->
 
 
+
+                {{--<div class="container">--}}
+                    {{--<div class="row">--}}
+                        {{--<h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+                {{--<div class="container ">--}}
+                    {{--<div class="row">--}}
+                        {{--<div id="alltags" style="margin-bottom: 10px">--}}
+                            {{--ผลลัพธ์ :--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <div class="container">
                     <div class="row">
-                        <h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>
-                    </div>
-                </div>
-
-                <div class="container ">
-                    <div class="row">
-                        <div id="alltags" style="margin-bottom: 10px">
-                            Selected Filters:
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 rows" >
+                        <div class="col-md-12 " >
 
                             <table class="table table-striped table-bordered" cellspacing="0" width="100%"  id="showall">
                                 <thead>
@@ -117,6 +156,33 @@
                                 </tr>
                                 </thead>
                                 <tbody id="body_showall">
+                                    @foreach($learnerSchedule as $ls)
+                                        <tr>
+                                            <td><h5 class="subject_name">{{ $ls->subject_name }}</h5></td>
+                                            <td><h5 class="level_name">{{ $ls->level_name }}</h5></td>
+                                            <td>
+                                                @foreach($ls->learnerScheduleTime as $lst)
+                                                    <h5 class="day_name">{{$lst->day_name}}</h5>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($ls->learnerScheduleTime as $lst)
+                                                    <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
+                                                @endforeach
+                                            </td>
+                                            <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
+                                                @if($ls->requested)
+                                                    <td><center><a class="btn btn-requested" style="font-size:12px;" href="{{ url('/tutorstatusrequest') }}">ส่งคำขอแล้ว</a></center></td>
+                                                @else
+                                                    <td><center><a class="btn btn-tutor" style="font-size:12px;" href="javascript:moreDetail('{{ $ls->learner_schedule_id }}')">ดูรายละเอียด</a></center></td>
+                                                @endif
+                                            <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
+                                                    <td><center><a class="btn btn-tutor" style="font-size:12px;" href="javascript:filterUser()">ดูรายละเอียด</a></center></td>
+                                            <?php } else { ?>
+                                                    <td><center><a class="btn btn-tutor" style="font-size:12px;" href="javascript:loginfirst()">ดูรายละเอียด</a></center></td>
+                                            <?php } ?>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -140,13 +206,15 @@
                                         <h5 id="school">ราคา/ชั่วโมง:</h5>
                                         <h5 id="level">สถานะ:</h5>
                                         <h5 id="grade">ติดต่อ:</h5>
-                                        <h5 id="ref_relation">รายละเอียดการสอน:</h5>
-                                        <h5 id="ref_name">รายละเอียดการสอน:</h5>
-                                        <h5 id="ref_tel">รายละเอียดการสอน:</h5>
+                                        
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn"  href="{{url('/tutordeal')}}"  style="background-color:#FF8000;color:#ffffff;">ส่งคำขอ</button>
+                                    <button onclick="send_learner_request()" type="button" class="btn" style="background-color:#FF8000;color:#ffffff;cursor: pointer">ส่งคำขอ</button>
+                                    <form id="tutor-send-request-form" method="post" action="{{ url('/tutor-send-request') }}">
+                                        {{ csrf_field() }}
+                                        <input id="send_learner_schedule_id" type="hidden" name="learner_schedule_id" value="">
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +230,7 @@
                                     <h2>ข้อมูลสำหรับติวเตอร์เท่านั้น</h2>
                                 </div>
                                 <div class="modal-footer">
-                                    <a class="btn btn-primary" style="font-size:17px;background-color:#FF8000;" href="/learnermycourse">กลับฝั่งเนอะ</a>
+                                    <a class="btn btn-primary" style="font-size:17px;background-color:#FF8000;" href="{{ url('') }}/learnermycourse">กลับฝั่งเนอะ</a>
                                 </div> 
 
                             </div>
@@ -219,13 +287,13 @@
 
                                         <div class="form-group">
                                             <div class="col-md-8 col-md-offset-4">
-                                                <button type="submit" class="btn btn-primary">
+                                            
+                                                <button type="submit" class="btn btn-tutor">
                                                     เข้าสู่ระบบ
                                                 </button>
 
-                                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                    ลืมรหัสผ่าน?
-                                                </a>
+                                                <a class="btn btn-primary" style="font-size:14px;" href="{{url('/register')}}">สมัครสมาชิก</a>
+                                                
                                             </div>
                                         </div>
                                     </form>
@@ -251,7 +319,7 @@
 @endsection
 
 @section('script')
-    {{--<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>--}}
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -302,11 +370,11 @@
                 cell3.innerHTML = results[i].day_name_full;
                 cell4.innerHTML = results[i].duration_name;
                 <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
                 <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
                 <?php } else { ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
                 <?php } ?>
             }
             subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
@@ -461,11 +529,11 @@
                 cell3.innerHTML = results[i].day_name_full;
                 cell4.innerHTML = results[i].duration_name;
                 <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
                 <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
                 <?php } else { ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
                 <?php } ?>
             }
             subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
@@ -576,11 +644,11 @@
                 cell3.innerHTML = results[i].day_name_full;
                 cell4.innerHTML = results[i].duration_name;
                 <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
                 <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
                 <?php } else { ?>
-                    cell5.innerHTML = "<a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
                 <?php } ?>
             }
             subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
@@ -612,9 +680,7 @@
             document.getElementById("school").innerHTML = "โรงเรียน: "+results[0].school ;
             document.getElementById("level").innerHTML = "ระดับชั้น: "+results[0].level ;
             document.getElementById("grade").innerHTML = "เกรดเฉลี่ย: "+results[0].grade ;
-            document.getElementById("ref_name").innerHTML = "ชื่อบุคคลอ้างอิง: "+results[0].ref_name ;
-            document.getElementById("ref_relation").innerHTML = "ความสัมพันธ์: "+results[0].ref_relation ;
-            document.getElementById("ref_tel").innerHTML = "เบอร์โทรศัพท์: "+results[0].ref_tel ;
+            $("#send_learner_schedule_id").val(key);
             $('#seemore').modal('show');
         }
 
@@ -626,11 +692,18 @@
             $('#filterUser').modal('show');
         }
 
+        function send_learner_request(){
+            if(confirm('Are you confirm')){
+                $("#tutor-send-request-form").submit();
+            }
+        }
+
         $(document).ready(function(){
             $('#btn-search').click(function(){
                 $('#myModal').modal('show');
             });
 
+            $("#showall").DataTable();
 
 //                $('#showall').DataTable();
 

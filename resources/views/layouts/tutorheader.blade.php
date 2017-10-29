@@ -12,7 +12,7 @@
     <link rel="shortcut icon" href="/img/shortLogoHTDNG.png">
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.mintutor.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -39,6 +39,28 @@
       background-position: right;
 
     }
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .desc {
+        padding: 15px;
+        text-align: center;
+    }
   </style>
 <body>
         <!-- Navigation -->
@@ -62,7 +84,7 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #FF8000;" href="{{url('/login')}}">ลงชื่อเข้าใช้งาน</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #FF8000;" href="{{url('/register')}}">สมัครสมาชิก</a></li>
                     @else
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link js-scroll-trigger" style="color: #FF8000;" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
@@ -75,7 +97,40 @@
                         <li class="nav-item">
                             <a href="{{url('/tutorprofile')}}"><img border="0" src="{{$tutorProfile->img_profile}}" class="img-circle img-responsive" 
                                 style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px" alt="Cinque Terre" width="40px" height="40px"></a>
-                        </li>
+                        </li> -->
+
+                        <div class="dropdown" style="margin-left:15px;">
+                            <div class="row">
+                            <img border="0" src="{{$tutorProfile->img_profile}}" class="img-circle img-responsive"
+                            id="menu1" data-toggle="dropdown"  style="border-radius:50%;cursor: pointer;object-position:center;object-fit: cover; margin-left:10px" alt="Cinque Terre" width="40px" height="40px">
+                            <a class="nav-link js-scroll-trigger" style="color:#FF8000;cursor: pointer;" id="menu1" data-toggle="dropdown">{{$tutorProfile->username}}</a>
+                            <img border="0" src="/img/sort-down.png" class="img-circle img-responsive"
+                            id="menu1" data-toggle="dropdown"  style="object-position:center;cursor: pointer;margin-left:3px;margin-top:10px" alt="Cinque Terre" width="20px" height="20px">
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                <center>
+                                <li>
+                                    <a href="{{url('/tutorprofile')}}"><img border="0" src="{{$tutorProfile->img_profile}}" class="img-circle img-responsive"
+                                    style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px" alt="Cinque Terre" width="100px" height="100px"></a>
+                                    <a class="nav-link js-scroll-trigger" style="color:#FF8000;" href="{{url('/tutorprofile')}}">
+                                        ดูโปรไฟล์
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" style="color:#FFFFFF;background-color:#FF8000;" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                        ออกจากระบบ
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                                </center>
+                            </ul>
+                            </div>
+                        </div>
+
+                        
                     @endguest
                 </ul>
                 </div>

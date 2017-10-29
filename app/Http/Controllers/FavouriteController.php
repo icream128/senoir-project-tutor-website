@@ -55,7 +55,7 @@ class FavouriteController extends BaseController
 
         //header
         $tutorProfile = DB::table('user')
-        ->select(['img_profile'])
+        ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
         
         //Get data from database

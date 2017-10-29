@@ -4,8 +4,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <link rel="stylesheet" href="css/paginationtutor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
+<link rel="stylesheet" href="js/Datatables-1.10.15/media/css/dataTables.bootstrap4.css">
 
 <style>
+    .h4 h4 {
+        font-size: 1.5rem;
+    }
+    
+
     div h5 {
         font-size:17px;
     }
@@ -19,7 +26,9 @@
 
 
 @section('content')
-    <br>
+
+    <br><br><br><br><br>
+    
     <section class="text-center">   
         <h1>คอร์สที่สนใจ</h1>
         <center><hr class="btn-tutor"></center>      
@@ -31,12 +40,12 @@
       <div class="row" id="result">
         <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
          
-          <table class="table" id="datatable">
+          <table class="table" id="datatable-fav">
             <thead style="background-color:#FF8000;color:#ffffff;">
-              <th><h3>ชื่อวิชา</h3></th>
-              <th><h3>ระดับชั้น</h3></th>
-              <th><h3>วัน</h3></th>
-              <th><h3>เวลา</h3></th>
+              <th><h4>ชื่อวิชา</h4></th>
+              <th><h4>ระดับชั้น</h4></th>
+              <th><h4>วัน</h4></th>
+              <th><h4>เวลา</h4></th>
               
               <th></th>
               
@@ -45,15 +54,15 @@
             <tbody id="data-table-block">
               @foreach($learnerSchedule as $key =>$value)
                 <tr class="data-table">
-                    <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
-                    <td><h4 class="level_name">{{$value->level_name}}</h4></td>
-                    <td><h4 class="day_name">{{$value->day_name}}</h4></td>
-                    <td><h4 class="duration_name">{{$value->duration_name}}</h4></td>
+                    <td><h5 class="subject_name">{{$value->subject_name}}</h5></td>
+                    <td><h5 class="level_name">{{$value->level_name}}</h5></td>
+                    <td><h5 class="day_name">{{$value->day_name}}</h5></td>
+                    <td><h5 class="duration_name">{{$value->duration_name}}</h5></td>
                     <td><a class="btn btn-tutor" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
-                  <!-- <td><a href=""><h4 class="district"></h4></a></td>
-                  <td><a href=""><h4 class="amphoe"></h4></a></td>
-                  <td><a href=""><h4 class="province"></h4></a></td>
-                  <td><a href=""><h4 class="zipcode"></h4></a></td> -->
+                  <!-- <td><a href=""><h5 class="district"></h5></a></td>
+                  <td><a href=""><h5 class="amphoe"></h5></a></td>
+                  <td><a href=""><h5 class="province"></h5></a></td>
+                  <td><a href=""><h5 class="zipcode"></h5></a></td> -->
                 </tr>
                 
                 <!-- Modal Popup -->
@@ -123,6 +132,26 @@
       </div>
     </div>
         
+    @section('script')
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-        
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+    <script src="js/Datatables-1.10.15/media/js/jquery.dataTables.js"></script>
+
+    <script src="js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
+
+    <script src="js/creative.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#datatable-fav').DataTable();
+        });
+    </script>
+
 @endsection

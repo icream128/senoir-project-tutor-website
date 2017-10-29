@@ -15,7 +15,8 @@ class CourseStatusController extends BaseController
 {
    
     public function __construct(){
-        
+        $this->middleware('auth');
+        $this->middleware('learner');
     }
 
     /**
@@ -27,7 +28,7 @@ class CourseStatusController extends BaseController
     public function indexLearner() {
         //header
         $learnerProfile = DB::table('user')
-        ->select(['img_profile'])
+        ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
         
         //Get data from database
@@ -42,8 +43,17 @@ class CourseStatusController extends BaseController
 
 //        $learnerSchedule = DB::select('select * from learner_schedule');
         foreach ($learnerSchedule as $ls){
-            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d , duration du where lst.day_id = d.day_id and lst.duration_id = du.duration_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
             $ls->learnerScheduleTime = $learnerScheduleTime;
+
+            $learnerRequest = DB::select('select * from learner_schedule_request where learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            if(count($learnerRequest)>0){
+                $ls->requested = 0;
+                
+            }else{
+                $ls->requested = 1;
+            }
+
         }
 
         //Set data to view

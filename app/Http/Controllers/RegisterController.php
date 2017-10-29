@@ -103,6 +103,9 @@ class RegisterController extends BaseController
                 if($request->role == '2'){
                     $data['experience'] = $request->experience;
                 }
-                dd($data);
+
+                echo '<script>alert("ลงทะเบียนสำเร็จ");window.location = "/login"</script>';
+                // return redirect('/login');
+
         }
 }

@@ -54,7 +54,7 @@
                                     <div class="row">
                                         <label>รูปโปรไฟล์</label>
                                         <div style="margin-top:20px;" class="text-center">
-                                            <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" >
+                                            <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px">
                                             <input type="file" id="imgInp_profile" name="img_profile" style="margin-top: 8px">
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@
                                                     <label>รูปบัตรประชาชน</label>
                                                 </div>
                                                 <div class="col-md-3" style="margin-top:20px;">
-                                                    <img src="" id="blah2" alt="" width="ึ80px" height="100px" >
+                                                    <img src="" id="blah2" alt="" width="ึ80px" height="100px" style="object-position:center;object-fit: cover; margin-left:10px">
 
                                                 </div>
                                                 <div class="col-md-5" style="margin-top:20px;">
@@ -197,9 +197,15 @@
                                     <input type="text" placeholder="ระดับชั้นที่กำลังศึกษา" name="level" class="form-control" style="border-radius:10px;"/>
                                 </div>
                                 
-                                <div class="col-md-6 marginnaja">
+                                <div class="col-md-6 marginnaja" style="margin-top:10px;">
                                     <label>เกรดเฉลี่ยสะสม</label>
                                     <input type="text" placeholder="เกรดเฉลี่ยสะสม" name="grade" class="form-control" style="border-radius:10px;"/>
+                                </div>
+
+                                <div class="col-md-6 margin-naja tutor-only" style="display:none">
+                                    <label>ประสบการณ์</label>
+                                    <textarea placeholder="ประสบการณ์" rows="4" id="experience" cols="50" name="experience" class="form-control"
+                                                style="border-radius:10px;"></textarea>
                                 </div>
                             </div>
 
@@ -216,11 +222,6 @@
                                 <div class="col-md-6 margin-naja">
                                     <label>ความสัมพันธ์</label>
                                     <input type="text" placeholder="ความสัมพันธ์" name="ref_relation" class="form-control" style="border-radius:10px;"/>
-                                </div>
-                                <div class="col-md-6 margin-naja tutor-only" style="display:none">
-                                    <label>ประสบการณ์</label>
-                                    <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="experience" class="form-control"
-                                                style="border-radius:10px;"></textarea>
                                 </div>
                                 
                                 <div class="col-md-6 margin-naja">

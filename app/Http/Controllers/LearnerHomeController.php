@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -21,7 +22,7 @@ class LearnerHomeController extends BaseController
         $learnerProfile = [];
         if(\Illuminate\Support\Facades\Auth::check()) {
             $learnerProfile = DB::table('user')
-                ->select(['img_profile'])
+                ->select(['img_profile', 'username'])
                 ->where('user_id', Auth::user()->user_id)->first();
         }
         //Get data from database
@@ -59,4 +60,12 @@ class LearnerHomeController extends BaseController
     //     return view('learner.LearnerHome',$showData);
     //    //return Datatables::of($tutorSchedule)->make();
     // }
+
+    public function checking_tutor_request(Request $req){
+
+        $ls_id = $req->get('learner_schedule_id');
+        $result = DB::select('select * from learner_schedule_request lsq , user us where lsq.learner_schedule_id = ? and lsq.tutor_id = us.user_id',[$ls_id]);
+
+        return response()->json($result);
+    }
 }

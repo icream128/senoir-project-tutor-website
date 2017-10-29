@@ -31,8 +31,10 @@ Route::get('/tutorhome','TutorHomeController@index');
 // Route::post('/tutorsavecourse','CreateCourseController@insertTutor');
 Route::get('/tutorprofile', 'ProfileController@indexTutor')->middleware('tutor');
 
+Route::get('/tutorshortprofile&{user_id}', 'ProfileShortController@indexLearner');
+
 Route::get('/tutoreditprofile&{user_id}', 'TutorEditProfileController@edit')->middleware('tutor');
-Route::post('/updated&{user_id}', 'TutorEditProfileController@updated')->middleware('tutor');
+Route::post('/updatedy&{user_id}', 'TutorEditProfileController@updated')->middleware('tutor');
 
 Route::get('/tutorstatuscreate','StatusCreateController@indexTutor')->middleware('tutor');
 
@@ -48,6 +50,14 @@ Route::get('/tutordeal', function () {
     return view('tutor.TutorDeal');
 });
 
+Route::post('/tutor-send-request','TutorHomeController@tutor_send_request');
+
+// tutor JSON
+Route::get('/searching', 'SearchController@liveshow');
+
+Route::get('/showdetail', 'SearchController@showdetail');
+
+Route::post('/checking-tutor-request','LearnerHomeController@checking_tutor_request');
 
 
 
@@ -65,7 +75,9 @@ Route::get('/learnercreatecourse','CreateCourseController@indexLearner')->middle
 Route::post('/learnersavecourse','CreateCourseController@insertLearner')->middleware('learner');
 
 Route::get('/learnereditcourse&{learner_schedule_id}','LearnerEditCourseController@edit')->middleware('learner');
-Route::post('/updateeditcourse&{learner_schedule_id}','LearnerEditCourseController@update')->middleware('learner');
+Route::post('/updateeditcourse&{learner_schedule_id}','LearnerEditCourseController@updated')->middleware('learner');
+Route::get('/deletecourse&{learner_schedule_id}','LearnerEditCourseController@delete')->middleware('learner');
+
 //filter
 Route::get('/testsearch', function () {
     return view('searching');
@@ -82,6 +94,9 @@ Route::post('/updated&{user_id}', 'LearnerEditProfileController@updated')->middl
 Route::get('/learnerhistory','HistoryController@indexLearner')->middleware('learner');
 
 Route::get('/learnermycourse','MycourseController@indexLearner')->middleware('learner');
+Route::post('/learner-course-success','MyCourseController@send_course_success')->middleware('learner');
+Route::post('/learner-course-canceled','MyCourseController@send_course_canceled')->middleware('learner');
+
 Route::get('/learnerstatusrequest','StatusRequestController@indexLearner')->middleware('learner');
 
 Route::get('/learnercoursestatus','CourseStatusController@indexLearner')->middleware('learner');
@@ -96,12 +111,17 @@ Route::get('/adddetail', function () {
 
 Route::post('/learnersavedetail','AddDetailController@saveDetailLearner')->middleware('learner');
 
-Route::get('/learnerdeal','DealCourseController@indexLearner')->middleware('learner');
+Route::get('/learnerdeal&{learner_schedule_request_id}','DealCourseController@indexLearner')->middleware('learner');
 
-// learner JSON
-Route::get('/searching', 'SearchController@liveshow');
+Route::post('/createagreement','DealCourseController@createAgreement')->middleware('learner');
 
-Route::get('/showdetail', 'SearchController@showdetail');
+
+Route::get('/learnercomment', 'CommentController@indexLearner')->middleware('learner');
+
+
+
+
+
 
 
 

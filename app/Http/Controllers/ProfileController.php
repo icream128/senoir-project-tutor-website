@@ -28,7 +28,7 @@ class ProfileController extends BaseController
 
         //header
         $learnerProfile = DB::table('user')
-        ->select(['img_profile'])
+        ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
 
         //Get data from database
@@ -48,13 +48,13 @@ class ProfileController extends BaseController
 
         //header
         $tutorProfile = DB::table('user')
-        ->select(['img_profile'])
+        ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
         
         //Get data from database
         $tutorProfilePage = DB::table('user')
         ->select(['user_id', 'firstname', 'lastname', 'nickname', 'school', 'level', 'grade', 'experience', 'age', 'gender'
-            ,'email','tel','address','ref_name','ref_relation','ref_tel','img_card','card_id','birthday','experience'])
+            ,'email','tel','address','ref_name','ref_relation','ref_tel','img_profile', 'img_card','card_id','birthday','experience'])
         ->where('user_id', Auth::user()->user_id)->first();
 
         //Set data to view

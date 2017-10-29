@@ -50,7 +50,6 @@ class LearnerEditProfileController extends BaseController
         $learnerProfile->username = $request->username;
         $learnerProfile->birthday = $request->birthday;
         $learnerProfile->age = $request->age;
-        $learnerProfile->gender = $request->gender;
         $learnerProfile->email = $request->email;
         $learnerProfile->tel = $request->tel;
         $learnerProfile->address = $request->input('address');

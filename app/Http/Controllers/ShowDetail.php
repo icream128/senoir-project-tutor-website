@@ -23,7 +23,7 @@ class ShowDetail extends BaseController
         ->join('levels','tutor_schedule.levels_id','=','levels.levels_id')
         ->join('day','tutor_schedule.day_id','=','day.day_id')
         ->join('duration','tutor_schedule.duration_id','=','duration.duration_id')
-        ->join('tutor','tutor_schedule.tutor_id','=','tutor.tutor_id')
+        ->join('tutor','tutor_schedule.tutor_id','=','tutor.tutor_id');
       
       
 

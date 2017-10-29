@@ -3,8 +3,12 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<link rel="stylesheet" href="css/paginationtutor.css">
+<!-- <link rel="stylesheet" href="css/paginationtutor.css"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
+<link rel="stylesheet" href="js/Datatables-1.10.15/media/css/dataTables.bootstrap4.css">
 
+
+@section('content')
 <style>
     div h5 {
         font-size:17px;
@@ -12,16 +16,17 @@
 
 
 </style>
+    
 
-@section('content')
-    <br>
+    <br><br><br><br><br>
+
 
     <div class="container">
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6"></div>
           <div class="col-md-3">
-            <a href="{{url('/learnercreatecourse')}}"><button class="tag-item btn btn-lg btn-danger" style="background-color: #f05f40;">สร้างคอร์สเรียนที่ต้องการ</button></a>
+            <a href="{{url('/learnercreatecourse')}}"><button class="tag-item btn btn-lg btn-danger" style="cursor: pointer;background-color: #f05f40;">สร้างคอร์สเรียนที่ต้องการ</button></a>
           </div>
         </div>
       <div>
@@ -36,31 +41,39 @@
       <div class="row" id="result">
         <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
          
-          <table class="table" id="datatable">
+            <table class="table" id="datatable-mycourse">
             <thead style="background-color:#f05f40;color:#ffffff;">
-                <th><h3>ชื่อติวเตอร์</h3></th>
-                <th><h3>ชื่อวิชา</h3></th>
-                <th><h3>ระดับชั้น</h3></th>
-                <th><h3>วัน</h3></th>
-                <th><h3>เริ่มเรียน</h3></th>
-                <th><h3></h3></th>
-            </thead> 
+                <th><h4>ชื่อติวเตอร์</h4></th>
+                <th><h4>ชื่อวิชา</h4></th>
+                <th><h4>ระดับชั้น</h4></th>
+                <th><h4>วัน</h4></th>
+                <th><h4>เวลาเรียน</h4></th>
+                <th><h4>สถานะ</h4></th>
+                <th><h4></h4></th>
+                
+              
+            </thead>
 
             <tbody id="data-table-block">
               @foreach($agreement as $key =>$value)
                 <tr class="data-table">
-                    <td><h4 class="tutor_name">{{$value->firstname}} {{$value->lastname}}</h4></td>
-                    <td><h4 class="subject_name">{{$value->subject_name}}</h4></td>
-                    <td><h4 class="level_name">{{$value->level_name}}</h4></a></td>
-                    <td><h4 class="day_name">{{$value->day_name}}</h4></a></td>
-                    <td><h4 class="time">{{date('H:i', strtotime($value->start_time))}}-{{date('H:i', strtotime($value->end_time))}}</h4></a></td>
-                    <td><a class="btn btn-primary" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
-                  <!-- <td><a href=""><h4 class="district"></h4></a></td>
-                  <td><a href=""><h4 class="amphoe"></h4></a></td>
-                  <td><a href=""><h4 class="province"></h4></a></td>
-                  <td><a href=""><h4 class="zipcode"></h4></a></td> -->
-                </tr>
-                
+                    <td><h5 class="tutor_name">{{$value->firstname}} {{$value->lastname}}</h4></td>
+                    <td><h5 class="subject_name">{{$value->subject_name}}</h4></td>
+                    <td><h5 class="level_name">{{$value->level_name}}</h4></td>
+                    <td>
+                    @foreach($value->learnerScheduleTime as $lst)
+                                <h5 class="day_name">{{$lst->day_name}}</h5>
+                    @endforeach
+                    </td>
+                    <td>
+                    @foreach($value->learnerScheduleTime as $lst)
+                                <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}-{{date('H:i', strtotime($lst->end_time))}}</h5>
+
+                    @endforeach
+                    </td>
+                    <td><h5 class="status_name">{{$value->status_name}}</h5></td>
+                    <td><center><a class="btn btn-primary" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></center></td>
+
                 <!-- Modal Popup -->
                 <div id="{{$key}}" class="w3-modal">
                     <div class="w3-modal-content w3-animate-opacity">
@@ -71,11 +84,11 @@
                         <div class="w3-container">
                             <div class="container">
                                 <div class="row">        
-                                    <div class="col-lg-3 col-md-8 text-center" style="padding-bottom=10px;">
+                                    <div class="col-lg-4 col-md-8 text-center" style="padding-bottom=10px;">
                                         <div class="service-box">              
                                             <div class="container">   
-                                                <img src="{{$value->img_profile}}" class="img-circle img-responsive" 
-                                                    style="border-radius:50%;object-position:center;object-fit: cover;" alt="Cinque Terre" width="150" height="150"> 
+                                                <a href="/tutorshortprofile&<?php echo $value->user_id_request ?>"><img src="{{$value->img_profile}}" class="img-circle img-responsive"
+                                                style="border-radius:50%;object-position:center;object-fit: cover;" alt="Cinque Terre" width="150" height="150"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -84,28 +97,63 @@
                                         <div class="service-box">             
                                             <h5>ชื่อ :</h5>
                                             <h5>วิชา :</h5>
-                                            <h5>วัน :</h5>
-                                            <h5>เวลาเริ่ม :</h5>
+                                            <h5>เรียนเรื่อง :</h5>
+                                            <h5>วันที่ตกลงคอร์ส :</h5>
+                                            <h5>วันที่เริ่มเรียน :</h5>
+                                            <h5>&nbsp</h5>
+                                            <h5>วัน / เวลาเรียน :</h5>
+                                            @foreach($value->learnerScheduleTime as $lst)
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h5>&nbsp</h5>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h5>&nbsp</h5>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                             <h5>สถานที่ :</h5>
+                                            <h5>ข้อมูลสถานที่ :</h5>
+                                            <h5>การเดินทาง :</h5>
                                             <h5>ราคา/ชั่วโมง :</h5>
                                             <h5>สถานะ :</h5>
                                             <h5>ติดต่อ :</h5>
-                                            <h5>รายละเอียดการสอน :</h5>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-6 col-md-6 text-left" style="padding-left: 0px;">
+                                    <div class="col-lg-5 col-md-6 text-left" style="padding-left: 0px;">
                                         <div class="service-box">              
-                                            <h5>{{$value->firstname}} {{$value->lastname}}</h5>
+                                            <h5>{{$value->firstname}} {{$value->lastname}}&nbsp</h5>
                                             <h5>{{$value->subject_name}}</h5>
-                                            <h5>{{$value->day_name}}</h5>
-                                            <h5>{{date('H:i', strtotime($value->start_time))}}-{{date('H:i', strtotime($value->end_time))}}</h5>
-                                            <h5>ทุ่งครุ ทุ่งครุ กรุงเทพ 10140</h5>
+                                            <h5>{{$value->detail_lesson}}&nbsp</h5>
+                                            <h5>{{date('d-m', strtotime($value->datetime))}}-{{date('Y', strtotime($value->datetime))+543}}</h5>
+                                            <h5>{{date('d-m', strtotime($value->start_course))}}-{{date('Y', strtotime($value->start_course))+543}}</h5>
+                                            <h5>&nbsp</h5>
+                                            @foreach($value->learnerScheduleTime as $lst)
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h5 class="day_name">{{$lst->day_name}}</h5>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
+                                                    </div>
+                                                    
+                                                </div>
+                                            @endforeach
+                                            <h5>&nbsp</h5>
+                                            <h5>{{ $value->location }}</h5>
+                                            <h5>{{$value->detail_location}}&nbsp</h5>
+                                            <h5>{{$value->detail_transport}}&nbsp</h5>
                                             <h5>{{$value->price}}</h5>
                                             <h5>{{$value->status_name}}</h5>
-                                            <h5>{{$value->tel}}</h5>    
-                                            <h5>-</h5><br>
+                                            <h5>{{$value->tel}}</h5><br>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="text-align: center">
+                                        <button class="btn btn-primary" type="button" style="cursor: pointer" onclick="course_success({{$value->learner_schedule_id}})">การเรียนเสร็จสิ้นแล้ว</button>
+                                        <button class="btn btn-info" type="button" style="cursor: pointer" onclick="course_canceled({{$value->learner_schedule_id}})">ยกเลิกคอร์ส</button>
                                     </div>
                                 </div>
                             </div>
@@ -116,22 +164,64 @@
               @endforeach
             </tbody>            
           </table>
-          
 
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                    {{ $agreement->links('vendor.pagination.custom') }}
-                </div>
-              </div>
-            </div>
+            <form id="course_success_form" action="{{ url('/learner-course-success') }}" method="post">
+                {{ csrf_field() }}
+                <input id="course_success_id" type="hidden" name="learner_schedule_id" value="">
+            </form>
+
+            <form id="course_canceled_form" action="{{ url('/learner-course-canceled') }}" method="post">
+                {{ csrf_field() }}
+                <input id="course_canceled_id" type="hidden" name="learner_schedule_id" value="">
+            </form>
 
         </div>
       </div>
     </div>
         
+
     <br><br>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
  
-        
+    @section('script')
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+    <script src="js/Datatables-1.10.15/media/js/jquery.dataTables.js"></script>
+
+    <script src="js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
+
+    <script src="js/creative.min.js"></script>
+
+    <script>
+
+        function course_success(key){
+            $("#course_success_id").val(key);
+            $("#course_success_form").submit();
+        }
+
+        function course_canceled(key){
+            $("#course_canceled_id").val(key);
+            $("#course_canceled_form").submit();
+        }
+
+        $(document).ready(function(){
+            $('#datatable-mycourse').DataTable();
+        });
+    </script>
+
 @endsection
+<!-- <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                    $agreement->links('vendor.pagination.custom')
+                </div>
+              </div>
+            </div> -->

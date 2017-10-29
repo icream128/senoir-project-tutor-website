@@ -38,7 +38,7 @@
     <br>
     <section id="services" class="text-center">   
         <h1>แก้ไขข้อมูลส่วนตัว</h1>
-        <center><hr></center>      
+        <center><hr class="btn-tutor"></center>      
     </section>
     
     <div class="container">
@@ -48,7 +48,7 @@
             <div class="col-md-10">
                 <div class="container">
                     <div class="row" style="margin:5px">
-                        <form method='post' action="/updated&<?php echo $tutorProfile->user_id ?>" enctype="multipart/form-data">
+                        <form method='post' action="/updatedy&<?php echo $tutorProfile->user_id ?>" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             
                             <!-- Username and Password -->
@@ -74,10 +74,6 @@
                                     <div class="marginnaja">
                                         <label>อีเมล</label>
                                         <input placeholder="อีเมล" name="email"  class="form-control" style="border-radius:10px;" value="{{$tutorProfile->email}}"/>
-                                    </div>
-                                    <div class="marginnaja">
-                                        <label>รหัสผ่าน</label>
-                                        <input placeholder="รหัสผ่าน" name="password" id="password"  class="form-control" type="password" style="border-radius:10px;"/>
                                     </div>
                                     
                                 </div>
@@ -122,37 +118,17 @@
 
                                 <div class="container marginnaja">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                
-                                                <div class="col-md-2">
-                                                        <label>เพศ</label>
-                                                </div>
-                                                <div class="col-md-1" style="margin-top:26px;">
-                                                    <input type="radio" value="ผู้ชาย" name="gender"/>
-                                                        
-                                                </div>
-                                                <div class="col-md-3" style="margin-top:20px;">        
-                                                    <p>ชาย</p>
-                                                </div>
-                                                <div class="col-md-1" style="margin-top:26px;">
-                                                    <input type="radio" value="ผู้หญิง" name="gender"/>                  
-                                                </div>
-                                                <div class="col-md-3" style="margin-top:20px;">        
-                                                    <p>หญิง</p>
-                                                </div>
-
-                                                <div class="col-md-2"></div>
-                                            </div>
-                                        </div>
                                 
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <label>รูปบัตรประชาชน</label>
                                                 </div>
+                                                <div class="col-md-6" style="margin-top:20px;">
+                                                    <center><img src="" id="blah2" alt="" width="100px" height="100px" class="img-circle"></center>
+                                                </div>
+                                                
                                                 <div class="col-md-3" style="margin-top:20px;">
-                                                    <img src="" id="blah2" alt="" width="ึ80px" height="100px" >
                                                     <input type="file" id="imgInp_card" name="img_card">
                                                 </div>
                                             </div>
@@ -184,6 +160,12 @@
                                 <div class="col-md-6 marginnaja">
                                     <label>เกรดเฉลี่ยสะสม</label>
                                     <input type="text" placeholder="เกรดเฉลี่ยสะสม" name="grade" class="form-control" style="border-radius:10px;" value="{{$tutorProfile->grade}}"/>
+                                </div>
+
+                                <div class="col-md-6 margin-naja">
+                                    <label>ประสบการณ์</label>
+                                    <textarea placeholder="ประสบการณ์" rows="4" id="experience" cols="50" name="experience" class="form-control"
+                                                style="border-radius:10px;">{{$tutorProfile->experience}}</textarea>
                                 </div>
                             </div>
 
@@ -249,4 +231,240 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+        <script src="{{url('/js/jquery.validate.js')}}"></script>
+
+        <script>
+        $.validator.setDefaults({
+            submitHandler: function(form){
+                submitForm(form.id);
+            }
+        });
+        $(document).ready(function(){
+
+            $('input[name="role"]').click(function(){
+                if($(this).val() == '2'){
+                    $('.tutor-only').show();
+                }
+                else{
+                    $('.tutor-only').hide();
+                }
+            });
+
+            $("#imgInp_profile").change(function(){
+                readURL1(this);
+            });
+            $("#imgInp_card").change(function(){
+                readURL2(this);
+            });
+            $("#registerform").validate({
+                rules: {
+                    username: {
+                        required: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    confirm_password: {
+                        required: true,
+                        minlength: 6,
+                        equalTo: "#password"
+                    },
+                    email: {
+                        required: true,
+                        mail: true
+                    },
+                    img_card: {
+                        required: true
+
+                    },
+                    img_profile: {
+                        required: true
+
+                    },
+                    tel: {
+                        required: true,
+                        minlength: 9
+                    },
+                    place: {
+                        required: true
+                    },
+                    school: {
+                        required: true
+
+                    },
+                    level: {
+                        required: true
+
+                    },
+                    grade: {
+                        required: true
+
+                    },
+                    ref_relation: {
+                        required: true
+
+                    },
+                    ref_name: {
+                        required: true
+
+                    },
+                    ref_tel: {
+                        required: true
+                    },
+
+                    gender: {
+                        required: true
+                    },
+
+                    birthday: {
+                        required: true
+                    },
+
+                    card_id: {
+                        required: true,
+                        minlength: 13
+                    },
+                    nickname: {
+                        required: true
+                    },
+                    firstname: {
+                        required: true
+                    },
+                    lastname: {
+                        required: true
+                    },
+                    role: {
+                        required: true
+                    }
+
+                },
+
+                messages: {
+
+                    username: {
+                        required: "กรุณากรอกชื่อผู้ใช้"
+
+                    },
+                    password: {
+                        required: "กรุณากรอกรหัสผ่าน",
+                        minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว"
+                    },
+                    confirm_password: {
+                        required: "กรุณากรอกยืนยันรหัสผ่าน",
+                        minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว",
+                        equalTo: "รหัสผ่านไม่ตรงกัน"
+                    },
+                    email: {
+                        required: "กรุณากรอกอีเมล์",
+                        mail: "กรุณากรอกอีเมล์"
+                    },
+
+                    img_profile: "กรุณาเลือกรูปโปรไฟล์",
+                    img_card: "กรุณาเลือกรูปบัตรประชาชน",
+                    tel: {
+                        required: "กรุณากรอกเบอร์โทรศัพท์",
+                        minlength: "รหัสผ่านต้องมีอย่างน้อย 9 ตัว"
+                    },
+                    card_id: {
+                        required: "กรุณากรอกเลขบัตรประชาชน",
+                        minlength: "กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก"
+                    },
+                    place: "กรุณากรอกที่อยู่",
+                    school: "กรุณากรอกสถานศึกษา",
+                    level: "กรุณากรอกระดับการศึกษา",
+                    grade: "กรุณากรอกเกรดเฉลี่ยสะสม",
+                    ref_relation: "กรุณากรอกความสัมพันธ์กับบุคคลอ้างอิง",
+                    ref_name: "กรุณากรอกชื่อบุคคลอ้างอิง",
+                    ref_tel: "กรุณากรอกเบอร์โทรศัพท์บุคคลอ้างอิง",
+                    gender: "กรุณาระบุเพศ",
+                    birthday: "กรุณากรอกวันเดือนปีเกิด",
+                    nickname: "กรุณากรอกชื่อเล่น",
+                    firstname: "กรุณากรอกชื่อจริง",
+                    lastname: "กรุณากรอกนามสกุล",
+                    role: "กรุณาระบุประเภทผู้ใช้"
+                }
+            });
+
+            $('input[name="birthday"]').change(function(){
+                //alert($(this).val());
+                var dob = $(this).val();
+                var now = new Date();
+                var birthdate = dob.split("-");
+                var born = new Date(birthdate[0],birthdate[1],birthdate[2]);
+                var birthday = new Date(now.getFullYear(), born.getMonth(), born.getDate());
+                $('input[name="age"]').val(now.getFullYear() - born.getFullYear())
+                // if(now>=birthday){
+                //     // alert(now.getFullYear() - born.getFullYear());
+                //     $('input[name="age"]').val(now.getFullYear() - born.getFullYear())
+                // }else{
+                //     $('input[name="birthday"]').val('');
+
+                // }
+            })
+         });
+
+        function submitForm(formId){
+            alert(formId);
+
+            $.ajax({
+                url: "{{ url('/registersave')}}",
+                type: 'POST',
+                data: new FormData($('#'+formId)[0]),
+                cache: false,
+                contentType: false,
+                processData: false,
+
+                xhr: function(){
+                    var myXhr = $.ajaxSettings.xhr();
+                    if(myXhr.upload){
+                        myXhr.upload.addEventListener('progress',function(e){
+                            if(e.lengthComputable){
+                                $('process').attr({
+                                    value: e.loaded,
+                                    max: e.total
+                                });
+                            }
+
+                        },false);
+                    }
+                    return myXhr;
+                },
+                success:function(){
+                    $('#myModal span.name').text(($('input[name="username"]').val()));
+                    $('#myModal span.email').text(($('input[name="email"]').val()));
+                    $('#myModal').modal('show');
+                }
+
+            })
+        }
+        function readURL1(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah1').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function readURL2(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah2').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        </script>
 @endsection

@@ -3,7 +3,17 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+@section('content')
 <style>
+    body {
+      
+      background-image: url("/img/tutor.png");
+      background-attachment: fixed;
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: right;
+
+    }
     div h5 {
         font-size:15px;
     }
@@ -23,7 +33,7 @@
     }
     
     div p {
-        font-size: 1.5rem;
+        font-size:20px;
     }
 
     a:focus, a:hover {
@@ -32,12 +42,10 @@
 
 </style>
 
-@section('content')
-
     <br>
     
     <section class="text-center">   
-        <h1>ประวัติส่วนตัว</h1>
+        <h1>ประวัติส่วนตัวติวเตอร์</h1>
         <center><hr></center>
 
     </section>
@@ -45,7 +53,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 text-center">
-                <img border="0" class="img-circle img-responsive infinite pulse" src="{{$learnerProfile->img_profile}}" 
+                <img border="0" class="img-circle img-responsive infinite pulse" src="{{$learnerProfilePage->img_profile}}" 
                 style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px;margin-bottom:10px" alt="Cinque Terre" width="300px" height="300px">
                 <br><br>
             </div>
@@ -60,6 +68,7 @@
                             <p>เพศ :</p>
                             <p>ระดับชั้น :</p>
                             <p>สถานศึกษา :</p>
+                            <p>ประสบการณ์สอน :</p>
                         </div>
                         <div class="col-md-6 text-left">
                             <br>
@@ -68,6 +77,7 @@
                             <p>{{$learnerProfilePage->gender}}</p>
                             <p>{{$learnerProfilePage->level}}</p>
                             <p>{{$learnerProfilePage->school}}</p>
+                            <p>{{$learnerProfilePage->experience}}&nbsp</p>
                         </div>
                     </div>
                 </div>

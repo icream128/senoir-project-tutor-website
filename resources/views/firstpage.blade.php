@@ -53,9 +53,10 @@
         <div class="header-content-inner">
           
           <img class="panel-heading infinite rubberBand" src="{{ url('/img/piclogo.png') }}" alt="Logo" style="width:260px;height:145px;">
-          <hr>
-          <p style="color: #000000;font-size:20px;">หากคุณเป็นนักเรียนที่ต้องการหาติวเตอร์ ให้กดปุ่ม"ค้นหาติวเตอร์" <br>
-            หากคุณเป็นติวเตอร์ที่ต้องการสอนพิเศษ ให้กดปุ่ม"ค้นหาคอร์สสอน" </p>
+          <hr>&nbsp
+          <a style="color: #000000;font-size:25px;">หากคุณเป็น</a><a style="color: #DF0101;font-size:25px;font-weight: bold;">นักเรียน</a><a style="color: #000000;font-size:25px;">ที่ต้องการหาติวเตอร์ ให้กดปุ่ม</a><a style="color: #DF0101;font-size:25px;font-weight: bold;">"ค้นหาติวเตอร์"</a> <br>
+          <a style="color: #000000;font-size:25px;">หากคุณเป็น</a><a style="color: #FF8000;font-size:25px;font-weight: bold;">ติวเตอร์</a><a style="color: #000000;font-size:25px;">ที่ต้องการสอนพิเศษ ให้กดปุ่ม </a><a style="color: #FF8000;font-size:25px;font-weight: bold;">"ค้นหาคอร์สสอน"</a> 
+          <br><br><br>
           <a class="btn btn-student btn-xl btn-size js-scroll-trigger" href="{{ url('/learnermycourse') }}">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
           <a class="btn btn-tutor btn-xl btn-size js-scroll-trigger" href="{{ url('/tutorhome') }}">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
         </div>

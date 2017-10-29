@@ -22,7 +22,7 @@ class CreateCourseController extends BaseController
     public function indexLearner(){
 
         $learnerProfile = DB::table('user')
-            ->select(['img_profile'])
+            ->select(['img_profile', 'username'])
             ->where('user_id', Auth::user()->user_id)->first();
       
         $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
@@ -35,18 +35,18 @@ class CreateCourseController extends BaseController
         return view('learner.LearnerCreateCourse',$data);
     
     }
-    public function indexTutor(){
+    // public function indexTutor(){
         
-          $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-          $day = DB::table('day')->orderBy('day_name','asc')->get();
-          $level = DB::table('level')->orderBy('level_name','asc')->get();
-          $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
+    //       $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
+    //       $day = DB::table('day')->orderBy('day_name','asc')->get();
+    //       $level = DB::table('level')->orderBy('level_name','asc')->get();
+    //       $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
     
-          $data = compact('subject','day','level','duration');
+    //       $data = compact('subject','day','level','duration');
   
-          return view('tutor.TutorCreateCourse',$data);
+    //       return view('tutor.TutorCreateCourse',$data);
       
-      }
+    //   }
     
     public function insertLearner(Request $request){
         
@@ -67,16 +67,16 @@ class CreateCourseController extends BaseController
 ////                 $data['duration_id'] = $request->get('duration');
 //                 $data = DB::table('learner_schedule')->insert($data);
 
-                 DB::insert('insert into learner_schedule (status_id,subject_id,level_id,user_id) VALUES (?,?,?,?)',[1,$request->get('subject'),$request->get('level'),Auth::user()->user_id]);
+                 DB::insert('insert into learner_schedule (status_id,subject_id,level_id,user_id,location,price_per_hour) VALUES (?,?,?,?,?,?)',[1,$request->get('subject'),$request->get('level'),Auth::user()->user_id,$request->get('location'),$request->get('price_per_hour')]);
 
                  $result = DB::table('learner_schedule')->orderBy('learner_schedule_id','desc')->take(1)->get();
                 $i = 0;
-                 foreach($request->get('duration') as $duration){
-                     DB::insert('insert into learner_schedule_time (learner_schedule_id,day_id,duration_id) VALUES (?,?,?)',[$result[0]->learner_schedule_id,$request->get('day')[$i],$duration]);
+                 foreach($request->get('day') as $day){
+                     DB::insert('insert into learner_schedule_time (learner_schedule_id,day_id,start_time,end_time) VALUES (?,?,?,?)',[$result[0]->learner_schedule_id,$day,$request->get('start_time')[$i],$request->get('end_time')[$i]]);
                      $i++;
                  }
 
-                 return redirect(url('learnermycourse'));
+                 return redirect(url('learnercoursestatus'));
 
       }
       public function insertTutor(Request $insert){

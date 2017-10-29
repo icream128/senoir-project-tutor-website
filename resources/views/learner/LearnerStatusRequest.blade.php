@@ -3,7 +3,7 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<link rel="stylesheet" href="css/paginationtutor.css">
+<link rel="stylesheet" href="css/paginationlearner.css">
 
 <style>
     div h5 {

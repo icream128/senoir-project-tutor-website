@@ -28,7 +28,7 @@ class MyCourseController extends BaseController
         
         //header
         $tutorProfile = DB::table('user')
-        ->select(['img_profile'])
+        ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
     
         //Get data from database
@@ -36,21 +36,23 @@ class MyCourseController extends BaseController
         $day = DB::table('day')->orderBy('day_name','asc')->get();
         $level = DB::table('level')->orderBy('level_name','asc')->get();
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
-       
+
         $agreement = DB::table('agreement')
-        ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'end_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
+        ->select(['detail_lesson', 'detail_location', 'detail_transport', 'location','start_course','datetime','user_id_request','img_profile', 'firstname', 'lastname', 'subject_name', 'level_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
-        ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
+
         ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
         ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
         ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
         ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
-        ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
-        ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
-        ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
-        ->where('user_id_request', Auth::user()->user_id)
+        ->where('tutor_id', Auth::user()->user_id)
         ->whereIn('learner_schedule.status_id', [3, 5])
-        ->paginate(10);
+        ->get();
+
+        foreach ($agreement as $ls){
+            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            $ls->learnerScheduleTime = $learnerScheduleTime;
+        }
 
         //Set data to view
         $data = compact('subject', 'day','level','duration','tutorProfile' ,'agreement');
@@ -62,33 +64,41 @@ class MyCourseController extends BaseController
                 
         //header
         $learnerProfile = DB::table('user')
-        ->select(['img_profile'])
+        ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
-    
-        //Get data from database
-        $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-        $day = DB::table('day')->orderBy('day_name','asc')->get();
-        $level = DB::table('level')->orderBy('level_name','asc')->get();
-        $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
        
         $agreement = DB::table('agreement')
-        ->select(['img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'end_time', 'level_name', 'duration_name', 'day_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
+        ->select(['detail_lesson', 'detail_location', 'detail_transport', 'agreement_id', 'detail_lesson', 'user_id_request', 'img_profile', 'firstname', 'lastname', 'subject_name','location', 'start_course', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
-        ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
-        ->leftJoin('user','agreement.user_id_request','=','user.user_id')
+        ->leftJoin('user','agreement.tutor_id','=','user.user_id')
         ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
         ->leftJoin('level','learner_schedule.level_id','=','level.level_id')
-        ->leftJoin('status','learner_schedule.status_id','=','status.status_id')
-        ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
-        ->leftJoin('day','learner_schedule_time.day_id','=','day.day_id')
-        ->leftJoin('duration','learner_schedule_time.duration_id','=','duration.duration_id')
-        ->where('learner_schedule.user_id', Auth::user()->user_id)
+        ->leftJoin('status','learner_schedule.status_id','=', 'status.status_id')
+        
+        ->where('agreement.user_id_request', Auth::user()->user_id)
         ->whereIn('learner_schedule.status_id', [3, 5])
-        ->paginate(10);
+        ->get();
 
+        foreach ($agreement as $ls){
+            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            $ls->learnerScheduleTime = $learnerScheduleTime;
+        }
         //Set data to view
-        $data = compact('subject', 'day','level','duration','learnerProfile' ,'agreement');
+        $data = compact('learnerProfile' ,'agreement');
                              
         return view('learner.LearnerMyCourse',$data);
     }
+
+    public function send_course_success(Request $rq){
+        $update = DB::update('update learner_schedule set status_id = 7 where learner_schedule_id = ?',[$rq->get('learner_schedule_id')]);
+        DB::update('update agreement set end_course_date = CURRENT_TIMESTAMP where learner_schedule_id = ?',[$rq->get('learner_schedule_id')]);
+        return redirect('/learnermycourse');
+    }
+
+    public function send_course_canceled(Request $rq){
+        $update = DB::update('update learner_schedule set status_id = 6 where learner_schedule_id = ?',[$rq->get('learner_schedule_id')]);
+        DB::update('update agreement set end_course_date = CURRENT_TIMESTAMP where learner_schedule_id = ?',[$rq->get('learner_schedule_id')]);
+        return redirect('/learnermycourse');
+    }
+
 }
