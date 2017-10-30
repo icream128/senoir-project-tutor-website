@@ -129,13 +129,13 @@
 
     @section('script')
 
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="{{url('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')}}"></script>
 
-    <script src="{{ url('') }}/js/Datatables-1.10.15/media/js/jquery.dataTables.js"></script>
+    <script src="{{ url('/js/Datatables-1.10.15/media/js/jquery.dataTables.js') }}"></script>
 
-    <script src="{{ url('') }}/js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
+    <script src="{{ url('/js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js') }}"></script>
 
-    <script src="{{ url('') }}/js/creative.min.js"></script>
+    <script src="{{ url('/js/creative.min.js') }}"></script>
 
     <script>
 

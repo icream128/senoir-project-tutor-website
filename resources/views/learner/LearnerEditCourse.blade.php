@@ -223,7 +223,7 @@
         </div>
     </div>
     <br><br>
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="{{url('/vendor/jquery/jquery.min.js')}}"></script>
     <script>
         var count = 1;
         function myFunction() {

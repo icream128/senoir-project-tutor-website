@@ -160,12 +160,11 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-
-    <script src="js/Datatables-1.10.15/media/js/jquery.dataTables.js"></script>
-
-    <script src="js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
-
-    <script src="js/creative.min.js"></script>
+    <script src="{{url('/js/Datatables-1.10.15/media/js/jquery.dataTables.js')}}"></script>
+    
+    <script src="{{url('/js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js')}}"></script>
+    
+    <script src="{{url('/js/creative.min.js')}}"></script>
 
     <script>
         $(document).ready(function(){

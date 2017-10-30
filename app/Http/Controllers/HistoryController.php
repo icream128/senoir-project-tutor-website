@@ -31,7 +31,7 @@ class HistoryController extends BaseController
         ->where('user_id', Auth::user()->user_id)->first();
        
         $agreement = DB::table('agreement')
-        ->select(['detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
+        ->select(['detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'learner_schedule_time.start_time', 'learner_schedule_time.end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
         ->leftJoin('user','agreement.tutor_id','=','user.user_id')
@@ -68,7 +68,7 @@ class HistoryController extends BaseController
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
 
         $agreement = DB::table('agreement')
-            ->select(['end_course_date', 'detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'start_time', 'end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
+            ->select(['end_course_date', 'detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'learner_schedule_time.start_time', 'learner_schedule_time.end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
             ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
             ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
             ->leftJoin('user','agreement.user_id_request','=','user.user_id')

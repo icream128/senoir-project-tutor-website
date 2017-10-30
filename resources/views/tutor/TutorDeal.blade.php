@@ -141,7 +141,7 @@
 <br>
 
 
-<script type="text/javascript" src="js/stepconfirm1.js"></script>
+<script type="text/javascript" src="{{url('/js/stepconfirm1.js')}}></script>
 
 @endsection
 

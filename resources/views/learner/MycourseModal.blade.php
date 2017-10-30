@@ -73,4 +73,4 @@
                             <a class="btn btn-primary"  href="/learnercommentend&<?php echo $value->user_id_request ?>&<?php echo $value->learner_schedule_id ?>&<?php echo $value->agreement_id ?>"  style="background-color:green;color:#ffffff;">คอร์สเสร็จสิ้น</a>
                         </div> 
                         @endforeach
-                        <script src="js/StarRating.js"></script>
+                        <script src="{{url('/js/StarRating.js')}}"></script>

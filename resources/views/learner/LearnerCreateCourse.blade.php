@@ -232,12 +232,12 @@
         </div>
     </div>
     <br><br>
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <link rel="styleshee" type="text/css" href="{{ url('') }}/js/timepicker/jquery.timepicker.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ url('') }}/js/timepicker/bootstrap-datepicker.min.css" />
-    <script type="text/javascript" src="{{ url('') }}/js/timepicker/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="{{ url('') }}/js/timepicker/jquery.timepicker.min.js"></script>
-    <script type="text/javascript" src="{{ url('') }}/js/timepicker/datepair.js"></script>
+    <script src="{{ url('vendor/jquery/jquery.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="/js/timepicker/jquery.timepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/js/timepicker/bootstrap-datepicker.min.css" />
+    <script type="text/javascript" src="{{ url('/js/timepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/js/timepicker/jquery.timepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url('/js/timepicker/datepair.js') }}"></script>
     <script>
         var count = 1;
         function myFunction() {

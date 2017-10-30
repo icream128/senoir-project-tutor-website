@@ -150,3 +150,15 @@ Route::get('/register', function () {
     return view('register');
 });
 Route::post('/registersave','RegisterController@save');
+///cream
+Route::get('/learnmycourse','mycourse@indexLearner');
+Route::get('/tumycourse','mycourse@indexTutor');
+Route::get('/dealnextcourse&{agreement_id}','DealNextCourseController@NextDeal');
+Route::post('/save','DealNextCourseController@save');
+Route::get('/classbegin&{agreement_id}','StudyClassController@ClassBegin');
+Route::get('/receipt&{agreement_id}','ReceiptController@Receipt');
+Route::get('/endcourse&{agreement_id}','EndCourseController@indexLearner');
+Route::get('/endcoursesave&{agreement_id}','EndCourseController@SaveStatusLearner');
+Route::get('/cancelcourse&{agreement_id}','CancelCourseController@indexLearner');
+Route::get('/cancelcoursesave&{agreement_id}','CancelCourseController@SaveStatusLearner');
+
