@@ -166,10 +166,25 @@
     
     <script src="{{url('/js/creative.min.js')}}"></script>
 
-    <script>
-        $(document).ready(function(){
-            $('#datatable-history').DataTable();
-        });
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#datatable-history').dataTable( {
+                "oLanguage": {
+                    "sLengthMenu": "แสดง_MENU_คอร์สต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด MAX คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                }
+            } );
+        } );
     </script>
 
 @endsection
