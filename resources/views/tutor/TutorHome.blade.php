@@ -79,7 +79,7 @@
         <div class="container">
             <div class="row">
                 
-                <!-- <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px"> -->
+                <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px">
                     <!-- first line -->
                     <!-- <div class="container">
                         <div class="filter-select row">
@@ -123,23 +123,23 @@
                         </div>
                     </div> -->
                     <!-- End first line -->
-                <!-- </div> -->
+                </div>
 
 
 
-                {{--<div class="container">--}}
-                    {{--<div class="row">--}}
-                        {{--<h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <!-- <div class="container">
+                    <div class="row">
+                        <h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>
+                    </div>
+                </div>
 
-                {{--<div class="container ">--}}
-                    {{--<div class="row">--}}
-                        {{--<div id="alltags" style="margin-bottom: 10px">--}}
-                            {{--ผลลัพธ์ :--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="container ">
+                    <div class="row">
+                        <div id="alltags" style="margin-bottom: 10px">
+                            ผลลัพธ์ :
+                        </div>
+                    </div>
+                </div> -->
 
                 <div class="container">
                     <div class="row">
@@ -330,8 +330,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
             integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
             crossorigin="anonymous"></script>
-    <script src="js/Datatables-1.10.15/media/js/jquery.dataTables.js"></script>
-    <script src="js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js"></script>
+    <script src="{{url('js/Datatables-1.10.15/media/js/jquery.dataTables.js')}}"></script>
+    <script src="{{url('js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js')}}"></script>
 
     <script type="text/javascript">
         var subject_tags = [];
