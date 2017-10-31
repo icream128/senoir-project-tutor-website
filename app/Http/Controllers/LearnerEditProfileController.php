@@ -17,7 +17,7 @@ class LearnerEditProfileController extends BaseController
 {
    
     public function __construct(){
-        
+        $this->middleware('auth');
     }
 
     public function edit($user_id) {

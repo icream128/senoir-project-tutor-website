@@ -68,7 +68,7 @@ class MyCourseController extends BaseController
         ->where('user_id', Auth::user()->user_id)->first();
        
         $agreement = DB::table('agreement')
-        ->select(['detail_lesson', 'detail_location', 'detail_transport', 'agreement_id', 'detail_lesson', 'user_id_request', 'img_profile', 'firstname', 'lastname', 'subject_name','location', 'start_course', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
+        ->select(['detail_lesson', 'detail_location', 'detail_transport', 'agreement_id', 'detail_lesson', 'user_id_request', 'img_profile', 'firstname', 'lastname', 'subject_name','location', 'start_course', 'level_name','price', 'tutor_id', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('user','agreement.tutor_id','=','user.user_id')
         ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')

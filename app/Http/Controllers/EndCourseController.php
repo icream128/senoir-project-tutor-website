@@ -15,7 +15,7 @@ class EndCourseController extends BaseController
 {
    
     public function __construct(){
-     
+        $this->middleware('auth');
     }
 
     /**

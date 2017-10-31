@@ -28,18 +28,14 @@
 
     <br>
     
-    <section class="text-center">   
+    <div class="com-md-12 text-center">
         <h1>ประวัติส่วนตัว</h1>
         <center><hr></center>
+    </div>
 
-    </section>
+    <br>
 
     <div class="container">
-        
-        <div class="text-right" style="margin: 10px">
-            <a class="btn btn-xl js-scroll-trigger" style="font-size: 20px;background-color: #f05f40;color: #ffffff;" href="/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
-        </div>
-
         <div class="row">
 
         <div class="col-md-1"></div>
@@ -53,7 +49,12 @@
                     <div class="row" style="background-color:#D8D8D8;border-radius:25px;padding:20px">
                         <!-- Username and Password -->
 
-                        <div class="col-md-12 margin-naja"><h2 >บัญชีผู้ใช้</h2></div>
+                        <div class="col-md-6 margin-naja"><h2 >บัญชีผู้ใช้</h2></div>
+                        <div class="col-md-6 margin-naja text-right">
+                            <a class="btn btn-l js-scroll-trigger"
+                               style="font-size: 17px;width: 120px;font-weight: normal;background-color: #f05f40;color: #ffffff;" href="{{ url('') }}/learnereditprofile&<?php echo $learnerProfilePage->user_id ?>">แก้ไขโปรไฟล์</a>
+
+                        </div>
 
                         <div class="col-md-12 margin-naja text-center">
                             <label>รูปโปรไฟล์</label>

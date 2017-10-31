@@ -3,26 +3,22 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
-<link rel="stylesheet" href="js/Datatables-1.10.15/media/css/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="css/dataTables.bootstrap4.css">
 @section('content')
     <style>
-        .h4 h4 {
-            font-size: 1.5rem;
-        }
-        
-    
-        div h5 {
+
+       h5 {
             font-size:17px;
         }
-        
+
 
     </style>
     <br>
     
-    <section class="text-center">   
+    <div class="col-md-12 text-center">
         <h1>สถานะคอร์สที่ฉันสร้าง</h1>
         <center><hr></center>      
-    </section>
+    </div>
 
     <!-- Table -->
     <div class="container">
@@ -31,11 +27,12 @@
          
             <table class="table" id="datatable-coursestatus">
                 <thead style="background-color:#f05f40;color:#ffffff;">
-                    <th><h4>ชื่อวิชา</h4></th>
-                    <th><h4>ระดับชั้น</h4></th>
-                    <th><h4>วัน</h4></th>
-                    <th><h4>เวลา</h4></th>
-                    <th><h4></h4></th>
+                    <th><h5>ชื่อวิชา</h5></th>
+                    <th><h5>ระดับชั้น</h5></th>
+                    <th><h5>วัน</h5></th>
+                    <th><h5>เวลา</h5></th>
+                    <th><h5>วันที่สร้างคอร์ส</h5></th>
+                    <th><h5></h5></th>
                     
                 
                 </thead>
@@ -55,35 +52,40 @@
                             <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
                         @endforeach
                         </td>
-                        <td><center><a class="btn btn-primary" style="font-size:12px;background-color:#778899;width:80px;" href="{{ url('') }}/learnereditcourse&<?php echo $value->learner_schedule_id ?>">แก้ไขรายละเอียด</a>&nbsp;&nbsp;
+                        <th><h5>{{date('d-m', strtotime($value->timestamp))}}-{{date('Y', strtotime($value->timestamp))+543}}</h5></th>
+                        <td><center><a class="btn"
+                                       style="font-size:12px;background-color:#778899;color: white;width: 75px" href="{{ url('') }}/learnereditcourse&<?php echo $value->learner_schedule_id ?>">แก้ไขข้อมูล</a>&nbsp;&nbsp;
                                 @if($value->requested == 0)
-                                    <button class="btn btn-primary" onclick="checkingTutorRequest({{ $value->learner_schedule_id }})" style="font-size:12px;background-color:limegreen;cursor:pointer;width:80px;">ได้รับคำขอ </button>
+                                    <button class="btn" onclick="checkingTutorRequest({{ $value->learner_schedule_id }})"
+                                            style="font-size:12px;background-color:limegreen;cursor:pointer;width: 75px;color: white">มีคนส่งคำขอมา</button>
                                 @else
-                                    <button class="btn btn-primary" onclick="checkingTutorRequest({{ $value->learner_schedule_id }})" style="font-size:12px;background-color:#FFA500;cursor:pointer;width:80px;">ตรวจสอบคำขอ </button>
+                                    <button class="btn" onclick="checkingTutorRequest({{ $value->learner_schedule_id }})"
+                                            style="font-size:12px;background-color:#FFA500;cursor:pointer;width: 75px;color: white">ตรวจสอบคำขอ</button>
                                 @endif
-                        <a class="btn btn-primary" style="font-size:12px;background-color:#FF0000;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ลบคอร์สเรียน</a></center></td>
+                        <a class="btn" style="font-size:12px;background-color:#FF0000;color: white" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ลบคอร์ส</a></center></td>
                     </tr>
                     <!-- Modal Popup -->
                     <div id="{{$key}}" class="w3-modal">
-                        <div class="w3-modal-content w3-animate-opacity">
+                        <div class="w3-modal-content w3-animate-opacity" style="width: 500px">
                             <header class="w3-container" style="background-color:#ffffff;">
-                                <h3 style="color:#000000;margin:20px 40px">คุณต้องการลบคอร์สเรียนนี้ใช่ไหม?</h3>
-                                <span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright" style="background-color:#f05f40;">&times;</span>
+                                <h5 style="color:#000000;margin:20px 40px">คุณต้องการลบคอร์สเรียนนี้ใช่ไหม?</h5>
+                                <span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright"
+                                      style="background-color:#f05f40;color: white;font-weight: bold">X</span>
                             </header>
-                            <br><br>  
+                            <br>
                             <div class="w3-container">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-8 text-center" style="padding-bottom=10px;">
                                             <center>
-                                                <a class="btn btn-primary" style="font-size:20px;background-color:green;" href="{{ url('') }}/deletecourse&<?php echo $value->learner_schedule_id ?>">ใช่! ฉันต้องการ</a>&nbsp&nbsp
-                                                <a class="btn btn-primary" style="font-size:20px;background-color:#FF0000;" onclick="document.getElementById('{{$key}}').style.display='none'" href="#">ไม่ใช่! ฉันกดผิด</a>
+                                                <a class="btn btn-primary" style="font-size:15px;background-color:#FF0000;font-weight: normal" onclick="document.getElementById('{{$key}}').style.display='none'" href="#">ยกเลิก</a>
+                                                <a class="btn btn-primary" style="font-size:15px;background-color:green;font-weight: normal" href="{{ url('') }}/deletecourse&<?php echo $value->learner_schedule_id ?>">ยืนยัน</a>&nbsp&nbsp
                                             </center>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <br><br>  
+                            <br>
                         </div>
                     </div>
                 @endforeach
@@ -127,15 +129,15 @@
     <br><br>
 @endsection
 
-    @section('script')
+@section('script')
 
-    <script src="{{url('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <script src="{{ url('/js/Datatables-1.10.15/media/js/jquery.dataTables.js') }}"></script>
+    <script src="js/jquery.dataTables.js"></script>
 
-    <script src="{{ url('/js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js') }}"></script>
+    <script src="js/dataTables.bootstrap4.js"></script>
 
-    <script src="{{ url('/js/creative.min.js') }}"></script>
+    <script src="js/creative.min.js"></script>
 
     <script>
 
@@ -154,24 +156,39 @@
                             '<td>'+ v.age +'</td>'+
                             '<td>'+ v.school +'</td>'+
                             '<td>'+ v.grade +'</td>'+
-                            '<td><center><a href="{{ url('') }}/learnerdeal&'+ v.learner_schedule_request_id +'"><button class="btn btn-info">รายละเอียด</button></a></center></td>'+
+                            '<td><center><a href="{{ url('') }}/learnerdeal&'+ v.learner_schedule_request_id +'"><button class="btn btn-primary" style="font-size:12px;">ดูรายละเอียด</button></a></center></td>'+
                             '</tr>')
                     });
                     if(data.length == 0){
-                        $("#checking_tutor_list").append('<tr><td colspan="6" style="text-align: center">ไม่มีการส่งคำขอจากติวเตอร์</td></tr>')
+                        $("#checking_tutor_list").append('<tr><td colspan="6" style="text-align: center">ไม่มีคำขอจากติวเตอร์</td></tr>')
                     }
                     console.log(data);
                 },
                 dataType: 'json'
             });
         }
-
-        $(document).ready(function(){
-            $('#datatable-coursestatus').DataTable();
-        });
     </script>
 
-
-
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#datatable-coursestatus').dataTable( {
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ คอร์ส ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด _MAX_ คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                }, 
+                aaSorting: [[4, 'desc']]
+            } );
+        } );
+    </script>
 
 @endsection

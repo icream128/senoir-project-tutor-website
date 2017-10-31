@@ -15,7 +15,7 @@ class ProfileShortController extends BaseController
 {
    
     public function __construct(){
-        
+        $this->middleware('auth');
     }
 
     /**
@@ -24,7 +24,7 @@ class ProfileShortController extends BaseController
     * @return \Illuminate\Http\Response
     */
 
-    public function indexLearner($user_id_request) {
+    public function indexLearner($tutor_id) {
 
         //header
         $learnerProfile = DB::table('user')
@@ -35,7 +35,7 @@ class ProfileShortController extends BaseController
         $learnerProfilePage = DB::table('user')
         ->select(['user_id','img_profile', 'firstname', 'lastname', 'nickname', 'school', 'level', 'grade', 'experience', 'age', 'gender'
             ,'email','tel','address','ref_name','ref_relation','ref_tel','img_card','card_id','birthday'])
-        ->where('user_id', $user_id_request)->first();
+        ->where('user_id', $tutor_id)->first();
         
         //Set data to view
         $data = compact('learnerProfile', 'learnerProfilePage');

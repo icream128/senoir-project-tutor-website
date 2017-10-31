@@ -8,14 +8,6 @@
         font-size:17px;
     }
 
-    .pad{
-        padding-bottom:15px;
-    }
-
-    .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
-            padding-left: 0px;
-    }
-
     .btn-tutor {
         color: #fff;
         border-color: #FF8000;
@@ -36,10 +28,10 @@
 
 @section('content')
     <br>
-    <section id="services" class="text-center">   
+    <div id="services" class="col-md-12 text-center">
         <h1>แก้ไขข้อมูลส่วนตัว</h1>
         <center><hr class="btn-tutor"></center>      
-    </section>
+    </div>
     
     <div class="container">
         <div class="row">
@@ -161,12 +153,6 @@
                                     <label>เกรดเฉลี่ยสะสม</label>
                                     <input type="text" placeholder="เกรดเฉลี่ยสะสม" name="grade" class="form-control" style="border-radius:10px;" value="{{$tutorProfile->grade}}"/>
                                 </div>
-
-                                <div class="col-md-6 margin-naja">
-                                    <label>ประสบการณ์</label>
-                                    <textarea placeholder="ประสบการณ์" rows="4" id="experience" cols="50" name="experience" class="form-control"
-                                                style="border-radius:10px;">{{$tutorProfile->experience}}</textarea>
-                                </div>
                             </div>
 
                             <br>
@@ -209,32 +195,12 @@
 
 
     <br><br>
-    
-    <!-- Plugin JavaScript -->
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <strong>ชื่อ: </strong><span class="name"></span><br>
-        <strong>Email: </strong><span class="email"></span>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-primary">edit</button>
-      </div>
-    </div>
-  </div>
-</div>
 @endsection
 
+
+
 @section('script')
-        <script src="{{url('/js/jquery.validate.js')}}"></script>
+        <script src="js/jquery.validate.js"></script>
 
         <script>
         $.validator.setDefaults({
@@ -397,13 +363,6 @@
                 var born = new Date(birthdate[0],birthdate[1],birthdate[2]);
                 var birthday = new Date(now.getFullYear(), born.getMonth(), born.getDate());
                 $('input[name="age"]').val(now.getFullYear() - born.getFullYear())
-                // if(now>=birthday){
-                //     // alert(now.getFullYear() - born.getFullYear());
-                //     $('input[name="age"]').val(now.getFullYear() - born.getFullYear())
-                // }else{
-                //     $('input[name="birthday"]').val('');
-
-                // }
             })
          });
 
@@ -467,4 +426,6 @@
         }
 
         </script>
+
+
 @endsection

@@ -12,6 +12,11 @@
         font-size: 20px;
     }
 
+    label {
+        display: inline-block;
+        margin-bottom: 0rem;
+    }
+
     .margin-naja {
         margin-top:10px;
     }
@@ -34,10 +39,10 @@
 
 @section('content')
 
-    <section id="services" class="text-center">   
+    <div id="services" class="col-md-12 text-center">
         <h1>สมัครสมาชิก</h1>
         <center><hr style="border-color:#F98717;"></center>      
-    </section>
+    </div>
     
     <div class="container">
         <div class="row">
@@ -50,15 +55,17 @@
                             <!-- Username and Password -->
                             <div class="row" style="background-color:#D8D8D8;border-radius:25px;padding:20px;">
                                 <div class="col-md-12"><h2>ข้อมูลผู้ใช้</h2></div>
+
                                 <div class="col-md-6">
                                     <div class="row">
                                         <label>รูปโปรไฟล์</label>
                                         <div style="margin-top:20px;" class="text-center">
-                                            <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" style="border-radius:50%;object-position:center;object-fit: cover; margin-left:10px">
+                                            <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" >
                                             <input type="file" id="imgInp_profile" name="img_profile" style="margin-top: 8px">
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-6 margin-naja">
                                     <div class="row">
                                         <label>บัญชีผู้ใช้</label>
@@ -71,7 +78,6 @@
                                     <div class="row">
                                         <label>รหัสผ่าน</label>
                                         <input placeholder="รหัสผ่าน" name="password" id="password"  class="form-control" type="password" style="border-radius:10px;"/>
-                                        <label style="font-size: 11px;color:#ff0000 ">*ความยาวอย่างน้อย 6 ตัวอักษร</label>
                                     </div>
                                     <div class="row">
                                         <label>ยืนยันรหัสผ่าน </label>
@@ -163,7 +169,7 @@
                                                     <label>รูปบัตรประชาชน</label>
                                                 </div>
                                                 <div class="col-md-3" style="margin-top:20px;">
-                                                    <img src="" id="blah2" alt="" width="ึ80px" height="100px" style="object-position:center;object-fit: cover; margin-left:10px">
+                                                    <img src="" id="blah2" alt="" width="ึ80px" height="100px" >
 
                                                 </div>
                                                 <div class="col-md-5" style="margin-top:20px;">
@@ -204,7 +210,7 @@
 
                                 <div class="col-md-6 margin-naja tutor-only" style="display:none">
                                     <label>ประสบการณ์</label>
-                                    <textarea placeholder="ประสบการณ์" rows="4" id="experience" cols="50" name="experience" class="form-control"
+                                    <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="experience" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                 </div>
                             </div>
@@ -244,30 +250,31 @@
     <br><br>
 
     <!-- Plugin JavaScript -->
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <strong>ชื่อ: </strong><span class="name"></span><br>
-        <strong>อีเมล: </strong><span class="email"></span>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">บันทึก</button>
-        <button type="button" class="btn btn-primary">แก้ไข</button>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <strong>ชื่อ: </strong><span class="name"></span><br>
+                <strong>อีเมล: </strong><span class="email"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">บันทึก</button>
+                <button type="button" class="btn btn-primary">แก้ไข</button>
+              </div>
+            </div>
+          </div>
+        </div>
 @endsection
 
 @section('script')
-        <script src="{{url('/js/jquery.validate.js')}}"></script>
+
+        <script src="js/jquery.validate.js"></script>
 
         <script>
         $.validator.setDefaults({
@@ -325,18 +332,7 @@
                     place: {
                         required: true
                     },
-                    school: {
-                        required: true
 
-                    },
-                    level: {
-                        required: true
-
-                    },
-                    grade: {
-                        required: true
-
-                    },
                     ref_relation: {
                         required: true
 
@@ -361,9 +357,7 @@
                         required: true,
                         minlength: 13
                     },
-                    nickname: {
-                        required: true
-                    },
+
                     firstname: {
                         required: true
                     },
@@ -407,15 +401,11 @@
                         minlength: "กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก"
                     },
                     place: "กรุณากรอกที่อยู่",
-                    school: "กรุณากรอกสถานศึกษา",
-                    level: "กรุณากรอกระดับการศึกษา",
-                    grade: "กรุณากรอกเกรดเฉลี่ยสะสม",
                     ref_relation: "กรุณากรอกความสัมพันธ์กับบุคคลอ้างอิง",
                     ref_name: "กรุณากรอกชื่อบุคคลอ้างอิง",
                     ref_tel: "กรุณากรอกเบอร์โทรศัพท์บุคคลอ้างอิง",
                     gender: "กรุณาระบุเพศ",
                     birthday: "กรุณากรอกวันเดือนปีเกิด",
-                    nickname: "กรุณากรอกชื่อเล่น",
                     firstname: "กรุณากรอกชื่อจริง",
                     lastname: "กรุณากรอกนามสกุล",
                     role: "กรุณาระบุประเภทผู้ใช้"
@@ -430,13 +420,6 @@
                 var born = new Date(birthdate[0],birthdate[1],birthdate[2]);
                 var birthday = new Date(now.getFullYear(), born.getMonth(), born.getDate());
                 $('input[name="age"]').val(now.getFullYear() - born.getFullYear())
-                // if(now>=birthday){
-                //     // alert(now.getFullYear() - born.getFullYear());
-                //     $('input[name="age"]').val(now.getFullYear() - born.getFullYear())
-                // }else{
-                //     $('input[name="birthday"]').val('');
-
-                // }
             })
          });
 

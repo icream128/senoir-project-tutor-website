@@ -33,7 +33,7 @@ class CourseStatusController extends BaseController
         
         //Get data from database
         $learnerSchedule = DB::table('learner_schedule')
-        ->select(['learner_schedule_id','img_profile', 'subject_name', 'level_name', 'status_name', 'user.tel'])
+        ->select(['timestamp', 'learner_schedule_id','img_profile', 'subject_name', 'level_name', 'status_name', 'user.tel'])
         ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
         ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
         ->leftJoin('level','learner_schedule.level_id','=','level.level_id')

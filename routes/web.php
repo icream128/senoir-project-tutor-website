@@ -93,7 +93,7 @@ Route::post('/updated&{user_id}', 'LearnerEditProfileController@updated')->middl
 
 Route::get('/learnerhistory','HistoryController@indexLearner')->middleware('learner');
 
-Route::get('/learnermycourse','MycourseController@indexLearner')->middleware('learner');
+Route::get('/learnermycourse','MyCourseController@indexLearner')->middleware('learner');
 Route::post('/learner-course-success','MyCourseController@send_course_success')->middleware('learner');
 Route::post('/learner-course-canceled','MyCourseController@send_course_canceled')->middleware('learner');
 
@@ -151,6 +151,7 @@ Route::get('/register', function () {
 });
 Route::post('/registersave','RegisterController@save');
 ///cream
+
 Route::get('/learnmycourse','mycourse@indexLearner');
 Route::get('/tumycourse','mycourse@indexTutor');
 Route::get('/dealnextcourse&{agreement_id}','DealNextCourseController@NextDeal');

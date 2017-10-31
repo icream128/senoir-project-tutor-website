@@ -17,7 +17,7 @@ class LearnerEditCourseController extends BaseController
 {
    
     public function __construct(){
-        
+        $this->middleware('auth');
     }
 
     public function edit($learner_schedule_id) {

@@ -2,10 +2,8 @@
 
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<link rel="stylesheet" href="css/paginationtutor.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
-<link rel="stylesheet" href="js/Datatables-1.10.15/media/css/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="css/dataTables.bootstrap4.css">
 
 <style>
     .h4 h4 {
@@ -27,12 +25,12 @@
 
 @section('content')
 
-    <br><br><br><br><br>
+    <br>
     
-    <section class="text-center">   
+    <div class=" co-md-12 text-center">
         <h1>คอร์สที่สนใจ</h1>
         <center><hr class="btn-tutor"></center>      
-    </section>
+    </div>
 
    
     <!-- Table -->
@@ -42,10 +40,10 @@
          
           <table class="table" id="datatable-fav">
             <thead style="background-color:#FF8000;color:#ffffff;">
-              <th><h4>ชื่อวิชา</h4></th>
-              <th><h4>ระดับชั้น</h4></th>
-              <th><h4>วัน</h4></th>
-              <th><h4>เวลา</h4></th>
+              <th><h5>ชื่อวิชา</h5></th>
+              <th><h5>ระดับชั้น</h5></th>
+              <th><h5>วัน</h5></th>
+              <th><h5>เวลา</h5></th>
               
               <th></th>
               
@@ -59,17 +57,15 @@
                     <td><h5 class="day_name">{{$value->day_name}}</h5></td>
                     <td><h5 class="duration_name">{{$value->duration_name}}</h5></td>
                     <td><a class="btn btn-tutor" style="font-size:12px;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ดูรายละเอียด</a></td>
-                  <!-- <td><a href=""><h5 class="district"></h5></a></td>
-                  <td><a href=""><h5 class="amphoe"></h5></a></td>
-                  <td><a href=""><h5 class="province"></h5></a></td>
-                  <td><a href=""><h5 class="zipcode"></h5></a></td> -->
+
                 </tr>
                 
                 <!-- Modal Popup -->
                 <div id="{{$key}}" class="w3-modal">
                     <div class="w3-modal-content w3-animate-opacity" style="padding:35px 35px;">
                         <header class="w3-container w3-teal"> 
-                            <span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright">&times;</span>
+<span onclick="document.getElementById('{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright"
+      style="background-color:#f05f40;color: white;font-weight: bold">X</span>
                         </header>
                         <div class="w3-container">
                             <div class="container">
@@ -131,6 +127,7 @@
         </div>
       </div>
     </div>
+@endsection
         
     @section('script')
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -142,16 +139,31 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 
-    <script src="{{url('/js/Datatables-1.10.15/media/js/jquery.dataTables.js')}}"></script>
-    
-    <script src="{{url('/js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js')}}"></script>
-    
-    <script src="{{url('/js/creative.min.js')}}"></script>
+    <script src="js/jquery.dataTables.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            $('#datatable-fav').DataTable();
-        });
+    <script src="js/dataTables.bootstrap4.js"></script>
+
+    <script src="js/creative.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#datatable-fav').dataTable( {
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ คอร์ส ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด _MAX_ คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                }
+            } );
+        } );
     </script>
 
 @endsection

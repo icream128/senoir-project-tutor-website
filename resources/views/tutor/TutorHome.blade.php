@@ -2,21 +2,20 @@
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
-<link rel="stylesheet" href="js/Datatables-1.10.15/media/css/dataTables.bootstrap4.css">
-
-@section('content')
+<link rel="stylesheet" href="css/dataTables.bootstrap4.css">
 
 
 <style>
+
     .h4 h4 {
         font-size: 1.5rem;
     }
-    
+
 
     div h5 {
         font-size:17px;
     }
-    .rows { 
+    .rows {
         display: flex;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -31,8 +30,8 @@
 
     .btn-requested {
         color: #fff;
-        border-color: limegreen;
-        background-color: limegreen;
+        border-color: #9fcdff;
+        background-color: #79ace9;
     }
 
     .filtertitle {
@@ -44,42 +43,28 @@
         color:#999999;
     }
 
-    .page-item.active .page-link {
-        z-index: 2;
-        color: #fff;
-        background-color: #FF8000;
-        border-color: #FF8000;
+    .dataTables_length {
+        text-align: left;
     }
 
-    .page-link {
-        position: relative;
-        display: block;
-        padding: .5rem .75rem;
-        margin-left: -1px;
-        line-height: 1.25;
-        color: #000000;
-        background-color: #fff;
-        border: 1px solid #ddd;
-    }
-    div.dataTables_wrapper div.dataTables_info {
+    .dataTables_info{
         text-align: left;
     }
-    .dataTables_length{
-        text-align: left;
-    }
+
+    
 </style>
-<body>
+@section('content')
     <br>
-    <center>
-        <section class="text-center" style="padding-bottom: 0px;">
-            <h1>ค้นหาคอร์ส</h1>
+
+        <div class="col-md-12 text-center">
+            <h1>ค้นหาคอร์สที่ต้องการสอน</h1>
             <center><hr class="btn-tutor"></center>
-        </section>
+        </div>
 
         <div class="container">
             <div class="row">
                 
-                <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px">
+                <!-- <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px"> -->
                     <!-- first line -->
                     <!-- <div class="container">
                         <div class="filter-select row">
@@ -123,43 +108,44 @@
                         </div>
                     </div> -->
                     <!-- End first line -->
-                </div>
+                <!-- </div> -->
 
 
 
-                <!-- <div class="container">
-                    <div class="row">
-                        <h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>
-                    </div>
-                </div>
+                {{--<div class="container">--}}
+                    {{--<div class="row">--}}
+                        {{--<h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
-                <div class="container ">
-                    <div class="row">
-                        <div id="alltags" style="margin-bottom: 10px">
-                            ผลลัพธ์ :
-                        </div>
-                    </div>
-                </div> -->
+                {{--<div class="container ">--}}
+                    {{--<div class="row">--}}
+                        {{--<div id="alltags" style="margin-bottom: 10px">--}}
+                            {{--ผลลัพธ์ :--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 " >
+                        <div class="col-md-12 " style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;" >
 
-                            <table class="table table-striped table-bordered" cellspacing="0" width="100%"  id="showall">
+                            <table class="table" id="showall">
                                 <thead>
                                 <tr style="background-color:#FF8000;color:#ffffff;">
                                     <th>วิชา</th>
                                     <th>ระดับชั้น</th>
                                     <th>วัน</th>
                                     <th>เวลา</th>
+                                    <th>วันที่สร้างคอร์ส</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody id="body_showall">
                                     @foreach($learnerSchedule as $ls)
                                         <tr>
-                                            <td><h5 class="subject_name">{{ $ls->subject_name }}</h5></td>
-                                            <td><h5 class="level_name">{{ $ls->level_name }}</h5></td>
+                                            <td> {{ $ls->subject_name }}</td>
+                                            <td> {{ $ls->level_name }} </td>
                                             <td>
                                                 @foreach($ls->learnerScheduleTime as $lst)
                                                     <h5 class="day_name">{{$lst->day_name}}</h5>
@@ -170,16 +156,17 @@
                                                     <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
                                                 @endforeach
                                             </td>
+                                            <th><h5>{{date('d-m', strtotime($ls->timestamp))}}-{{date('Y', strtotime($ls->timestamp))+543}}</h5></th>
                                             <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
                                                 @if($ls->requested)
-                                                    <td><center><a class="btn btn-requested" style="font-size:12px;" href="{{ url('/tutorstatusrequest') }}">ส่งคำขอแล้ว</a></center></td>
+                                                    <td><center><a class="btn btn-requested" style="font-size: 13px;  width: 60px;" href="{{ url('/tutorstatusrequest') }}">ส่งคำขอแล้ว</a></center></td>
                                                 @else
-                                                    <td><center><a class="btn btn-tutor" style="font-size:12px;" href="javascript:moreDetail('{{ $ls->learner_schedule_id }}')">ดูรายละเอียด</a></center></td>
+                                                    <td><center><a class="btn btn-tutor" style="font-size: 13px;  width: 60px;" href="javascript:moreDetail('{{ $ls->learner_schedule_id }}')">ดูรายละเอียด</a></center></td>
                                                 @endif
                                             <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                                                    <td><center><a class="btn btn-tutor" style="font-size:12px;" href="javascript:filterUser()">ดูรายละเอียด</a></center></td>
+                                                    <td><center><a class="btn btn-tutor" style="font-size: 13px;  width: 60px;" href="javascript:filterUser()">ดูรายละเอียด</a></center></td>
                                             <?php } else { ?>
-                                                    <td><center><a class="btn btn-tutor" style="font-size:12px;" href="javascript:loginfirst()">ดูรายละเอียด</a></center></td>
+                                                    <td><center><a class="btn btn-tutor" style="font-size: 13px;  width: 60px;" href="javascript:loginfirst()">ดูรายละเอียด</a></center></td>
                                             <?php } ?>
                                         </tr>
                                     @endforeach
@@ -206,7 +193,6 @@
                                         <h5 id="school">ราคา/ชั่วโมง:</h5>
                                         <h5 id="level">สถานะ:</h5>
                                         <h5 id="grade">ติดต่อ:</h5>
-                                        
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -230,7 +216,7 @@
                                     <h2>ข้อมูลสำหรับติวเตอร์เท่านั้น</h2>
                                 </div>
                                 <div class="modal-footer">
-                                    <a class="btn btn-primary" style="font-size:17px;background-color:#FF8000;" href="{{ url('') }}/learnermycourse">กลับฝั่งเนอะ</a>
+                                    <a class="btn btn-primary" style="font-size:17px;background-color:#FF8000;" href="{{ url('') }}/learnermycourse">ย้อนกลับ</a>
                                 </div> 
 
                             </div>
@@ -244,6 +230,7 @@
                                     <h5 class="modal-title" id="exampleModalLabel">กรุณาเข้าสู่ระบบ</h5>
                                 </div>
                                 <div class="modal-body">
+                                    <center>
                                     <form class="form-horizontal" method="POST" action="{{ url('/modal-login') }}">
                                         {{ csrf_field() }}
 
@@ -255,8 +242,8 @@
 
                                                 @if ($errors->has('username'))
                                                     <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
+                                                        <strong>{{ $errors->first('username') }}</strong>
+                                                    </span>
                                                 @endif
                                             </div>
                                         </div>
@@ -269,8 +256,8 @@
 
                                                 @if ($errors->has('password'))
                                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
                                                 @endif
                                             </div>
                                         </div>
@@ -288,15 +275,14 @@
                                         <div class="form-group">
                                             <div class="col-md-8 col-md-offset-4">
                                             
-                                                <button type="submit" class="btn btn-tutor">
+                                                <button type="submit" class="btn btn-primary">
                                                     เข้าสู่ระบบ
                                                 </button>
-
-                                                <a class="btn btn-primary" style="font-size:14px;" href="{{url('/register')}}">สมัครสมาชิก</a>
-                                                
+                                                <a class="btn" style="font-size:14px;color: #0056b3;" href="{{url('/register')}}">สมัครสมาชิก</a>
                                             </div>
                                         </div>
                                     </form>
+                                    </center>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +297,7 @@
                     </div>
                 </section>
             </div></div>
-    </center>
+
 
 
 
@@ -320,18 +306,24 @@
 
 @section('script')
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
             integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
             crossorigin="anonymous"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
             integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
             crossorigin="anonymous"></script>
-    <script src="{{url('/js/Datatables-1.10.15/media/js/jquery.dataTables.js')}}"></script>
-    <script src="{{url('/js/Datatables-1.10.15/media/js/dataTables.bootstrap4.js')}}"></script>
+
+    <script src="js/jquery.dataTables.js"></script>
+
+    <script src="js/dataTables.bootstrap4.js"></script>
 
     <script type="text/javascript">
         var subject_tags = [];
@@ -370,15 +362,31 @@
                 cell3.innerHTML = results[i].day_name_full;
                 cell4.innerHTML = results[i].duration_name;
                 <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
                 <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
                 <?php } else { ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
                 <?php } ?>
             }
             subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
-            $("#showall").DataTable();
+            $("#showall").DataTable({
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ คอร์ส ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด _MAX_ คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                }, 
+                aaSorting: [[4, 'desc']]
+            });
         }
 
         function appendTag(textinput){
@@ -529,15 +537,31 @@
                 cell3.innerHTML = results[i].day_name_full;
                 cell4.innerHTML = results[i].duration_name;
                 <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
                 <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
                 <?php } else { ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
                 <?php } ?>
             }
             subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
-            $("#showall").DataTable();
+            $("#showall").DataTable({
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ คอร์ส ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด _MAX_ คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                }, 
+                aaSorting: [[4, 'desc']]
+            });
         }
 
         function detachTag(textinput){
@@ -644,15 +668,31 @@
                 cell3.innerHTML = results[i].day_name_full;
                 cell4.innerHTML = results[i].duration_name;
                 <?php if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 2){ ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:moreDetail(\'"+results[i].learner_schedule_id+"\')\">ดูรายละเอียด</a></center>";
                 <?php } else if(\Illuminate\Support\Facades\Auth::check() && \Illuminate\Support\Facades\Auth::user()->role_id == 1) { ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:filterUser()\">ดูรายละเอียด</a></center>";
                 <?php } else { ?>
-                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size:12px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
+                    cell5.innerHTML = "<center><a class=\"btn btn-tutor\" style=\"font-size: 13px;  width: 60px;\" href=\"javascript:loginfirst()\">ดูรายละเอียด</a></center>";
                 <?php } ?>
             }
             subjectsfound.innerHTML = "<span style=\"color:#FF8000;font-weight: bold;\">"+results.length+"</span> รายการที่ถูกพบ";
-            $("#showall").DataTable();
+            $("#showall").DataTable({
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ คอร์ส ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด _MAX_ คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                }, 
+                aaSorting: [[4, 'desc']]
+            });
         }
 
         Array.prototype.remove = function() {
@@ -703,11 +743,23 @@
                 $('#myModal').modal('show');
             });
 
-            $("#showall").DataTable();
-
-//                $('#showall').DataTable();
-
-
+            $("#showall").DataTable({
+                "oLanguage": {
+                    "sLengthMenu": "แสดง _MENU_ คอร์ส ต่อหน้า",
+                    "sZeroRecords": "ไม่เจอข้อมูลคอร์สที่ค้นหา",
+                    "sInfo": "แสดง _START_ ถึง _END_ ของ _TOTAL_ คอร์ส",
+                    "sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 เร็คคอร์ด",
+                    "sInfoFiltered": "(จากคอร์สทั้งหมด _MAX_ คอร์ส)",
+                    "sSearch": "ค้นหา :",
+                    "oPaginate": {
+                        "sFirst": "หน้าแรก",
+                        "sLast": "หน้าสุดท้าย",
+                        "sNext": "ถัดไป",
+                        "sPrevious": "กลับ"
+                    }
+                },
+                aaSorting: [[4, 'desc']]
+            });
         });
     </script>
 @endsection
