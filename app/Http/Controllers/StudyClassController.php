@@ -34,8 +34,7 @@ class StudyClassController extends BaseController
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
         ->leftJoin('user','agreement.user_id_request','=','user.user_id')
-        ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
-        ->where('learner_schedule.user_id',10)
+        ->where('agreement.user_id_request',Auth::user()->user_id)
         ->whereIn('learner_schedule.status_id', [ 3, 5])
         ->first();
         //dd($frequency);

@@ -44,7 +44,7 @@ Route::get('/tutorfav','FavouriteController@indexTutor')->middleware('tutor');
 
 Route::get('/tutorhistory','HistoryController@indexTutor')->middleware('tutor');
 
-Route::get('/tutormycourse','MycourseController@indexTutor')->middleware('tutor');
+Route::get('/tutormycourse','MyCourseController@indexTutor')->middleware('tutor');
 
 Route::get('/tutordeal', function () {
     return view('tutor.TutorDeal');
@@ -115,7 +115,6 @@ Route::get('/learnerdeal&{learner_schedule_request_id}','DealCourseController@in
 
 Route::post('/createagreement','DealCourseController@createAgreement')->middleware('learner');
 
-
 Route::get('/learnercomment', 'CommentController@indexLearner')->middleware('learner');
 
 
@@ -157,7 +156,7 @@ Route::get('/tumycourse','mycourse@indexTutor');
 Route::get('/dealnextcourse&{agreement_id}','DealNextCourseController@NextDeal');
 Route::post('/save','DealNextCourseController@save');
 Route::get('/classbegin&{agreement_id}','StudyClassController@ClassBegin');
-Route::get('/receipt&{agreement_id}','ReceiptController@Receipt');
+// Route::get('/receipt&{agreement_id}','ReceiptController@Receipt');
 Route::get('/endcourse&{agreement_id}','EndCourseController@indexLearner');
 Route::get('/endcoursesave&{agreement_id}','EndCourseController@SaveStatusLearner');
 Route::get('/cancelcourse&{agreement_id}','CancelCourseController@indexLearner');

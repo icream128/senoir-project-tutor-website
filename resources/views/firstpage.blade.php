@@ -1,5 +1,6 @@
 @extends('layout.header')
 
+@section('content')
 <style>
     .btn-student{
         color:#fff;
@@ -32,7 +33,6 @@
     body {
 
         background-image: url("/img/learner.png"), url("/img/tutor.png");
-        background-color: #000000;
         background-size: auto auto;
         background-repeat: no-repeat, no-repeat;
         background-position: left, right;
@@ -46,8 +46,6 @@
 
 </style>
 
-@section('content')
-
     <header class="masthead">
         <div class="header-content">
             <div class="header-content-inner">
@@ -57,8 +55,8 @@
                 <a style="color: #000000;font-size:25px;">หากคุณเป็น</a><a style="color: #DF0101;font-size:25px;font-weight: bold;">นักเรียน</a><a style="color: #000000;font-size:25px;">ที่ต้องการหาติวเตอร์ ให้กดปุ่ม</a><a style="color: #DF0101;font-size:25px;font-weight: bold;">"ค้นหาติวเตอร์"</a> <br>
                 <a style="color: #000000;font-size:25px;">หากคุณเป็น</a><a style="color: #FF8000;font-size:25px;font-weight: bold;">ติวเตอร์</a><a style="color: #000000;font-size:25px;">ที่ต้องการสอนพิเศษ ให้กดปุ่ม </a><a style="color: #FF8000;font-size:25px;font-weight: bold;">"ค้นหาคอร์สสอน"</a>
                 <br><br><br>
-                <a class="btn btn-student btn-xl btn-size js-scroll-trigger" href="{{ url('/learnermycourse') }}">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>
-                <a class="btn btn-tutor btn-xl btn-size js-scroll-trigger" href="{{ url('/tutorhome') }}">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
+                <a class="btn btn-student btn-l btn-size js-scroll-trigger" href="{{ url('/learnermycourse') }}">ค้นหาติวเตอร์<br>(สำหรับผู้เรียน)</a>&nbsp&nbsp&nbsp
+                <a class="btn btn-tutor btn-l btn-size js-scroll-trigger" href="{{ url('/tutorhome') }}">ค้นหาคอร์สสอน<br>(สำหรับติวเตอร์)</a>
             </div>
         </div>
     </header>

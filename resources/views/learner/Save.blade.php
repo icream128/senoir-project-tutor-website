@@ -29,25 +29,29 @@
         <h1>การเรียนในครั้งนี้และการนัดหมายครั้งต่อไป</h1>
         <center><hr></center>      
     </section>
-
     <div class="container">
         <div class="row">
-        
-            <div class="col-md-10">
-                <form action="{{ url('/learnmycourse')}}" method='get' enctype="multipart/form-data">    
-                    {{ csrf_field() }}
-                    <h2>บันทึกเรียบร้อย</h2> 
-                    <button class="btn btn-primary btn-xl js-scroll-trigger" type="submit" style="font-size: 17px;">กลับไปที่คอร์สเรียบของฉัน</button>
-                </form>  
-            </div>                          
-        </div>
-    </div>
-              
-
-            
+            <div class="col-md-1"></div>
+                
+                    <div class="col-md-10">
+                        <div class="col-md-12"  style="background-color:#D8D8D8;border-radius:25px;padding:40px;">
+                            <center>
+                                <form action="{{ url('/learnermycourse')}}" method='get' enctype="multipart/form-data">    
+                                    {{ csrf_field() }}
+                                    <h2>บันทึกเรียบร้อย</h2> <br>
+                                    <button class="btn btn-primary btn-l js-scroll-trigger" type="submit" style="font-size: 15px;font-weight: normal">กลับไปคอร์สของฉัน</button>
+                                </form> 
+                            </center>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+    
             <div class="col-md-1"></div>
         </div>
     </div>
+        
 
         
 

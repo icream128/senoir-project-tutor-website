@@ -21,7 +21,8 @@ class DealNextCourseController extends BaseController
     }
 
    
-    public function NextDeal(Request $request) {
+    public function NextDeal(Request $request)
+     {
         $learnerProfile = DB::table('user')
         ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
@@ -36,6 +37,10 @@ class DealNextCourseController extends BaseController
         return view('learner.LearnerDealNextCourse', $data);
     }
     public function save(Request $request){
+        //header
+        $learnerProfile = DB::table('user')
+        ->select(['img_profile', 'username'])
+        ->where('user_id', Auth::user()->user_id)->first();
         
         $data = array(); 
         $data['point'] = $request->star;
@@ -48,6 +53,8 @@ class DealNextCourseController extends BaseController
         $data['start_time'] = $request->start_time;
         $data['end_time'] = $request->end_time;
         DB::table('frequency')->insert($data);
+
+        $data = compact('learnerProfile');
         return view('learner.Save',$data);
 
         

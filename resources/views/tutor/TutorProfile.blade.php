@@ -31,7 +31,7 @@
 
 @section('content')
 
-    <br>
+    <br><br><br><br><br>
 
     <div class="col-md-12 text-center">
         <h1>ประวัติส่วนตัว</h1>

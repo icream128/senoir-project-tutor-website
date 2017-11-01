@@ -83,8 +83,24 @@ class MyCourseController extends BaseController
             $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
             $ls->learnerScheduleTime = $learnerScheduleTime;
         }
+
+        $frequency = DB::table('agreement')
+        ->select(['nextdeal','moredetail','study_date','comment','point','frequency.price', 'user.tel','agreement.agreement_id','frequency.start_time','frequency.end_time',])
+        ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
+        ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
+        ->leftJoin('user','agreement.user_id_request','=','user.user_id')
+        // ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+        ->where('learner_schedule.user_id', Auth::user()->user_id)
+        ->whereIn('learner_schedule.status_id', [ 3, 5])
+        ->get();
+
+        $agr = array();
+        foreach($frequency as $key => $val){
+            $agr[$val->agreement_id][] = $val;
+        }
+
         //Set data to view
-        $data = compact('learnerProfile' ,'agreement');
+        $data = compact('learnerProfile' ,'agreement', 'agr');
                              
         return view('learner.LearnerMyCourse',$data);
     }

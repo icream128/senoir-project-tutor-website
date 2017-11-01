@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="css/rating.css">
 
 <style>
+
     div h5 {
         font-size:15px;
     }
@@ -24,14 +25,15 @@
 </style>
 
 @section('content')
-
-    <section id="services" class="text-center">   
+<br>
+    <div class="col-md-12 text-center">
         <h1>การเรียนในครั้งนี้และการนัดหมายครั้งต่อไป</h1>
         <center><hr></center>      
-    </section>
-
+    </div>
+<br>
     <div class="container">
         <div class="row">
+            <div class="col-md-1"></div>
         
             <div class="col-md-10">
                 <form action="{{ url('/save')}}" method='post' enctype="multipart/form-data">    
@@ -40,87 +42,85 @@
                     <div class="col-md-12"  style="background-color:#D8D8D8;border-radius:25px;padding:10px;">
                          <div class="container">
                             <div class="row">
-                                <div class="col-md-6" style="margin-top:10px;">
+                                <div class="col-md-4" style="margin-top:20px;">
                                     <label>ราคาต่อชั่วโมง</label>
                                     <input placeholder="ราคาต่อชั่วโมง" name="price"  class="form-control" style="border-radius:10px;"/>
                                 </div>
-                                <div class="col-md-4" style="margin-top:10px;">
+                                <div class="col-md-4" style="margin-top:20px;">
                                     <label>เวลาที่เริ่ม</label>
                                     <input type="time" name="start_time" class="form-control" style="border-radius:10px;"/>   
                                 </div>
-                                <div class="col-md-4" style="margin-top:10px;">
+                                <div class="col-md-4" style="margin-top:20px;">
                                     <label>เวลาที่จบ</label>
                                     <input type="time" name="end_time" class="form-control" style="border-radius:10px;"/>   
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4" style="margin-top:10px;">
-                                    <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>   
-                                    <h4>ชั่วโมง</h4>
+                                <div class="col-md-4" style="margin-top:20px;">
+                                    <input type="text" placeholder="จำนวนชั่วโมง" name="time"  class="form-control" style="border-radius:10px;"/>
                                 </div>
-                                <div class="col-md-4" style="margin-top:10px;">
+                                <div class="col-md-2" style="margin-top:20px;">
+                                    <h4 style="font-size: 17px;padding-top: 8px;">ชั่วโมง</h4>
+                                </div>
+                                <div class="col-md-4" style="margin-top:20px;">
                                     <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>   
-                                    <h4>บาท</h4>
                                 </div>
-                            </div>
-                        </div>
-                    <div>
-           
-                    <div class="col-md-12"  style="background-color:#D8D8D8;border-radius:25px;padding:10px;">
-                         <div class="container">
-                            <div class="row">
-                                <div class="stars">
-                                    <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
-                                    <label class="star star-1" for="star-1"></label>
+                                <div class="col-md-2" style="margin-top:20px;">
+                                    <h4 style="font-size: 17px;padding-top: 8px;">บาท</h4>
                                 </div>
-                                <div class="col-md-6" style="margin-top:10px;">
-                                    <label>รายละเอียดเพิ่มเติม</label>
-                                    <textarea placeholder="รายละเอียดเพิ่มเติม" rows="4" cols="50" name="moredetail" class="form-control"
-                                                            style="border-radius:10px;"></textarea>
+                                <div class="col-md-12" style="padding-top: 30px">
+                                    <label>ให้คะแนนติวเตอร์</label>
                                 </div>
-            
-                                <div class="col-md-6" style="margin-top:10px;">
-                                    <label>วิจารณ์เกี่ยวกับการสอน</label>
-                                    <textarea placeholder="วิจารณ์เกี่ยวกับการสอน" rows="4" cols="50" name="comment" class="form-control" 
-                                                            style="border-radius:10px;"></textarea>
+                                <div class="col-md-12 text-center">
+                                     <div class="stars">
+                                         <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                                         <label class="star star-5" for="star-5"></label>
+                                         <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                                         <label class="star star-4" for="star-4"></label>
+                                         <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                                         <label class="star star-3" for="star-3"></label>
+                                         <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                                         <label class="star star-2" for="star-2"></label>
+                                         <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                                         <label class="star star-1" for="star-1"></label>
+                                     </div>
                                 </div>
-            
-                              
-                                <div class="col-md-4" style="margin-top:10px;">
-                                    <label class="fontsize">วันนัดหมายครั้งต่อไป</label>
-                                    <input type="date" name="nextdeal" class="form-control" style="border-radius:10px;"/>  
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
-                    <button   class="btn btn-primary btn-xl js-scroll-trigger" type="submit" style="font-size: 17px;">ยอมรับ</button>
-                </form>  
-            </div>                          
-        </div>
-    </div>
-              
 
-            
+                                 <div class="col-md-6" style="margin-top:20px;">
+                                     <label>รายละเอียดเพิ่มเติม</label>
+                                     <textarea placeholder="รายละเอียดเพิ่มเติม" rows="4" cols="50" name="moredetail" class="form-control"
+                                               style="border-radius:10px;"></textarea>
+                                 </div>
+
+                                 <div class="col-md-6" style="margin-top:20px;">
+                                     <label>วิจารณ์เกี่ยวกับการสอน</label>
+                                     <textarea placeholder="วิจารณ์เกี่ยวกับการสอน" rows="4" cols="50" name="comment" class="form-control"
+                                               style="border-radius:10px;"></textarea>
+                                 </div>
+
+
+                                 <div class="col-md-6" style="margin-top:20px;">
+                                     <label class="fontsize">วันนัดหมายครั้งต่อไป</label>
+                                     <input type="date" name="nextdeal" class="form-control" style="border-radius:10px;"/>
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="text-center col-md-12" style="padding-top: 20px">
+                            <button class="btn btn-primary btn-l js-scroll-trigger" type="submit" style="font-size: 17px;width:100px">ยืนยัน</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
             <div class="col-md-1"></div>
         </div>
     </div>
 
-        
-
-    <!-- Plugin JavaScript -->
-    <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
-
-    
-
+<br><br>
 @endsection
+
 @section('script')
 <script>
         var current_button = 0;

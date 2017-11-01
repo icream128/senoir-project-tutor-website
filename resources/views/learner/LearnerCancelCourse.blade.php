@@ -2,7 +2,7 @@
 
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
     div h5 {
         font-size:15px;
@@ -23,34 +23,37 @@
 </style>
 
 @section('content')
-
-    <section id="services" class="text-center">   
+<br>
+    <div id="services" class="col-md-12 text-center">
         <h1>ยกเลิกคอร์สเรียน</h1>
         <center><hr></center>      
-    </section>
-
+    </div>
+<br>
     <div class="container">
         <div class="row">
-            <div class="col-md-1"></div>
+            <div class="col-md-3"></div>
             
-            <div class="col-md-10">
+            <div class="col-md-6" style="background-color:#D8D8D8;border-radius:25px;padding:10px;">
             <form action="{{ url('/learnmycourse')}}" method='post' enctype="multipart/form-data">    
-            {{ csrf_field() }} 
-                <div class="col-md-6" style="margin-top:10px;">
+            {{ csrf_field() }}
+
+                <div class="col-md-12" style="margin-top:10px;">
                     <label>เหตุผลที่ยกเลิกการสอน</label>
-                    <textarea placeholder="เหตุผลที่ยกเลิกการสอน" rows="4" cols="50" name="comment" class="form-control" 
+                    <textarea placeholder="เหตุผลที่ยกเลิกการสอน" rows="6" cols="60" name="comment" class="form-control"
                                                             style="border-radius:10px;"></textarea>
                 </div>
+
                 <br>
-                <div class="container">     
-                    <button id="btn-save" class="btn btn-primary btn-xl js-scroll-trigger" learner_schedule_id="{{$agreement->learner_schedule_id}}" type="button" style="font-size: 17px;">ยืนยันการยกเลิกคอร์ศ</button>
+                <div class="container text-center">
+                    <button id="btn-save" class="btn btn-l js-scroll-trigger" learner_schedule_id="{{$agreement->learner_schedule_id}}" type="button"
+                            style="font-size: 17px;font-weight: normal;background-color: #f05f40;cursor: pointer;color: white">ยกเลิกคอร์ส</button>
                 </div>
                
             </form>    
             </div>
             
             
-            <div class="col-md-1"></div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 
@@ -62,6 +65,7 @@
     
 
 @endsection
+
 @section('script')
 <script>
 
