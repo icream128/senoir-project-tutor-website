@@ -50,10 +50,19 @@
     .dataTables_info{
         text-align: left;
     }
+    a:focus, a:hover {
+        color: #000000;
+    }
 
     
 </style>
 @section('content')
+    <style>
+        a:focus, a:hover {
+            color: #0056b3;
+        }
+    </style>
+
     <br>
 
         <div class="col-md-12 text-center">
@@ -63,68 +72,6 @@
 
         <div class="container">
             <div class="row">
-                
-                <!-- <div class="col-md-12" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;margin-top:35px"> -->
-                    <!-- first line -->
-                    <!-- <div class="container">
-                        <div class="filter-select row">
-
-                            <div class="col-md-3 ">
-                                <label>ชื่อวิชา</label>
-                                <select id="filterBySubject" class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;" value="choose">
-                                    @foreach($subject as $key =>$value)
-                                        <option value="subject|{{$value->subject_name}}|{{$value->subject_id}}">{{ $value->subject_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label>ระดับชั้น</label>
-                                <select id="filterByLevel"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
-                                    @foreach($level as $key =>$value)
-                                        <option value="level|{{$value->level_name}}|{{$value->level_id}}">{{$value->level_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label>วัน</label>
-                                <select id="filterByDay"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
-                                    @foreach($day as $key =>$value)
-                                        <option value="day|{{$value->day_name}}|{{$value->day_id}}">{{$value->day_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-3">
-                                <label>ช่วงเวลา</label>
-                                <select id="filterByDuration"  class="form-control" onchange="javascript:appendTag(this.value)" style="padding: 5px;">
-                                    @foreach($duration as $key =>$value)
-                                        <option value="duration|{{$value->duration_name}}|{{$value->duration_id}}">{{$value->duration_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                        </div>
-                    </div> -->
-                    <!-- End first line -->
-                <!-- </div> -->
-
-
-
-                {{--<div class="container">--}}
-                    {{--<div class="row">--}}
-                        {{--<h3 id="subjectsfound" align="left"><span style="color:#FF8000;font-weight: bold;">0</span> รายการที่ถูกพบ</h3><br><br>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-                {{--<div class="container ">--}}
-                    {{--<div class="row">--}}
-                        {{--<div id="alltags" style="margin-bottom: 10px">--}}
-                            {{--ผลลัพธ์ :--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
                 <div class="container">
                     <div class="row">

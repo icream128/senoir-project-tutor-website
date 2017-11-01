@@ -123,7 +123,7 @@
 
                                 <div class="col-md-6 marginnaja">
                                     <label>เลขบัตรประชาชน</label>
-                                    <input type="text" placeholder="เลขบัตรประชาชาน" name="card_id"  class="form-control" style="border-radius:10px;"/>
+                                    <input type="number" placeholder="เลขบัตรประชาชาน" name="card_id"  class="form-control" style="border-radius:10px;"/>
                                 </div>
 
                                 <div class="col-md-6 marginnaja">
@@ -133,7 +133,7 @@
 
                                 <div class="col-md-6 marginnaja">
                                     <label>อายุ</label>
-                                    <input type="text" placeholder="อายุ" name="age"  class="form-control" style="border-radius:10px;"/>   
+                                    <input type="number" placeholder="อายุ" name="age"  class="form-control" style="border-radius:10px;"/>   
 
                                 </div>
 
@@ -183,7 +183,7 @@
                             
                                 <div class="col-md-6 marginnaja">
                                     <label>เบอร์โทรศัพท์</label>
-                                    <input type="text" placeholder="เบอร์โทรศัพท์" name="tel"  class="form-control" style="border-radius:10px;"/>
+                                    <input type="number" placeholder="08xxxxxxxx" name="tel"  class="form-control" style="border-radius:10px;" maxlength="10"/>
                                 </div>
 
                                 <div class="col-md-6 marginnaja">
@@ -232,7 +232,7 @@
                                 
                                 <div class="col-md-6 margin-naja">
                                     <label>เบอร์โทรศัพท์</label>
-                                    <input type="text" placeholder="เบอร์โทรศัพท์" name="ref_tel" class="form-control" style="border-radius:10px;"/>
+                                    <input type="number" placeholder="08xxxxxxxx" name="ref_tel" class="form-control" style="border-radius:10px;" maxlength="10"/>
                                 </div>
                             </div>
                             <br>

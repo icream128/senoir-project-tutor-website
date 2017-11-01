@@ -10,7 +10,12 @@
        h5 {
             font-size:17px;
         }
-
+        .page-item.active .page-link {
+        z-index: 2;
+        color: #fff;
+        background-color: #f05f40;
+        border-color: #f05f40;
+    }
 
     </style>
     <br>
@@ -53,16 +58,15 @@
                         @endforeach
                         </td>
                         <th><h5>{{date('d-m', strtotime($value->timestamp))}}-{{date('Y', strtotime($value->timestamp))+543}}</h5></th>
-                        <td><center><a class="btn"
-                                       style="font-size:12px;background-color:#778899;color: white;width: 75px" href="{{ url('') }}/learnereditcourse&<?php echo $value->learner_schedule_id ?>">แก้ไขข้อมูล</a>&nbsp;&nbsp;
+                        <td><center><a class="btn" style="font-size:12px;background-color:#778899;color: white;width: 75px" href="{{ url('') }}/learnereditcourse&<?php echo $value->learner_schedule_id ?>">แก้ไขข้อมูล</a>&nbsp;
                                 @if($value->requested == 0)
                                     <button class="btn" onclick="checkingTutorRequest({{ $value->learner_schedule_id }})"
-                                            style="font-size:12px;background-color:limegreen;cursor:pointer;width: 75px;color: white">มีคนส่งคำขอมา</button>
+                                            style="font-size:12px;background-color:limegreen;cursor:pointer;width: 75px;color: white">มีคนส่งคำขอมา</button>&nbsp;
                                 @else
                                     <button class="btn" onclick="checkingTutorRequest({{ $value->learner_schedule_id }})"
-                                            style="font-size:12px;background-color:#FFA500;cursor:pointer;width: 75px;color: white">ตรวจสอบคำขอ</button>
+                                            style="font-size:12px;background-color:#FFA500;cursor:pointer;width: 75px;color: white">ตรวจสอบคำขอ</button>&nbsp;
                                 @endif
-                        <a class="btn" style="font-size:12px;background-color:#FF0000;color: white" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ลบคอร์ส</a></center></td>
+                            <a class="btn" style="font-size:12px;background-color:#FF0000;color: white" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ลบคอร์ส</a></center></td>
                     </tr>
                     <!-- Modal Popup -->
                     <div id="{{$key}}" class="w3-modal">

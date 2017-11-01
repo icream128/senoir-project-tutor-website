@@ -54,12 +54,7 @@ class TutorHomeController extends BaseController
 
             foreach ($learnerSchedule as $ls) {
                 $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?', [$ls->learner_schedule_id]);
-//            if($collection->search($ls->learner_schedule_id)){
-//                $ls->requested = 0;
-//            }else{
-//                $ls->requested = 1;
-//            }
-//            $ls->requested = $collection->search($ls->learner_schedule_id);
+
                 $ls->requested = in_array($ls->learner_schedule_id, $ls_requested);
                 $ls->learnerScheduleTime = $learnerScheduleTime;
 

@@ -144,6 +144,9 @@
         <!-- Custom scripts for this template -->
         <script src="js/creative.min.js"></script>
 
+        <!-- SweetAlert -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
         @yield('script')
         
 </body>

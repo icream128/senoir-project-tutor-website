@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.css">
 <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
 
+@section('content')
 
 <style>
     .h4 h4 {
@@ -31,9 +32,6 @@
         font-weight: bold;
     }
 </style>
-
-
-@section('content')
 
     <br><br><br><br><br>
 
@@ -78,7 +76,7 @@
                             </td>
                             <td><h5>{{date('d-m', strtotime($value->timestamp))}}-{{date('Y', strtotime($value->timestamp))+543}}</h5></td>
                             @if($value->approved_tutor == 0)
-                                <td><center><h5 class="btn-tutor" href="#" >รอการตอบรับ</h5></center></td>
+                                <td><center><h5 class="btn" style="cursor: pointer;font-weight:normal;background-color:#778899;color: #ffffff;" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">รอการตอบรับ</h5></center></td>
                             @elseif($value->approved_tutor == 1)
                                 <td><center><h5 class="btn-approved" href="{{ url('') }}/tutormycourse">คำขอถูกอนุมัติ</h5></center></td>
                             @else
@@ -97,6 +95,7 @@
                                 <div class="w3-container">
                                     <div class="container">
                                         <div class="row">
+
                                             <div class="col-lg-4 col-md-8 text-center" style="padding-bottom=10px;">
                                                 <div class="service-box">
                                                     <div class="container">
@@ -106,53 +105,95 @@
                                                 </div>
                                             </div>
                                             <br>
-                                            <div class="col-lg-2 col-md-8 text-right">
-                                                <div class="service-box">
-                                                    <h5>ชื่อ :</h5>
-                                                    <h5>วิชา :</h5>
-                                                    <h5>&nbsp</h5>
-                                                    <h5>วัน / เวลาเรียน :</h5>
-                                                    @foreach($value->learnerScheduleTime as $lst)
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <h5>&nbsp</h5>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <h5>&nbsp</h5>
-                                                            </div>
+                                            <div class="col-lg-8 col-md-8">
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>ชื่อ :</h5>
                                                         </div>
-                                                    @endforeach
-                                                    <h5>สถานที่ :</h5>
-                                                    <h5>ราคา/ชั่วโมง :</h5>
-                                                    <h5>ติดต่อ :</h5>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6 col-md-6 text-left" style="padding-left: 0px;">
-                                                <div class="service-box">
-                                                    <h5>{{$value->firstname}} {{$value->lastname}}</h5>
-                                                    <h5>{{$value->subject_name}}</h5>
-                                                    <h5>&nbsp</h5>
-                                                    @foreach($value->learnerScheduleTime as $lst)
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <h5 class="day_name">{{$lst->day_name}}</h5>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
-                                                            </div>
-
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <h5>{{$value->firstname}} {{$value->lastname}}&nbsp</h5>
                                                         </div>
-                                                    @endforeach
-                                                    <h5>&nbsp</h5>
-                                                    <h5>{{ $value->location }}</h5>
-                                                    <h5>{{$value->price_per_hour}}</h5>
-                                                    <h5>{{$value->tel}}</h5><br>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>วิชา :</h5>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <h5>{{$value->subject_name}}</h5>                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h5>&nbsp</h5>
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>วัน / เวลาเรียน :</h5>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            @foreach($value->learnerScheduleTime as $lst)
+                                                                <div class="row">
+                                                                    <div class="col-md-3">
+                                                                        <h5 class="day_name">{{$lst->day_name}}</h5>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h5>&nbsp</h5>
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>สถานที่ :</h5>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <h5>{{ $value->location }}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                                
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>ราคา/ชั่วโมง :</h5>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <h5>{{$value->price_per_hour}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>สถานะ :</h5>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <h5>{{$value->status_name}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-8">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-8 text-right">
+                                                            <h5>ติดต่อ :</h5>
+                                                        </div>
+                                                        <div class="col-lg-8 col-md-8">
+                                                            <h5>{{$value->tel}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                         
+
                                         </div>
                                     </div>
                                 </div>
+
                                 <br><br>
                             </div>
                         </div>

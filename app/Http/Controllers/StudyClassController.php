@@ -15,7 +15,7 @@ class StudyClassController extends BaseController
 {
    
     public function __construct(){
-     
+        $this->middleware('auth');
     }
 
     /**
@@ -30,12 +30,14 @@ class StudyClassController extends BaseController
         ->where('user_id', Auth::user()->user_id)->first();
 
         $frequency = DB::table('agreement')
-        ->select(['img_profile','point','agreement.start_time','agreement.end_time','firstname', 'lastname','frequency.price', 'user.tel','agreement.agreement_id'])
+        ->select(['img_profile','point','learner_schedule_time.start_time','learner_schedule_time.end_time','firstname', 'lastname','frequency.price', 'user.tel','agreement.agreement_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
         ->leftJoin('user','agreement.user_id_request','=','user.user_id')
-        ->where('agreement.user_id_request',Auth::user()->user_id)
+        ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
+        ->where('learner_schedule.user_id', Auth::user()->user_id)
         ->whereIn('learner_schedule.status_id', [ 3, 5])
+        ->where('agreement.agreement_id', $request->agreement_id)
         ->first();
         //dd($frequency);
         //Set data to view
