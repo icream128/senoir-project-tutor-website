@@ -86,7 +86,7 @@ $(document).ready(function(){
                         })
                         .then((willDelete) => {
                             if (willDelete) {
-                                window.location="/learnmycourse";
+                                window.location="/learnermycourse";
                             }
                     });
                     
