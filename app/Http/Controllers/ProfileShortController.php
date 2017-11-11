@@ -35,8 +35,47 @@ class ProfileShortController extends BaseController
         $learnerProfilePage = DB::table('user')
         ->select(['user_id','img_profile', 'firstname', 'lastname', 'nickname', 'school', 'level', 'grade', 'experience', 'age', 'gender'
             ,'email','tel','address','ref_name','ref_relation','ref_tel','img_card','card_id','birthday'])
-        ->where('user_id', $tutor_id)->first();
-        
+        ->where('user_id', $tutor_id)->get();
+
+        foreach ($learnerProfilePage as $ls){
+            $rating = DB::table('frequency')
+            ->select('point')
+            ->join('agreement', 'frequency.agreement_id' , '=', 'agreement.agreement_id')
+            ->where('agreement.tutor_id', $ls->user_id)
+            ->get();
+
+            $rating1 = DB::table('frequency')
+            ->select('point')
+            ->join('agreement', 'frequency.agreement_id' , '=', 'agreement.agreement_id')
+            ->where('agreement.tutor_id', $ls->user_id)
+            ->sum('point');
+            
+            if ($rating1 == 0) {
+                $sumnumber = 0;
+                $total = 1;
+                $avg = $sumnumber/$total;
+            } else {
+                $sumnumber = $rating->sum('point');
+                $total = $rating->count('point');
+                $avg = $sumnumber/$total;
+            }
+
+            $countrate = DB::table('frequency')
+            ->select('point')
+            ->join('agreement', 'frequency.agreement_id' , '=', 'agreement.agreement_id')
+            ->where('agreement.tutor_id', $ls->user_id)
+            ->orWhere('agreement.user_id_request', $ls->user_id)
+            ->count('point');
+            
+            
+            $ls->countrate = $countrate;
+
+            if ($avg >= 4.7) {
+                $ls->frequency = round($avg);
+            } else {
+                $ls->frequency = floor($avg);
+            }
+        }
         //Set data to view
         $data = compact('learnerProfile', 'learnerProfilePage');
         

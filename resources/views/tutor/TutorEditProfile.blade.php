@@ -51,7 +51,7 @@
                                         <center>
                                             <label>รูปโปรไฟล์</label>
                                             <div style="margin-top:20px;">
-                                                <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" value="{{$tutorProfile->img_profile}}">
+                                                <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" value="{{$tutorProfile->img_profile}}" style="object-fit: none; object-position: center; object-fit: cover;">
                                                 <input type="file" id="imgInp_profile" name="img_profile" >
                                             </div>
                                         </center>
@@ -117,7 +117,7 @@
                                                     <label>รูปบัตรประชาชน</label>
                                                 </div>
                                                 <div class="col-md-6" style="margin-top:20px;">
-                                                    <center><img src="" id="blah2" alt="" width="100px" height="100px" class="img-circle"></center>
+                                                    <center><img src="" id="blah2" alt="" height="100px" style="object-fit: none; object-position: center; object-fit: cover;"></center>
                                                 </div>
                                                 
                                                 <div class="col-md-3" style="margin-top:20px;">

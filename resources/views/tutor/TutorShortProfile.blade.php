@@ -17,16 +17,18 @@
         font-size:15px;
     }
 
-    .navbar-hight{
-        higth:50px;
+    .margin-naja {
+        margin-top:10px;
     }
-
-    .pad{
-        padding-bottom:15px;
+    .img-circle {
+        border-radius: 50%;
+    }
+    label{
+        font-size: 20px;
     }
     
     div p {
-        font-size: 1.5rem;
+        font-size:20px;
     }
     
     .btn-tutor {

@@ -91,7 +91,7 @@
                                 </div>
 
                                 <div class="col-md-6" style="margin-top:20px;">
-                                    <label>รายละเอียดเพิ่มเติม</label>
+                                    <label>รายละเอียดครั้งถัดไป</label>
                                     <textarea placeholder="รายละเอียดเพิ่มเติม" rows="4" cols="50" name="moredetail" class="form-control"
                                         style="border-radius:10px;"></textarea>
                                 </div>

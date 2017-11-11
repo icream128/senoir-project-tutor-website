@@ -31,7 +31,7 @@ Route::get('/tutorhome','TutorHomeController@index');
 // Route::post('/tutorsavecourse','CreateCourseController@insertTutor');
 Route::get('/tutorprofile', 'ProfileController@indexTutor')->middleware('tutor');
 
-Route::get('/tutorshortprofile&{user_id}', 'ProfileShortController@indexLearner');
+Route::get('/tutorshortprofile&{tutor_id}', 'ProfileShortController@indexLearner');
 
 Route::get('/tutoreditprofile&{user_id}', 'TutorEditProfileController@edit')->middleware('tutor');
 Route::post('/updatedy&{user_id}', 'TutorEditProfileController@updated')->middleware('tutor');
@@ -87,6 +87,7 @@ Route::get('/testsearch', function () {
 // Route::get('/learnerhome_datatable','LearnerHomeController@showSchedule');
 
 Route::get('/learnerprofile', 'ProfileController@indexLearner')->middleware('learner');
+Route::get('/learnershortprofile&{user_id_request}', 'ProfileShortController@indexTutor');
 
 Route::get('/learnereditprofile&{user_id}', 'LearnerEditProfileController@edit')->middleware('learner');
 Route::post('/updated&{user_id}', 'LearnerEditProfileController@updated')->middleware('learner');
@@ -148,16 +149,25 @@ Route::post('/loginsuccess','LoginController@login');
 Route::get('/login', function () {
     return view('auth.password.login');
 })->name('login');
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/register', function () {
     return view('register');
 });
 Route::post('/registersave','RegisterController@save');
+
+
+
+
+
+
 ///cream
 
 Route::post('/dealnextcourse','DealNextCourseController@NextDeal');
 Route::post('/save','DealNextCourseController@save');
+Route::get('/editdealnextcourse&{frequency_id}','EditNextDealController@editNextDeal');
+Route::post('/saveeditnextcourse&{frequency_id}','EditNextDealController@save');
 Route::get('/classbegin&{agreement_id}','StudyClassController@ClassBegin');
 Route::get('/receipt&{agreement_id}','ReceiptController@Receipt');
 Route::get('/endcourse&{agreement_id}','EndCourseController@indexLearner');

@@ -126,7 +126,7 @@
                                             <label>รูปบัตรประชาชน :</label>
                                         </div>
                                         <div class="col-md-7" style="margin-top:20px;">
-                                            <img src="{{$learnerProfilePage->img_card}}" width="150px" height="150px" class="img-circle">
+                                            <img src="{{$learnerProfilePage->img_card}}" height="150px">
                                         </div>
                                     </div>
                                 </div>

@@ -35,11 +35,11 @@
             <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-6">
                     <div class="container">
                         <div class="row">
 
-                            <div class="  col-md-6 text-center">
+                            <div class="  col-md-6">
                                 <div class="service-box">
 
                                     <h3>วิชา</h3>
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="  col-md-6 text-center">
+                            <div class="  col-md-6">
                                 <div class="service-box">
 
                                     <h3>ระดับชั้น</h3>
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
 
-                            <div class="  col-md-12 text-center">
+                            <div class="  col-md-12">
                                 <div class="service-box">
 
                                     <h3>รายละเอียดสถานที่</h3>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
 
-                            <div class="  col-md-12 text-center">
+                            <div class="  col-md-12">
                                 <div class="service-box">
 
                                     <h3>ราคา</h3>
@@ -84,7 +84,7 @@
                                     <div class="col-md-0">
                                             <div class="row">
                                                 <div class="col-md-8 text-center">
-                                                    <input type="text" placeholder="ราคาต่อชั่วโมง" name="price_per_hour" class="form-control pad1" value="{{ $learnerSchedule->price_per_hour }}">
+                                                    <input type="number" step="50" style="text-align: right" placeholder="ราคาต่อชั่วโมง" name="price_per_hour" class="form-control pad1" value="{{ $learnerSchedule->price_per_hour }}">
                                                 </div>
                                                 <div class="col-md-4 text-center">
                                                     <div class="container">
@@ -104,11 +104,11 @@
                     </div>
                 </div>
 
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-6  text-center">
                         <div>
                             <div class="row">
                                 <!-- li -->
-                                <div class="col-md-12 text-center">
+                                <div class="col-md-12">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-4 text-center">
@@ -135,7 +135,7 @@
                                     @foreach($learnerScheduleTime as $lst)
                                     <div class="row" id="addtime">
                                         <!-- li -->
-                                        <div class="col-md-12 text-center"  >
+                                        <div class="col-md-12"  >
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-4 text-center">

@@ -92,20 +92,24 @@
                                                     </thead> 
 
                                                     <tbody>
-                                                        @foreach($value->frequency as $data =>$val)
-                                                        <tr class="data-table">
-                                                            <td><h5 class="level_name">{{date('d-m', strtotime($val->create_frequency))}}-{{date('Y', strtotime($val->create_frequency))+543}}</h5></td>
-                                                            <td><h5 class="day_name">{{$val->start_time}}</h5></td>
-                                                            <td><h5 class="duration_name">{{$val->end_time}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->price}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->comment}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->moredetail}}</h5></td>
-                                                            <td><h5 class="level_name">{{date('d-m', strtotime($val->nextdeal))}}-{{date('Y', strtotime($val->nextdeal))+543}}</h5></td>
-                                                            <td>
-                                                                <x-star-rating value="{{$val->point}}" number="5"></x-star-rating>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
+                                                        @if($value->countfre == 0)
+                                                            <tr><td colspan="12" style="text-align: center">ไม่มีประวัติการสอน</td></tr>
+                                                        @else
+                                                            @foreach($value->frequency as $data =>$val)
+                                                            <tr class="data-table">
+                                                                <td><h5 class="level_name">{{date('d-m', strtotime($val->create_frequency))}}-{{date('Y', strtotime($val->create_frequency))+543}}</h5></td>
+                                                                <td><h5 class="day_name">{{$val->start_time}}</h5></td>
+                                                                <td><h5 class="duration_name">{{$val->end_time}}</h5></td>
+                                                                <td><h5 class="level_name">{{$val->price}}</h5></td>
+                                                                <td><h5 class="level_name">{{$val->comment}}</h5></td>
+                                                                <td><h5 class="level_name">{{$val->moredetail}}</h5></td>
+                                                                <td><h5 class="level_name">{{date('d-m', strtotime($val->nextdeal))}}-{{date('Y', strtotime($val->nextdeal))+543}}</h5></td>
+                                                                <td>
+                                                                    <x-star-rating value="{{$val->point}}" number="5"></x-star-rating>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        @endif
                                                     </tbody>
                                                 </table>
                             

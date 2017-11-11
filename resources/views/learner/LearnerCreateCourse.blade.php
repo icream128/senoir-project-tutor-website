@@ -35,7 +35,7 @@
                 <div class="col-md-12 rows" style="margin-top:30px;background-color:#D8D8D8;padding:20px;border-radius:25px;">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-6">
                                 <div class="container">
                                     <div class="row">
 
@@ -71,7 +71,7 @@
                                             <div class="service-box" style="text-align: left">
 
                                                 <h3>รายละเอียดสถานที่</h3>
-                                                <input type="text" placeholder="ระบุสถานที่" name="location" class="form-control pad1">
+                                                <input type="text" placeholder="ระบุสถานที่" name="location" class="form-control pad1 " required >
 
                                             </div>
                                         </div>
@@ -84,7 +84,8 @@
                                                 <div>
                                                         <div class="row">
                                                             <div class="col-md-8 ">
-                                                                <input type="text" placeholder="ราคาต่อชั่วโมง" name="price_per_hour" class="form-control pad1">
+                                                                <input type="number" required oninvalid="alert('กรุณากรอกราคาที่ต้องการ')" placeholder="ราคาต่อชั่วโมง" name="price_per_hour" class="form-control pad1"
+                                                                value="0" step="50" style="text-align: right">
                                                             </div>
                                                             <div class="col-md-4 ">
                                                                 <div class="container">
@@ -107,7 +108,7 @@
                                 <div>
                                     <div class="row">
                                         <!-- li -->
-                                        <div class="col-md-12 text-center">
+                                        <div class="col-md-12 ">
                                             <div class="container">
                                                 <div class="row">
                                                     <div class="col-md-4 text-center">
@@ -133,7 +134,7 @@
                                         <div id="time_container" class="container time_container">
                                             <div class="row" id="addtime">
                                                 <!-- li -->
-                                                <div class="col-md-12 text-center"  >
+                                                <div class="col-md-12 "  >
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col-md-4 text-center">
@@ -149,12 +150,12 @@
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <div >
-                                                                    <input id="select_starttime" type="time" name="start_time[]" class="form-control pad1">
+                                                                    <input id="select_starttime" type="time" name="start_time[]" class="form-control pad1" value="00:00">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <div >
-                                                                    <input type="time" onchange="checktime()" id="select_endtime" name="end_time[]" class="form-control pad1">
+                                                                    <input type="time" onchange="checktime()" id="select_endtime" name="end_time[]" class="form-control pad1" value="00:00">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2 text-center closebtn" id="close_btn_place" style="margin-top: -5px"></div>

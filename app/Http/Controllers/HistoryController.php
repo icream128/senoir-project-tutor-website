@@ -31,7 +31,7 @@ class HistoryController extends BaseController
         ->where('user_id', Auth::user()->user_id)->first();
        
         $agreement = DB::table('agreement')
-        ->select(['tutor_id', 'detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'learner_schedule_time.start_time', 'learner_schedule_time.end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
+        ->select(['agreement_id', 'tutor_id', 'detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'learner_schedule_time.start_time', 'learner_schedule_time.end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
         ->leftJoin('user','agreement.tutor_id','=','user.user_id')
@@ -48,6 +48,20 @@ class HistoryController extends BaseController
             $ls->learnerScheduleTime = $learnerScheduleTime;
         }
 
+        foreach ($agreement as $ls){
+            $frequency = DB::table('frequency')
+            ->select(['create_frequency', 'nextdeal','moredetail','study_date','comment','point','frequency.price', 'agreement_id', 'start_time', 'end_time',])
+            ->where('agreement_id', $ls->agreement_id)
+            ->get();
+
+            $frequency1 = DB::table('frequency')
+            ->select(['frequency_id'])
+            ->where('agreement_id', $ls->agreement_id)
+            ->count('frequency_id');
+
+            $ls->frequency = $frequency;
+            $ls->countfre = $frequency1;
+        }
         //Set data to view
         $data = compact('learnerProfile' ,'agreement');
         
@@ -68,7 +82,7 @@ class HistoryController extends BaseController
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
 
         $agreement = DB::table('agreement')
-            ->select(['end_course_date', 'detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'learner_schedule_time.start_time', 'learner_schedule_time.end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
+            ->select(['agreement_id', 'user_id_request', 'end_course_date', 'detail_lesson','location','end_course_date','img_profile', 'firstname', 'lastname', 'subject_name', 'learner_schedule_time.start_time', 'learner_schedule_time.end_time', 'level_name','price', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
             ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
             ->leftJoin('learner_schedule_time','learner_schedule.learner_schedule_id','=','learner_schedule_time.learner_schedule_id')
             ->leftJoin('user','agreement.user_id_request','=','user.user_id')
@@ -83,6 +97,21 @@ class HistoryController extends BaseController
         foreach ($agreement as $ls){
             $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
             $ls->learnerScheduleTime = $learnerScheduleTime;
+        }
+
+        foreach ($agreement as $ls){
+            $frequency = DB::table('frequency')
+            ->select(['create_frequency', 'nextdeal','moredetail','study_date','comment','point','frequency.price', 'agreement_id', 'start_time', 'end_time',])
+            ->where('agreement_id', $ls->agreement_id)
+            ->get();
+
+            $frequency1 = DB::table('frequency')
+            ->select(['frequency_id'])
+            ->where('agreement_id', $ls->agreement_id)
+            ->count('frequency_id');
+
+            $ls->frequency = $frequency;
+            $ls->countfre = $frequency1;
         }
 
         //Set data to view

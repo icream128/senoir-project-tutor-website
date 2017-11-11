@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="css/rating.css">
 <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="css/StarRating.css">
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @section('content')
 
     <style>
@@ -74,21 +76,25 @@
                             <a class="btn btn-primary" style="font-size:12px;" href="#" onclick="document.getElementById('data-{{$key}}').style.display='block'">การเรียนแต่ละครั้ง</a></center>
                             <!-- Modal Popup   สอนแต่ละครั้ง -->
                             <div id="data-{{$key}}" class="w3-modal" >
-                                <div class="w3-modal-content w3-animate-opacity" style="width: 1100px;">
+                                <div class="w3-modal-content w3-animate-opacity" style="width: 1200px;">
                                     
-                                    <header class="w3-container" style="background-color:#ffffff;">
-                                        <h3 style="color:#000000;margin:20px 40px">การสอนแต่ละครั้ง</h3>
+                                    <div class="modal-header w3-container" style="background-color:#ffffff;">
+                                        <h3 style="color:#000000;margin:20px 40px; text-align: left;">การเรียนแต่ละครั้ง</h3>
                                         <span onclick="document.getElementById('data-{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright"
                                             style="background-color:#f05f40;color: white;font-weight: bold">X</span>
-                                        </header>
+                                    </div>
 
                                     <center>
-                                    <div class="modal-body" style="width: 1000px;padding-right:45px;">
+                                    <div class="modal-body" style="width: 1100px;padding-right:45px;">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            
+                                            <h5 style="text-align: left; margin-left:15px;">เรียนไปแล้ว {{$value->countfre}} ครั้ง</h5>
+                                            <div class="col-md-12" style="overflow-y:scroll; height:300px;">
+                                                
                                                 <table class="table table-striped table-bordered" style="border-color: #000000;">
                             
                                                     <thead style="background-color:#f05f40;color:#ffffff;">
+                                                        <th><h5 style="font-size:17px;"></h5></th>
                                                         <th><h5 style="font-size:17px;">วันที่เรียน</h5></th>
                                                         <th><h5 style="font-size:17px;">เวลาเริ่ม</h5></th>
                                                         <th><h5 style="font-size:17px;">เวลาจบ</h5></th>
@@ -97,34 +103,34 @@
                                                         <th><h5 style="font-size:17px;">รายละเอียดในครั้งต่อไป</h5></th>
                                                         <th><h5 style="font-size:17px;">วันที่เรียนครั้งหน้า</h5></th>
                                                         <th><h5 style="font-size:17px;">คะแนนที่ได้</h5></th>
+                                                        <th><h5 style="font-size:17px;"></h5></th>
                                                     </thead> 
                             
                                                     <tbody>
-                                                        @foreach($agr[$value->agreement_id] as $data =>$val)
-                                                        <tr class="data-table">
-                                                            <td><h5 class="level_name">{{date('d-m', strtotime($value->start_course))}}-{{date('Y', strtotime($value->start_course))+543}}</h5></td>
-                                                            <td><h5 class="day_name">{{$val->start_time}}</h5></td>
-                                                            <td><h5 class="duration_name">{{$val->end_time}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->price}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->comment}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->moredetail}}</h5></td>
-                                                            <td><h5 class="level_name">{{$val->nextdeal}}</h5></td>
-                                                            <td>
-                                                                <div class="stars">
-                                                                    <input class="star star-5" id="{{ $data}}star-5" type="radio" name="{{ $data}}star" {{ $val->point == 5 ? "checked" : "" }} value="5"/>
-                                                                    <label class="star star-5" for="{{ $data}}star-5"></label>
-                                                                    <input class="star star-4" id="{{ $data}}star-4" type="radio" name="{{ $data}}star" {{ $val->point == 4 ? "checked" : "" }} value="4"/>
-                                                                    <label class="star star-4" for="{{ $data}}star-4"></label>
-                                                                    <input class="star star-3" id="{{ $data}}star-3" type="radio" name="{{ $data}}star" {{ $val->point == 3 ? "checked" : "" }} value="3"/>
-                                                                    <label class="star star-3" for="{{ $data}}star-3"></label>
-                                                                    <input class="star star-2" id="{{ $data}}star-2" type="radio" name="{{ $data}}star" {{ $val->point == 2 ? "checked" : "" }} value="2"/>
-                                                                    <label class="star star-2" for="{{ $data}}star-2"></label>
-                                                                    <input class="star star-1" id="{{ $data}}star-1" type="radio" name="{{ $data}}star" {{ $val->point == 1 ? "checked" : "" }} value="1"/>
-                                                                    <label class="star star-1" for="{{ $data}}star-1"></label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        @endforeach
+                                                        @if($value->countfre == 0)
+                                                            <tr><td colspan="12" style="text-align: center">ไม่มีประวัติการสอน</td></tr>
+                                                        @else
+                                                            @foreach($value->frequency as $data =>$val)
+                                                            <tr class="data-table">
+                                                                <td><h5 class="sort">{{$data+1}}</h5></td>
+                                                                <td><h5 class="level_name">{{date('d-m', strtotime($val->create_frequency))}}-{{date('Y', strtotime($val->create_frequency))+543}}</h5></td>
+                                                                <td><h5 class="day_name">{{$val->start_time}}</h5></td>
+                                                                <td><h5 class="duration_name">{{$val->end_time}}</h5></td>
+                                                                <td><h5 class="price">{{$val->price}}</h5></td>
+                                                                <td><h5 class="comment">{{$val->comment}}</h5></td>
+                                                                <td><h5 class="moredetail">{{$val->moredetail}}</h5></td>
+                                                                <td><h5 class="nextdeal">{{date('d-m', strtotime($val->nextdeal))}}-{{date('Y', strtotime($val->nextdeal))+543}}</h5></td>
+                                                                <td>
+                                                                    <x-star-rating style="pointer-events: none;" value="{{$val->point}}" number="5"></x-star-rating>
+                                                                </td>
+                                                                @if($data+1 == $value->countfre)
+                                                                    <td><a class="btn btn-primary" style="font-size:12px;" href="/editdealnextcourse&<?php echo $val->frequency_id ?>">แก้ไขเวลานัด</a></td>
+                                                                @else
+                                                                    <td><h5 class="edit"></h5></td>
+                                                                @endif
+                                                            </tr>
+                                                            @endforeach
+                                                        @endif
                                                     </tbody>
                                                 </table>
                             
@@ -135,8 +141,6 @@
                                     
                                     <div class="modal-footer">
                                         <a class="btn btn-primary btn-l js-scroll-trigger"style="font-size: 15px;" href="{{url('/classbegin&'.$value->agreement_id)}}">เรียน</a>
-                                        <a class="btn btn-primary btn-l js-scroll-trigger" style="font-size: 15px;" href="{{url('/cancelcourse&'.$value->agreement_id)}}">ยกเลิกคอร์ส</a>
-                                        <a class="btn btn-primary btn-l js-scroll-trigger" style="font-size: 15px;" href="{{url('/endcourse&'.$value->agreement_id)}}">จบคอร์ส</a>
                                     </div>
                             
                                 </div>
@@ -302,9 +306,11 @@
                                 
                                                 </div>
                                                 <div class="col-md-12" style="text-align: center; padding-top:20px;">
-                                                    <button class="btn btn-info" type="button"
-                                                            style="cursor: pointer;background-color: red;width: 100px" onclick="course_canceled({{$value->learner_schedule_id}})">ยกเลิกคอร์ส</button>
-                                                    <button class="btn btn-primary" type="button" style="cursor: pointer;background-color: green;width: 100px" onclick="course_success({{$value->learner_schedule_id}})">จบคอร์ส</button>
+                                                    <a class="btn btn-info" style="cursor: pointer;background-color: red;width: 100px;" href="{{url('/cancelcourse&'.$value->agreement_id)}}">ยกเลิกคอร์ส</a>
+                                                    <a class="btn btn-primary" style="cursor: pointer;background-color: green;width: 100px;" href="{{url('/endcourse&'.$value->agreement_id)}}">จบคอร์ส</a>
+                                                    <!-- <button class="btn btn-info" type="button"
+                                                    style="cursor: pointer;background-color: red;width: 100px" onclick="course_canceled({{$value->learner_schedule_id}})">ยกเลิกคอร์ส</button> -->
+                                                    <!-- <button class="btn btn-primary" type="button" style="cursor: pointer;background-color: green;width: 100px" onclick="course_success({{$value->learner_schedule_id}})">จบคอร์ส</button> -->
                                                 </div>
 
                                             </div>
@@ -356,7 +362,7 @@
 
     <script src="js/creative.min.js"></script>
 
-
+    <script src="js/StarRating.js"></script>
 
     <script>
 
@@ -371,6 +377,18 @@
         }
 
     </script>
+
+    <script>
+        $("#rate").click( function(){
+            return false;
+        });
+    </script>
+    <script>
+function myFunction() {
+    document.getElementById("myText").readOnly = true;
+}
+</script>
+
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {

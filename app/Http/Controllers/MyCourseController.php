@@ -38,7 +38,7 @@ class MyCourseController extends BaseController
         $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
 
         $agreement = DB::table('agreement')
-        ->select(['tutor_id', 'agreement.agreement_id', 'detail_lesson', 'detail_location', 'detail_transport', 'location','start_course','datetime','user_id_request','img_profile', 'firstname', 'lastname', 'subject_name', 'level_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
+        ->select(['user_id_request', 'tutor_id', 'agreement.agreement_id', 'detail_lesson', 'detail_location', 'detail_transport', 'location','start_course','datetime','user_id_request','img_profile', 'firstname', 'lastname', 'subject_name', 'level_name','price', 'status_name', 'user.tel','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
 
         ->leftJoin('user','learner_schedule.user_id','=','user.user_id')
@@ -54,18 +54,19 @@ class MyCourseController extends BaseController
             $ls->learnerScheduleTime = $learnerScheduleTime;
         }
 
-        $frequency = DB::table('agreement')
-        ->select(['nextdeal','moredetail','study_date','comment','point','frequency.price', 'user.tel','agreement.agreement_id','frequency.start_time','frequency.end_time',])
-        ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
-        ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
-        ->leftJoin('user','agreement.user_id_request','=','user.user_id')
-        ->where('tutor_id', Auth::user()->user_id)
-        ->whereIn('learner_schedule.status_id', [ 3, 5])
-        ->get();
+        foreach ($agreement as $ls){
+            $frequency = DB::table('frequency')
+            ->select(['create_frequency', 'nextdeal','moredetail','study_date','comment','point','frequency.price', 'agreement_id', 'start_time', 'end_time',])
+            ->where('agreement_id', $ls->agreement_id)
+            ->get();
 
-        $agr = array();
-        foreach($frequency as $key => $val){
-            $agr[$val->agreement_id][] = $val;
+            $frequency1 = DB::table('frequency')
+            ->select(['frequency_id'])
+            ->where('agreement_id', $ls->agreement_id)
+            ->count('frequency_id');
+
+            $ls->frequency = $frequency;
+            $ls->countfre = $frequency1;
         }
 
         //Set data to view
@@ -98,20 +99,22 @@ class MyCourseController extends BaseController
             $ls->learnerScheduleTime = $learnerScheduleTime;
         }
 
-        $frequency = DB::table('agreement')
-        ->select(['nextdeal','moredetail','study_date','comment','point','frequency.price', 'user.tel','agreement.agreement_id','frequency.start_time','frequency.end_time',])
-        ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
-        ->leftJoin('frequency','agreement.agreement_id','=','frequency.agreement_id')
-        ->leftJoin('user','agreement.user_id_request','=','user.user_id')
-        ->where('learner_schedule.user_id', Auth::user()->user_id)
-        ->whereIn('learner_schedule.status_id', [ 3, 5])
-        ->get();
+        foreach ($agreement as $ls){
+            $frequency = DB::table('frequency')
+            ->select(['frequency_id', 'create_frequency', 'nextdeal','moredetail','study_date','comment','point','frequency.price', 'agreement_id', 'start_time', 'end_time',])
+            ->where('agreement_id', $ls->agreement_id)
+            ->get();
 
-        $agr = array();
-        foreach($frequency as $key => $val){
-            $agr[$val->agreement_id][] = $val;
+            $frequency1 = DB::table('frequency')
+            ->select(['frequency_id'])
+            ->where('agreement_id', $ls->agreement_id)
+            ->count('frequency_id');
+
+            $ls->edit = 1;
+
+            $ls->frequency = $frequency;
+            $ls->countfre = $frequency1;
         }
-        
         //Set data to view
         $data = compact('learnerProfile' ,'agreement', 'agr');
                              

@@ -37,7 +37,13 @@ class ViewCourseController extends BaseController
             ->where('agreement_id', $ls->agreement_id)
             ->get();
 
+            $frequency1 = DB::table('frequency')
+            ->select(['frequency_id'])
+            ->where('agreement_id', $ls->agreement_id)
+            ->count('frequency_id');
+
             $ls->frequency = $frequency;
+            $ls->countfre = $frequency1;
         }
 
         foreach ($courseDetail as $ls){
@@ -49,7 +55,6 @@ class ViewCourseController extends BaseController
 
             $ls->tutor = $courseDetail1;
         }
-        
         //Set data to view
         $data = compact('adminProfile', 'courseDetail', 'agr');
 
