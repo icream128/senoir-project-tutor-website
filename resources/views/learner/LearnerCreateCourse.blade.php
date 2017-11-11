@@ -154,7 +154,7 @@
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <div >
-                                                                    <input type="time" id="select_endtime" name="end_time[]" class="form-control pad1">
+                                                                    <input type="time" onchange="checktime()" id="select_endtime" name="end_time[]" class="form-control pad1">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-2 text-center closebtn" id="close_btn_place" style="margin-top: -5px"></div>
@@ -187,6 +187,7 @@
     <script>
         var count = 1;
         function myFunction() {
+            
             var addtime = $("#addtime").clone().attr('id','addtime'+count).appendTo('.time_container');
             var close = document.createElement("SPAN");
             close.setAttribute("id", "close" + count);
@@ -201,9 +202,22 @@
                 'showDuration': true,
                 'timeFormat': 'g:ia'
             });
+            
         }
         function noDis(x){
             $("#addtime"+x).remove();
         }
+
+        function checktime() {
+            var start = document.getElementById("select_starttime").value;
+            var end = document.getElementById("select_endtime").value;
+            if(start>end){
+                alert ("เวลาเริ่ม(" + start + ") มากกว่า เวลาจบ(" + end + ") ไม่สามารถเพิ่มคอร์สได้");
+            }
+        }
+
     </script>
+
+
+
 @endsection

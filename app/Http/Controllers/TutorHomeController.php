@@ -59,7 +59,7 @@ class TutorHomeController extends BaseController
                 $ls->learnerScheduleTime = $learnerScheduleTime;
 
             }
-
+            
 
             //Set data to view
             $data = compact('subject', 'day', 'level', 'duration', 'tutorProfile', 'learnerSchedule', 'ls_requested', 'learnerScheduleRequest');

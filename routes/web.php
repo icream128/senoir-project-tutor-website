@@ -119,7 +119,12 @@ Route::get('/learnercomment', 'CommentController@indexLearner')->middleware('lea
 
 
 
+//admin
+Route::get('/viewuser','ViewUserController@index');
+Route::get('/updatestop&{user_id}','ViewUserController@updatestop');
+Route::get('/updatepass&{user_id}','ViewUserController@updatepass');
 
+Route::get('/viewcourse','ViewCourseController@index');
 
 
 
@@ -151,7 +156,6 @@ Route::get('/register', function () {
 Route::post('/registersave','RegisterController@save');
 ///cream
 
-Route::get('/tumycourse','mycourse@indexTutor');
 Route::post('/dealnextcourse','DealNextCourseController@NextDeal');
 Route::post('/save','DealNextCourseController@save');
 Route::get('/classbegin&{agreement_id}','StudyClassController@ClassBegin');

@@ -134,6 +134,7 @@
                                     <div class="service-box" align="left">
                                         <h5 id="name">ชื่อ:</h5>
                                         <h5 id="nickname">ชื่อเล่น:</h5>
+                                        <h5 id="subject">วิชา:</h5>
                                         <h5 id="age">วัน:</h5>
                                         <h5 id="gender">เวลาเริ่ม:</h5>
                                         <h5 id="tel">สถานที่:</h5>
@@ -661,6 +662,7 @@
             var results= JSON.parse(xmlhttp2.responseText);
             document.getElementById("name").innerHTML = "ชื่อ: "+results[0].firstname+" "+results[0].lastname ;
             document.getElementById("nickname").innerHTML = "ชื่อเล่น: "+results[0].nickname ;
+            document.getElementById("subject").innerHTML = "วิชา: "+results[0].subject_name ;
             document.getElementById("age").innerHTML = "อายุ: "+results[0].age ;
             document.getElementById("gender").innerHTML = "เพศ: "+results[0].gender ;
             document.getElementById("tel").innerHTML = "เบอร์โทรศัพท์: "+results[0].tel ;

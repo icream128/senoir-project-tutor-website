@@ -37,12 +37,12 @@ class LearnerEditProfileController extends BaseController
         $file = explode('.',$_FILES['img_card']['name']);
         $file = $time.'.'.end($file);
         $path = public_path('image_card');
-        $request->file('img_card')->move($path,$file);
+        $request->file('img_card')->move($path,$file)->resize(300, 300);
 
         $file1 = explode('.',$_FILES['img_profile']['name']);
         $file1 = $time.'.'.end($file1);
         $path1 = public_path('image_profile');
-        $request->file('img_profile')->move($path1,$file1);
+        $request->file('img_profile')->move($path1,$file1)->resize(300, 300);
 
         $learnerProfile->firstname = $request->firstname;
         $learnerProfile->lastname = $request->lastname;

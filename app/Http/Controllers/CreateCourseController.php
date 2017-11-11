@@ -26,9 +26,9 @@ class CreateCourseController extends BaseController
             ->where('user_id', Auth::user()->user_id)->first();
       
         $subject = DB::table('subject')->orderBy('subject_name','asc')->get();
-        $day = DB::table('day')->orderBy('day_name','asc')->get();
-        $level = DB::table('level')->orderBy('level_name','asc')->get();
-        $duration = DB::table('duration')->orderBy('duration_name','asc')->get();
+        $day = DB::table('day')->orderBy('day_id','asc')->get();
+        $level = DB::table('level')->orderBy('level_id','asc')->get();
+        $duration = DB::table('duration')->orderBy('duration_id','asc')->get();
   
         $data = compact('subject','day','level','duration', 'learnerProfile');
 

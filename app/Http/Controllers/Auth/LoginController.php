@@ -63,13 +63,20 @@ class LoginController extends Controller
     }
 
     public function redirectTo() {
-        $userRoleId =Auth::user()->role_id;
-
-        if($userRoleId == 1){
-            return redirect('learnermycourse');
+        if(Auth::user()->status_user_id == 1){
+            $userRoleId =Auth::user()->role_id;
+            if($userRoleId == 1){
+                return redirect('learnermycourse');
+            }
+            if($userRoleId == 2){
+                return redirect('tutorhome');
+            }
+            if($userRoleId == 3){
+                return redirect('viewuser');
+            }
+        } else {
+            echo '<script>alert("คุณถูกระงับการใช้งาน");window.location = "/firstpage"</script>';
         }
-        if($userRoleId == 2){
-            return redirect('tutorhome');
-        }
+        
     }
 }

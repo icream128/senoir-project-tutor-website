@@ -1,6 +1,6 @@
 x-star-rating {
     font-family: 'Ionicons';
-    font-size: 48px;
+    font-size: 20px;
     display: inline-flex;
     cursor: pointer;
 }
@@ -8,9 +8,11 @@ x-star-rating {
 x-star-rating > .star::after {
     content: '\f4b2';
     color: #777;
+    
 }
 
 x-star-rating > .star.full::after {
-    content: '\f4b3';
+    content: '\f2fc';
     color: #fd0;
+    text-shadow: 0 0 7px #952;
 }
