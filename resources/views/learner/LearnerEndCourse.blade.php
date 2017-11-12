@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
     div h5 {
-        font-size:20px;
+        font-size:15px;
     }
 
     .navbar-hight{
@@ -36,13 +36,12 @@
             <div class="col-md-6" style="background-color:#D8D8D8;border-radius:25px;padding:10px;">
             <form action="{{ url('/learnmycourse')}}" method='post' enctype="multipart/form-data">    
             {{ csrf_field() }}
-            <div class="col-md-12" style="margin-top:10px;">
-                
-                <h5 style="padding-bottom:7px">ถ้าต้องการเรียนกับติวเตอร์ท่านนี้ในคอร์สเรียนถัดไปกรุณาใส่ข้อมูลวันที่</h5>
-                <label style="font-size: 17px">วันนัดหมายครั้งต่อไป</label>
-                    <input type="date" name="nextdeal" class="form-control" style="border-radius:10px;"/>  
+
+                <div class="col-md-12" style="margin-top:10px;">
+                    <center><h5 style="padding-bottom:7px">หากคอร์สนี้สิ้นสุดลงแล้ว กรุณายืนยันการจบคอร์ส</h5></center>
                 </div>
                 <br>
+                
                 <div class="container text-center">
                     <button id="btn-save" class="btn btn-primary btn-l js-scroll-trigger" learner_schedule_id="{{$agreement->learner_schedule_id}}" type="button"
                             style="font-size: 15px;font-weight: normal">ยืนยันการจบคอร์ส</button>
@@ -68,7 +67,7 @@
         $('#btn-save').click(function(){
             swal({
               title: "ยืนยันการจบคอร์ส",
-              text: "หากยังต้องเรียนกับติวเตอร์คนเดิมในคอร์สถัดไปกรุณากรอกวันนัดหมายครั้งต่อไป",
+           
               icon: "warning",
               buttons: true,
               dangerMode: true,

@@ -108,8 +108,23 @@
 
                                 <div class="col-md-6" style="margin-top:20px;">
                                     <label class="fontsize">วันนัดหมายครั้งต่อไป</label>
-                                    <input type="date" name="nextdeal" class="form-control" style="border-radius:10px;"/>
+                                    <input type="date" id="datefield" name="nextdeal" class="form-control" style="border-radius:10px;" min="1899-01-01"/>
                                 </div>
+                                <script>
+                                    var today = new Date();
+                                    var dd = today.getDate();
+                                    var mm = today.getMonth()+1;
+                                    var yyyy = today.getFullYear();
+                                    if(dd<10){
+                                        dd='0'+dd;
+                                    } 
+                                    if(mm<10){
+                                         mm='0'+mm;
+                                    } 
+
+                                    today = yyyy+'-'+mm+'-'+dd;
+                                    document.getElementById("datefield").setAttribute("min", today);
+                                </script>
 
                             </div>
 
@@ -161,7 +176,9 @@ function diff(start, end) {
    // alert(diff/1000);
     var price = $('input[name="price"]').val();
     price = (price/60)/60;
-    $('input[name="total"]').val(price*(diff/1000));
+    var p =price*(diff/1000);
+    var p2 = Math.round(p*4)/4;
+    $('input[name="total"]').val(p2);
     
     var date = new Date(null);
     date.setSeconds(diff/1000); // specify value for SECONDS here

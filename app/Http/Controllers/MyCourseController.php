@@ -83,9 +83,11 @@ class MyCourseController extends BaseController
         $learnerProfile = DB::table('user')
         ->select(['img_profile', 'username'])
         ->where('user_id', Auth::user()->user_id)->first();
-       
+        
+        // $num = 1;
+        
         $agreement = DB::table('agreement')
-        ->select(['detail_lesson', 'detail_location', 'detail_transport', 'agreement_id', 'detail_lesson', 'user_id_request', 'img_profile', 'firstname', 'lastname', 'subject_name','location', 'start_course', 'level_name','price', 'tutor_id', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
+        ->select(['detail_lesson', 'detail_location', 'detail_transport', 'agreement_id', 'detail_lesson', 'user_id_request', 'img_profile','learner_schedule.status_id', 'firstname', 'lastname', 'subject_name','location', 'start_course', 'level_name','price', 'tutor_id', 'status_name', 'user.tel', 'datetime','agreement.learner_schedule_id'])
         ->leftJoin('learner_schedule','agreement.learner_schedule_id','=','learner_schedule.learner_schedule_id')
         ->leftJoin('user','agreement.tutor_id','=','user.user_id')
         ->leftJoin('subject','learner_schedule.subject_id','=','subject.subject_id')
@@ -97,9 +99,10 @@ class MyCourseController extends BaseController
         ->get();
 
         foreach ($agreement as $ls){
-            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst , day d where lst.day_id = d.day_id and learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            $learnerScheduleTime = DB::select('select * from learner_schedule_time lst	join learner_schedule ls on  lst.learner_schedule_id=ls.learner_schedule_id join day d on lst.day_id = d.day_id where lst.learner_schedule_id = ?',[$ls->learner_schedule_id]);
             $ls->learnerScheduleTime = $learnerScheduleTime;
         }
+        // dd($agreement);
 
         foreach ($agreement as $ls){
             $frequency = DB::table('frequency')
@@ -111,10 +114,25 @@ class MyCourseController extends BaseController
             ->select(['frequency_id'])
             ->where('agreement_id', $ls->agreement_id)
             ->count('frequency_id');
+           
+            $frequency2 = DB::table('frequency')
+            ->select(['nextdeal'])
+            ->leftJoin('agreement','agreement.agreement_id','=', 'frequency.agreement_id')
+            ->where('agreement.learner_schedule_id', $ls->learner_schedule_id)
+            ->orderby('nextdeal','desc')
+            ->limit(1)
+            ->get();
+           
+           
+            
+            // $frequency2 = DB::select('select * from agreement a join frequency f on a.agreement_id=f.agreement_id where a.learner_schedule_id = ?',[$ls->learner_schedule_id]);
+            //                     orderby(nextdeal) 
+            //                      limit (1);
 
             $ls->frequency = $frequency;
 
             $ls->countfre = $frequency1;
+            $ls->checkDate = $frequency2;
         }
         //Set data to view
         $data = compact('learnerProfile' ,'agreement', 'agr');

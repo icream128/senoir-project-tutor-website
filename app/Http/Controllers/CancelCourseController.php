@@ -46,5 +46,6 @@ class CancelCourseController extends BaseController
                  $status = DB::table('learner_schedule')
                 ->where('learner_schedule_id',$request->agreement_id)
                 ->update(['status_id'=>7]);
+                
             }
 }

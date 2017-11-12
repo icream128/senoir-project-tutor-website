@@ -54,6 +54,10 @@
                     </thead>
 
                     <tbody id="data-table-block">
+                     <?php
+                        $count=1
+                      
+                     ?>
                     @foreach($agreement as $key =>$value)
                         <tr class="data-table">
                             <td><h5 class="tutor_name">{{$value->firstname}} {{$value->lastname}}</h5></td>
@@ -139,9 +143,6 @@
                                     </div>
                                     </center>
                                     
-                                    <div class="modal-footer">
-                                        <a class="btn btn-primary btn-l js-scroll-trigger"style="font-size: 15px;" href="{{url('/classbegin&'.$value->agreement_id)}}">เรียน</a>
-                                    </div>
                             
                                 </div>
                             </div> </td>
@@ -230,16 +231,78 @@
                                                             </div>
                                                             <div class="col-lg-8 col-md-8">
                                                                 @foreach($value->learnerScheduleTime as $lst)
-                                                                    <div class="row">
-                                                                        <div class="col-md-3">
+                                                                    @foreach($value->checkDate as $fr)
+                                                                        <?php
+                                                                            $nextdeal = $fr->nextdeal;
+                                                                            $date = DateTime::createFromFormat("Y-m-d", $nextdeal);
+                                                                            $day = $date->format("d");
+                                                                            $month = $date->format("m");
+                                                                            $year = $date->format("Y");
+                                                                            echo "<input type='hidden' id='d".$count."' value='".$day."'></input>";
+                                                                            echo "<input type='hidden' id='m".$count."' value='".$month."'></input>";
+                                                                            echo "<input type='hidden' id='y".$count."' value='".$year."'></input>";
+                                                                        ?>
+                                                                    @endforeach
+                                                                    <div class="row" >
+                                                                        <div class="col-md-4">
                                                                             <h5 class="day_name">{{$lst->day_name}}</h5>
+                                                                            <?php echo "<input type='hidden' id='day".$count."' value='".$lst->day_name."'></input>";?>
+                                                                            <?php echo "<input type='hidden' id='day".$count."' value='".$lst->learner_schedule_time_id."'></input>";?>
                                                                         </div>
+
                                                                         <div class="col-md-6">
                                                                             <h5 class="time">{{date('H:i', strtotime($lst->start_time))}}น. - {{date('H:i', strtotime($lst->end_time))}}น.</h5>
                                                                         </div>
+
+                                                                        <div class="col-md-2" style="margin-top:-6px;">
+                                                                            <?php echo "<p id='btn".$count."'></p>";?>
+                                                                        </div>
+                                                                        <?php echo "<script> var i = ".$count."</script>"; $count++;?>
+                                                                        <script>
+                                                                            var d = new Date();
+                                                                            var n = d.getDay();
+                                                                            var gd = d.getDate();
+                                                                            var gm = d.getMonth()+1;
+                                                                            var gy = d.getYear()+1900;
+
+                                                                            var day = document.getElementById("day"+i).value;
+                                                                            var d = document.getElementById("d"+i).value;
+                                                                            var m = document.getElementById("m"+i).value;
+                                                                            var y = document.getElementById("y"+i).value;
+
+                                                                            if(day=='วันอาทิตย์' && n==0 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='วันจันทร์' && n==1 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='วันอังคาร' && n==2 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='วันพุธ' && n==3 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='วันพฤหัสบดี' && n==4 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='วันศุกร์' && n==5 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='วันเสาร์' && n==6 && gd==d && gm==m && gy==y){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }if(day=='ทุกวัน'){
+                                                                                document.getElementById("btn"+i).innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เรียน</a>";
+                                                                            }
+                                                                        </script>
                                                                     </div>
                                                                 @endforeach
+                                                                <div name="firstLearn" class="col-md-6">
+                                                                    <a class='btn btn-primary btn-l js-scroll-trigger'id='{{$key}}firstStudy' style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id.'&'.$lst->learner_schedule_time_id)}}'>เริ่มเรียนครั้งแรก</a>
+                                                                </div>
+                                                                <script>
+                                                                    var status = '{{$value->status_id}}';
+                                                                    if(status == 3){
+                                                                        document.getElementById("{{$key}}firstStudy").style.display = "block";
+                                                                    }else{
+                                                                        document.getElementById("{{$key}}firstStudy").style.display = "none";
+                                                                    }
+                                                                </script>
                                                             </div>
+          
                                                         </div>
                                                     </div>
                                                     <h5>&nbsp</h5>
@@ -375,7 +438,19 @@
             $("#course_canceled_id").val(key);
             $("#course_canceled_form").submit();
         }
+        function checkTime(i) {
+            var d = new Date();
+            var n = d.getDay();
 
+            var day1 = document.getElementById("day1").value;
+            var day2 = document.getElementById("day2").value;
+            alert(day1);
+            alert(day2);
+
+            if(day == 'วันอาทิตย์'){
+                document.getElementById("btn").innerHTML = "<a class='btn btn-primary btn-l js-scroll-trigger'style='font-size: 15px;' href='{{url('/classbegin&'.$value->agreement_id)}}'>เรียน</a>";
+            }
+        }
     </script>
 
     <script>
@@ -387,6 +462,8 @@
 function myFunction() {
     document.getElementById("myText").readOnly = true;
 }
+
+
 </script>
 
 

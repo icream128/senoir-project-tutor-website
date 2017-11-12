@@ -5,7 +5,7 @@
 
 <style>
     div h5 {
-        font-size:15px;
+        font-size:20px;
     }
 
     .navbar-hight{
@@ -38,9 +38,7 @@
             {{ csrf_field() }}
 
                 <div class="col-md-12" style="margin-top:10px;">
-                    <label>เหตุผลที่ยกเลิกคอร์สนี้</label>
-                    <textarea placeholder="กรุณาใส่เหตุผลที่ยกเลิกคอร์สนี้" rows="6" cols="60" name="comment" class="form-control"
-                                                            style="border-radius:10px;"></textarea>
+                    <center><h5 style="padding-bottom:7px">หากต้องการยกเลิกคอร์สนี้ กรุณายืนยันการยกเลิกคอร์ส</h5></center>
                 </div>
 
                 <br>

@@ -38,6 +38,7 @@ class StudyClassController extends BaseController
         ->where('learner_schedule.user_id', Auth::user()->user_id)
         ->whereIn('learner_schedule.status_id', [ 3, 5])
         ->where('agreement.agreement_id', $request->agreement_id)
+        ->where('learner_schedule_time.learner_schedule_time_id', $request->learner_schedule_time_id)
         ->first();
         //dd($frequency);
         //Set data to view

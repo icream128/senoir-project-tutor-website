@@ -168,7 +168,7 @@ Route::post('/dealnextcourse','DealNextCourseController@NextDeal');
 Route::post('/save','DealNextCourseController@save');
 Route::get('/editdealnextcourse&{frequency_id}','EditNextDealController@editNextDeal');
 Route::post('/saveeditnextcourse&{frequency_id}','EditNextDealController@save');
-Route::get('/classbegin&{agreement_id}','StudyClassController@ClassBegin');
+Route::get('/classbegin&{agreement_id}&{learner_schedule_time_id}','StudyClassController@ClassBegin');
 Route::get('/receipt&{agreement_id}','ReceiptController@Receipt');
 Route::get('/endcourse&{agreement_id}','EndCourseController@indexLearner');
 Route::get('/endcoursesave&{agreement_id}','EndCourseController@SaveStatusLearner');
