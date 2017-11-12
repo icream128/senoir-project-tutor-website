@@ -32,11 +32,10 @@
 
   <style>
     body {
-        background-image: url("/img/learner.png");
-        background-size: auto;
-        background-repeat: no-repeat;
-        background-position: left;
-        background-attachment: fixed;
+        background-image: url("/img/learner.png"), url("/img/tutor.png");
+        background-size: auto auto;
+        background-repeat: no-repeat, no-repeat;
+        background-position: left, right;        
     }
     .dropdown {
         position: relative;

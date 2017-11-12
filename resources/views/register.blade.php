@@ -12,58 +12,28 @@
         font-size: 20px;
     }
 
+    label {
+        display: inline-block;
+        margin-bottom: 0rem;
+    }
+
+    .margin-naja {
+        margin-top:10px;
+    }
     .img-circle {
     border-radius: 50%;
     }
 
-    .space{
-        margin-top: 8px;
-    }
-
-
      #nickname-error,#firstname-error,#tel-error
      ,#school-error,#level-error,#grade-error,#ref_relation-error,#ref_name-error
-     ,#card_id-error,#address-error
+     ,#card_id-error,#role-error,#address-error
      ,#ref_tel-error,#gender-error ,#birthday-error
-     ,#lastname-error,#imgInp_card-error
-     ,#imgInp_profile-error
-     {
+     ,#lastname-error,#imgInp_card-error, #email-error ,#username-error,#confirm_password-error
+     ,#password-error,#lastname-error,#imgInp_profile-error, #email-error
+     ,#username-error,#confirm_password-error,#password-error {
          font-size:13px;
          color:#ff0000;
-         padding: 0px;
      }
-
-    #email-error ,#username-error,#confirm_password-error,#password-error,#role-error {
-        margin-left: 15px;
-        font-size:13px;
-        color:#ff0000;
-        padding: 0px;
-    }
-
-    .text {
-        display: block;
-        width: 200px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .center-cropped {
-        object-fit: none; /* Do not scale the image */
-        object-position: center; /* Center the image within the element */
-        object-fit: cover;
-        height: 300px;
-        width: 300px;
-        
-    }
-    .center-cropped-card {
-        object-fit: none;
-        object-position: center;
-        object-fit: cover;
-        height: 100px;
-        width: 100px;
-        
-    }
 
 </style>
 
@@ -88,53 +58,46 @@
 
                                 <div class="col-md-6">
                                     <div class="row">
-                                        <label style="padding-left: 15px;">รูปโปรไฟล์</label>
+                                        <label>รูปโปรไฟล์</label>
                                         <div style="margin-top:20px;" class="text-center">
-                                            <img src="" id="blah1" alt="" class="img-circle center-cropped " style="margin-top: 20px">
-                                            <input class="text" type="file" id="imgInp_profile" name="img_profile" style="margin-top: 8px;position: relative;">
-                                        </div>
-                                        <div class="col-md-12 text-center">
-                                            <label id="imgInp_profile-error" class="error" for="imgInp_profile"></label>
+                                            <img src="" id="blah1" alt="" width="300px" height="300px" class="img-circle" >
+                                            <input type="file" id="imgInp_profile" name="img_profile" style="margin-top: 8px">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-6" style="margin-top: 50px">
+                                <div class="col-md-6 margin-naja">
                                     <div class="row">
-                                        <label style="margin-bottom: 0px;margin-left:15px">บัญชีผู้ใช้</label>&nbsp<label style="color: red">*</label>
-                                        <input autofocus required type="text" placeholder="ชื่อสำหรับเข้าสู่ระบบ" name="username" class="form-control" style="border-radius:10px;margin-right: 15px;margin-left:15px"/>
+                                        <label>บัญชีผู้ใช้</label>
+                                        <input placeholder="ชื่อสำหรับเข้าสู่ระบบ" name="username" class="form-control" style="border-radius:10px;"/>
                                     </div>
-                                    <div class="row space">
-                                        <label style="margin-bottom: 0px;margin-left:15px">อีเมล</label>&nbsp<label style="color: red">*</label>
-                                        <input type="email" placeholder="อีเมล" name="email"  class="form-control" style="border-radius:10px;margin-right: 15px;margin-left:15px"/>
+                                    <div class="row">
+                                        <label>อีเมล</label>
+                                        <input placeholder="อีเมล" name="email"  class="form-control" style="border-radius:10px;"/>
                                     </div>
-                                    <div class="row space">
-                                        <label style="margin-bottom: 0px;margin-left:15px">รหัสผ่าน</label>&nbsp<label style="color: red">*</label>
-                                        <input placeholder="รหัสผ่าน" name="password" id="password"  class="form-control" type="password" style="border-radius:10px;margin-right: 15px;margin-left:15px"/>
+                                    <div class="row">
+                                        <label>รหัสผ่าน</label>
+                                        <input placeholder="รหัสผ่าน" name="password" id="password"  class="form-control" type="password" style="border-radius:10px;"/>
                                     </div>
-                                    <div class="row space">
-                                        <label style="margin-bottom: 0px;margin-left:15px">ยืนยันรหัสผ่าน </label>&nbsp<label style="color: red">*</label>
-                                        <input placeholder="ยืนยันรหัสผ่าน" name="confirm_password"  class="form-control" type="password" style="border-radius:10px;margin-right: 15px;margin-left:15px"/>
+                                    <div class="row">
+                                        <label>ยืนยันรหัสผ่าน </label>
+                                        <input placeholder="ยืนยันรหัสผ่าน" name="confirm_password"  class="form-control" type="password" style="border-radius:10px;"/>
                                     </div>
-                                    <div class="row space">
-                                        <label style="margin-left:15px">ประเภท</label>&nbsp<label style="color: red">*</label>
+                                    <div class="row">
+                                        <label>ประเภท</label>
                                         <div class="col-md-1" style="margin-top:26px;">
                                             <input type="radio" value="2" name="role"/>
                                         </div>
-                                        <div class="col-md-3" style="margin-top:20px;">
+                                        <div class="col-md-3" style="margin-top:20px;">        
                                             <p>ติวเตอร์</p>
                                         </div>
                                         <div class="col-md-1" style="margin-top:26px;">
                                             <input type="radio" value="1" name="role"/>
                                         </div>
-                                        <div class="col-md-3" style="margin-top:20px;">
+                                        <div class="col-md-3" style="margin-top:20px;">        
                                             <p>นักเรียน</p>
                                         </div>
-                                        <div class="col-md-2"></div>
-
-                                        <div><label id="role-error" class="error" for="role"></label></div>
                                     </div>
-
                                 </div>
                             </div>
                             
@@ -142,45 +105,45 @@
 
                             <!-- Profile -->
                             <div class="row" style="background-color:#D8D8D8;border-radius:25px;padding:20px;">
-                                <div class="col-md-12 "><h2>ข้อมูลส่วนตัว</h2></div>
-                                <div class="col-md-6 ">
-                                    <label style="margin-bottom: 0px">ชื่อจริง</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-12 marginnaja"><h2>ข้อมูลส่วนตัว</h2></div>
+                                <div class="col-md-6 marginnaja">
+                                    <label>ชื่อจริง</label>
                                     <input type="text" placeholder="ชื่อจริง" name="firstname"  class="form-control" style="border-radius:10px;"/>
                                 </div>
                             
-                                <div class="col-md-6 ">
-                                    <label style="margin-bottom: 0px">นามสกุล</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 marginnaja">
+                                    <label>นามสกุล</label>
                                     <input type="text" placeholder="นามสกุล" name="lastname"  class="form-control" style="border-radius:10px;"/>
                                 </div>
 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">ชื่อเล่น</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 marginnaja">
+                                    <label>ชื่อเล่น</label>
                                     <input type="text" placeholder="ชื่อเล่น" name="nickname"  class="form-control" style="border-radius:10px;"/> 
                                 </div>
 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">เลขบัตรประชาชน</label>&nbsp<label style="color: red">*</label>
-                                    <input type="text" pattern="[0-9]" placeholder="เลขบัตรประชาชาน" name="card_id"  class="form-control" style="border-radius:10px;"/>
+                                <div class="col-md-6 marginnaja">
+                                    <label>เลขบัตรประชาชน</label>
+                                    <input type="text" placeholder="เลขบัตรประชาชาน" name="card_id"  class="form-control" style="border-radius:10px;"/>
                                 </div>
 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">วันเดือนปีเกิด</label>&nbsp<label style="color: red">*</label>
-                                    <input type="date" name="birthday" value="2017-01-01"  class="form-control" style="border-radius:10px;"/>
+                                <div class="col-md-6 marginnaja">
+                                    <label>วันเดือนปีเกิด</label>
+                                    <input type="date" name="birthday"  class="form-control" style="border-radius:10px;"/>  
                                 </div>
 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">อายุ</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 marginnaja">
+                                    <label>อายุ</label>
                                     <input type="text" placeholder="อายุ" name="age"  class="form-control" style="border-radius:10px;"/>   
 
                                 </div>
 
-                                <div class="container space">
+                                <div class="container marginnaja">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
                                                 
                                                 <div class="col-md-2">
-                                                        <label>เพศ</label>&nbsp<label style="color: red">*</label>
+                                                        <label>เพศ</label>
                                                 </div>
                                                 <div class="col-md-1" style="margin-top:26px;">
                                                     <input type="radio" value="ผู้ชาย" name="gender"/>
@@ -197,61 +160,56 @@
                                                 </div>
 
                                                 <div class="col-md-2"></div>
-
                                             </div>
-                                            <div class="col-md-12"><label id="gender-error" class="error" for="gender"></label></div>
-
                                         </div>
-
                                 
                                         <div class="col-md-6">
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <label>รูปบัตรประชาชน</label>&nbsp<label style="color: red">*</label>
+                                                    <label>รูปบัตรประชาชน</label>
                                                 </div>
                                                 <div class="col-md-3" style="margin-top:20px;">
-                                                    <img src="" class="center-cropped-card" id="blah2" alt="" width="100px" height="100px" >
+                                                    <img src="" id="blah2" alt="" width="ึ80px" height="100px" >
 
                                                 </div>
                                                 <div class="col-md-5" style="margin-top:20px;">
-                                                    <input class="text" type="file" id="imgInp_card" name="img_card">
+                                                    <input type="file" id="imgInp_card" name="img_card">
                                                 </div>
                                             </div>
-                                            <label id="imgInp_card-error" style="margin: 0px" class="error" for="imgInp_card"></label>
-                                            <label style="font-size: 12px;color:#868e96;margin-top: 10px ">กรุณาแนบรูปบัตรประชาชนให้ตรงกับข้อมูลที่กรอก เพื่อใช้ในการตรวจสอบความถูกต้องของข้อมูล</label>
+                                            <label style="font-size: 12px;color:#868e96;margin-top:5px; ">กรุณาแนบรูปบัตรประชาชนให้ตรงกับข้อมูลที่กรอก เพื่อใช้ในการตรวจสอบความถูกต้องของข้อมูล</label>
                                         </div>
                                     </div>
                                 </div>
                             
-                                <div class="col-md-6 ">
-                                    <label style="margin-bottom: 0px">เบอร์โทรศัพท์</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 marginnaja">
+                                    <label>เบอร์โทรศัพท์</label>
                                     <input type="text" placeholder="เบอร์โทรศัพท์" name="tel"  class="form-control" style="border-radius:10px;"/>
                                 </div>
 
-                                <div class="col-md-6 ">
-                                    <label style="margin-bottom: 0px">ที่อยู่ปัจจุบัน</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 marginnaja">
+                                    <label>ที่อยู่ปัจจุบัน</label>
                                     <textarea name="address" id="address" placeholder="ที่อยู่ปัจจุบัน" rows="4" cols="50"
                                               class="form-control"
                                               style="border-radius:10px"></textarea>
                                 </div>
                                 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">สถานศึกษาปัจจุบัน</label>
+                                <div class="col-md-6 margin-naja">
+                                    <label>สถานศึกษาปัจจุบัน</label>
                                     <input type="text" placeholder="สถานศึกษาปัจจุบัน" name="school" class="form-control" style="border-radius:10px;"/>
                                 </div>
                                 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">ระดับชั้น</label>
+                                <div class="col-md-6 margin-naja">
+                                    <label>ระดับชั้น</label>
                                     <input type="text" placeholder="ระดับชั้นที่กำลังศึกษา" name="level" class="form-control" style="border-radius:10px;"/>
                                 </div>
                                 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">เกรดเฉลี่ยสะสม</label>
-                                    <input type="text" pattern=" [0-9]" placeholder="เกรดเฉลี่ยสะสม" name="grade" class="form-control" style="border-radius:10px;"/>
+                                <div class="col-md-6 marginnaja" style="margin-top:10px;">
+                                    <label>เกรดเฉลี่ยสะสม</label>
+                                    <input type="text" placeholder="เกรดเฉลี่ยสะสม" name="grade" class="form-control" style="border-radius:10px;"/>
                                 </div>
 
-                                <div class="col-md-6 tutor-only space" style="display:none">
-                                    <label style="margin-bottom: 0px">ประสบการณ์</label>
+                                <div class="col-md-6 margin-naja tutor-only" style="display:none">
+                                    <label>ประสบการณ์</label>
                                     <textarea placeholder="ประสบการณ์" rows="4" cols="50" name="experience" class="form-control"
                                                 style="border-radius:10px;"></textarea>
                                 </div>
@@ -261,19 +219,19 @@
                             
                             <!-- Reference -->
                             <div class="row" style="background-color:#D8D8D8;border-radius:25px;padding:20px;">
-                                <div class="col-md-12 "><h2>บุคคลอ้างอิงที่ติดต่อได้</h2></div>
-                                <div class="col-md-6 ">
-                                    <label style="margin-bottom: 0px">ชื่อ-นามสกุล</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-12 margin-naja"><h2>บุคคลอ้างอิงที่ติดต่อได้</h2></div>
+                                <div class="col-md-6 margin-naja">
+                                    <label>ชื่อ-นามสกุล</label>
                                     <input type="text" placeholder="ชื่อจริง-นามสกุล" name="ref_name" class="form-control" style="border-radius:10px;"/>
                                 </div>
                                 
-                                <div class="col-md-6 ">
-                                    <label style="margin-bottom: 0px">ความสัมพันธ์</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 margin-naja">
+                                    <label>ความสัมพันธ์</label>
                                     <input type="text" placeholder="ความสัมพันธ์" name="ref_relation" class="form-control" style="border-radius:10px;"/>
                                 </div>
                                 
-                                <div class="col-md-6 space">
-                                    <label style="margin-bottom: 0px">เบอร์โทรศัพท์</label>&nbsp<label style="color: red">*</label>
+                                <div class="col-md-6 margin-naja">
+                                    <label>เบอร์โทรศัพท์</label>
                                     <input type="text" placeholder="เบอร์โทรศัพท์" name="ref_tel" class="form-control" style="border-radius:10px;"/>
                                 </div>
                             </div>
@@ -289,14 +247,34 @@
     </div>
 
 
-    <br>
+    <br><br>
 
+    <!-- Plugin JavaScript -->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <strong>ชื่อ: </strong><span class="name"></span><br>
+                <strong>อีเมล: </strong><span class="email"></span>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">บันทึก</button>
+                <button type="button" class="btn btn-primary">แก้ไข</button>
+              </div>
+            </div>
+          </div>
+        </div>
 @endsection
 
 @section('script')
 
         <script src="js/jquery.validate.js"></script>
-
 
         <script>
         $.validator.setDefaults({
@@ -304,16 +282,7 @@
                 submitForm(form.id);
             }
         });
-
         $(document).ready(function(){
-
-            $.validator.addMethod(
-                "regex",
-                function(value, element, regexp) {
-                    var re = new RegExp(regexp);
-                    return this.optional(element) || re.test(value);
-                },
-            );
 
             $('input[name="role"]').click(function(){
                 if($(this).val() == '2'){
@@ -330,31 +299,23 @@
             $("#imgInp_card").change(function(){
                 readURL2(this);
             });
-
-
             $("#registerform").validate({
-
                 rules: {
                     username: {
-                        regex:/[a-zA-Z0-9]/,
-                        required: true,
-
+                        required: true
                     },
                     password: {
-                        regex:/^([A-Za-z0-9#?!@$%^&*-]).{5,}$/,
-                      //  minlength: 6,
                         required: true,
-
+                        minlength: 6
                     },
                     confirm_password: {
-                        equalTo: "#password",
                         required: true,
-
+                        minlength: 6,
+                        equalTo: "#password"
                     },
                     email: {
-                        email: true,
                         required: true,
-
+                        mail: true
                     },
                     img_card: {
                         required: true
@@ -365,9 +326,8 @@
 
                     },
                     tel: {
-                        number:true,
-                        rangelength: [9,10],
                         required: true,
+                        minlength: 9
                     },
                     place: {
                         required: true
@@ -382,9 +342,7 @@
 
                     },
                     ref_tel: {
-                        number:true,
-                        rangelength: [9,10],
-                        required: true,
+                        required: true
                     },
 
                     gender: {
@@ -396,9 +354,8 @@
                     },
 
                     card_id: {
-                        number:true,
-                        minlength: 13,
                         required: true,
+                        minlength: 13
                     },
 
                     firstname: {
@@ -416,63 +373,47 @@
                 messages: {
 
                     username: {
-                        regex:"กรุณาใช้บัญชีผู้ใช้เป็นภาษาอังกฤษ a-z, A-Z หรือตัวเลข 0-9",
                         required: "กรุณากรอกชื่อผู้ใช้"
 
                     },
                     password: {
-                        regex:"กรุณาใช้รหัสผ่านเป็นภาษาอังกฤษ a-z, A-Z, 0-9 และความยาวอย่างน้อย 6 ตัวอักษร",
                         required: "กรุณากรอกรหัสผ่าน",
-                      //  minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว"
+                        minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว"
                     },
                     confirm_password: {
-                        required: "กรุณายืนยันรหัสผ่าน",
+                        required: "กรุณากรอกยืนยันรหัสผ่าน",
+                        minlength: "รหัสผ่านต้องมีอย่างน้อย 6 ตัว",
                         equalTo: "รหัสผ่านไม่ตรงกัน"
                     },
                     email: {
                         required: "กรุณากรอกอีเมล์",
-                        email: "กรุณากรอกอีเมล์ให้ถูกต้อง"
+                        mail: "กรุณากรอกอีเมล์"
                     },
 
                     img_profile: "กรุณาเลือกรูปโปรไฟล์",
-
                     img_card: "กรุณาเลือกรูปบัตรประชาชน",
-
                     tel: {
-                        number:"กรุณากรอกเป็นตัวเลข",
                         required: "กรุณากรอกเบอร์โทรศัพท์",
-                        rangelength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
-
+                        minlength: "รหัสผ่านต้องมีอย่างน้อย 9 ตัว"
                     },
-
                     card_id: {
-                        number:"กรุณากรอกตัวเลข",
                         required: "กรุณากรอกเลขบัตรประชาชน",
-                        minlength: "กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก",
-
+                        minlength: "กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก"
                     },
-
                     place: "กรุณากรอกที่อยู่",
                     ref_relation: "กรุณากรอกความสัมพันธ์กับบุคคลอ้างอิง",
                     ref_name: "กรุณากรอกชื่อบุคคลอ้างอิง",
-
-                    ref_tel: {
-                        required: "กรุณากรอกเบอร์โทรศัพท์",
-                        rangelength: "กรุณากรอกเบอร์โทรศัพท์ให้ครบ",
-                        number:"กรุณากรอกเป็นตัวเลข"
-                    },
+                    ref_tel: "กรุณากรอกเบอร์โทรศัพท์บุคคลอ้างอิง",
                     gender: "กรุณาระบุเพศ",
-                    birthday: "กรุณาระบุวันเดือนปีเกิด",
-
+                    birthday: "กรุณากรอกวันเดือนปีเกิด",
                     firstname: "กรุณากรอกชื่อจริง",
-
                     lastname: "กรุณากรอกนามสกุล",
-
                     role: "กรุณาระบุประเภทผู้ใช้"
                 }
             });
 
             $('input[name="birthday"]').change(function(){
+                //alert($(this).val());
                 var dob = $(this).val();
                 var now = new Date();
                 var birthdate = dob.split("-");
@@ -516,7 +457,6 @@
 
             })
         }
-
         function readURL1(input) {
 
             if (input.files && input.files[0]) {
@@ -541,8 +481,8 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        </script>
 
+        </script>
 @endsection
 
 

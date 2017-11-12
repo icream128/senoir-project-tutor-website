@@ -47,29 +47,33 @@
                                 <input type="hidden" name="agreement" value="{{$agreement}}">
                                 <div class="col-md-4" style="margin-top:10px;">
                                     <label>ราคาต่อชั่วโมง</label>
-                                    <input placeholder="ราคาต่อชั่วโมง" name="price"  class="form-control" style="border-radius:10px;" value="{{$learnerProfile->price_per_hour}}"/>
+                                    <input placeholder="ราคาต่อชั่วโมง" name="price"  class="form-control" style="border-radius:10px;" value="{{$learnerProfile->price_per_hour}}" readonly="readonly"/>
                                 </div>
                                 <div class="col-md-4" style="margin-top:10px;">
                                     <label>เวลาที่เริ่ม</label>
-                                    <input type="time" name="start_time" class="form-control" style="border-radius:10px;" value="{{$start_time}}"/>   
+                                    <input type="time" name="start_time" class="form-control" style="border-radius:10px;" value="{{$start_time}}" readonly="readonly"/>   
                                 </div>
                                 <div class="col-md-4" style="margin-top:10px;">
                                     <label>เวลาที่จบ</label>
-                                    <input type="time" name="end_time" class="form-control" style="border-radius:10px;" value="{{$end_time}}"/>   
+                                    <input type="time" name="end_time" class="form-control" style="border-radius:10px;" value="{{$end_time}}" readonly="readonly"/>   
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-4" style="margin-top:10px;">
-                                    <input type="text" placeholder="จำนวนชั่วโมง" name="result"  class="form-control" style="border-radius:10px;"/> 
+                                    <label>เรียนไป</label>
+                                    <input type="text" placeholder="จำนวนชั่วโมง" name="result"  class="form-control" style="border-radius:10px;" readonly="readonly"/> 
                                 </div>
-                                <div class="col-md-2" style="margin-top:20px;">
+                                <div class="col-md-2" style="margin-top:10px;">
+                                    <label>&nbsp</label>
                                     <h4 style="font-size: 17px;padding-top: 8px;">ชั่วโมง</h4>
                                 </div>
                                 <div class="col-md-4" style="margin-top:10px;">
-                                    <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;"/>
+                                    <label>รวมทั้งสิ้น</label>
+                                    <input type="text" placeholder="จำนวนเงิน" name="total"  class="form-control" style="border-radius:10px;" readonly="readonly"/>
                                 </div>
-                                <div class="col-md-2" style="margin-top:20px;">
+                                <div class="col-md-2" style="margin-top:10px;">
+                                    <label>&nbsp</label>
                                     <h4 style="font-size: 17px;padding-top: 8px;">บาท</h4>
                                 </div>
                                 <div class="col-md-12" style="padding-top: 30px">

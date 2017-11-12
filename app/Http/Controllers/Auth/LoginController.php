@@ -50,20 +50,30 @@ class LoginController extends Controller
         $username = $req->input('username');
         $password = $req->input('password');
 
-        if(\Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password], $req->remember)){
-            return $this->redirectTo();
-        }else{
+        $check = DB::table('user')
+        ->select(['status_user_id'])
+        ->where('username', $username)
+        ->first();
+        
+        if($check->status_user_id == 1) {
+            if(\Illuminate\Support\Facades\Auth::attempt(['username'=>$username,'password'=>$password], $req->remember)){
+                return $this->redirectTo();
+            }else{
 
-            return redirect()->back()
-            ->withInput($req->only($this->username(), 'remember'))
-            ->withErrors([
-                'password' => Lang::get('auth.password'),
-            ]);
+                return redirect()->back()
+                ->withInput($req->only($this->username(), 'remember'))
+                ->withErrors([
+                    'password' => Lang::get('auth.password'),
+                ]);
+            }
+        } else {
+            echo '<script>alert("คุณถูกระงับการใช้งาน");window.location = "/login"</script>';
         }
+
     }
 
     public function redirectTo() {
-        if(Auth::user()->status_user_id == 1){
+
             $userRoleId =Auth::user()->role_id;
             if($userRoleId == 1){
                 return redirect('learnermycourse');
@@ -74,9 +84,5 @@ class LoginController extends Controller
             if($userRoleId == 3){
                 return redirect('viewuser');
             }
-        } else {
-            echo '<script>alert("คุณถูกระงับการใช้งาน");window.location = "/firstpage"</script>';
-        }
-        
     }
 }

@@ -65,7 +65,9 @@ class MyCourseController extends BaseController
             ->where('agreement_id', $ls->agreement_id)
             ->count('frequency_id');
 
+           
             $ls->frequency = $frequency;
+        
             $ls->countfre = $frequency1;
         }
 
@@ -110,9 +112,8 @@ class MyCourseController extends BaseController
             ->where('agreement_id', $ls->agreement_id)
             ->count('frequency_id');
 
-            $ls->edit = 1;
-
             $ls->frequency = $frequency;
+
             $ls->countfre = $frequency1;
         }
         //Set data to view

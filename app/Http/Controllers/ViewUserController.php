@@ -23,7 +23,7 @@ class ViewUserController extends BaseController
         ->where('user_id', Auth::user()->user_id)->first();
 
         $userProfile = DB::table('user')
-        ->select(['firstname', 'lastname', 'user_id', 'role_name', 'status_name'])
+        ->select(['firstname', 'lastname', 'user_id', 'role_name', 'status_name', 'user.status_user_id'])
         ->join('role', 'user.role_id', '=', 'role.role_id')
         ->join('status_user', 'user.status_user_id', '=', 'status_user.status_user_id')
         ->whereIn('user.role_id', [1, 2])->get();
@@ -61,7 +61,11 @@ class ViewUserController extends BaseController
             
             
             $ls->countrate = $countrate;
-            $ls->frequency = floor($avg);
+            if ($avg >= 4.5) {
+                $ls->frequency = round($avg);
+            } else {
+                $ls->frequency = floor($avg);
+            }
         }
         //Set data to view
         $data = compact('adminProfile', 'userProfile');

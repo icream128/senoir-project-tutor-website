@@ -65,16 +65,17 @@
                             <a class="btn btn-tutor" style="font-size:12px;" href="#" onclick="document.getElementById('data-{{$key}}').style.display='block'">การสอนแต่ละครั้ง</a></center>
                             <!-- Modal Popup   สอนแต่ละครั้ง -->
                             <div id="data-{{$key}}" class="w3-modal" >
-                                <div class="w3-modal-content w3-animate-opacity" style="width: 1100px;">
+                                <div class="w3-modal-content w3-animate-opacity" style="width: 1200px;">
                                     
-                                    <div class="modal-header w3-container" style="background-color:#ffffff;">
-                                        <h3 style="color:#000000;margin:20px 40px">การสอนแต่ละครั้ง</h3>
+                                    <div class="modal-header w3-container" style="background-color:#FF8000;height:30px;">
+                                        <h3 style="color:#000000;margin:20px 40px; text-align: left;color: #ffffff;">การสอนแต่ละครั้ง</h3>
                                         <span onclick="document.getElementById('data-{{$key}}').style.display='none'" class="btn-tutor w3-button w3-display-topright"
-                                            style="background-color:#FF8000;color: white;font-weight: bold">X</span>
+                                            style="background-color:#FF8000;color: white;font-weight: bold;padding: 17px;width:25px;height:25px">X</span>
                                     </div>
+
     
                                     <center>
-                                    <div class="modal-body" style="width: 1000px;padding-right:45px;">
+                                    <div class="modal-body" style="width: 1100px;padding-right:45px;">
                                         <div class="row">
 
                                             <h5 style="text-align: left; margin-left:15px;">สอนไปแล้ว {{$value->countfre}} ครั้ง</h5>
@@ -83,14 +84,15 @@
                                                 <table class="table table-striped table-bordered" style="border-color: #000000;">
                             
                                                     <thead style="background-color:#FF8000;color:#ffffff;">
-                                                        <th><h5 style="font-size:17px;">วันที่เรียน</h5></th>
-                                                        <th><h5 style="font-size:17px;">เวลาเริ่ม</h5></th>
-                                                        <th><h5 style="font-size:17px;">เวลาจบ</h5></th>
-                                                        <th><h5 style="font-size:17px;">ค่าสอน</h5></th>
-                                                        <th><h5 style="font-size:17px;">คำวิจารณ์</h5></th>
-                                                        <th><h5 style="font-size:17px;">รายละเอียดในครั้งต่อไป</h5></th>
-                                                        <th><h5 style="font-size:17px;">วันที่เรียนครั้งหน้า</h5></th>
-                                                        <th><h5 style="font-size:17px;">คะแนนที่ได้</h5></th>
+                                                        <th width="5%"><h5 style="font-size:17px;"></h5></th>
+                                                        <th width="10%"><h5 style="font-size:17px;">วันที่เรียน</h5></th>
+                                                        <th width="8%"><h5 style="font-size:17px;">เวลาเริ่ม</h5></th>
+                                                        <th width="8%"><h5 style="font-size:17px;">เวลาจบ</h5></th>
+                                                        <th width="7%"><h5 style="font-size:17px;">ราคา(บาท)</h5></th>
+                                                        <th width="10%"><h5 style="font-size:17px;">คะแนนที่ได้</h5></th>
+                                                        <th width="21%"><h5 style="font-size:17px;">ความคิดเห็น</h5></th>
+                                                        <th width="21%"><h5 style="font-size:17px;">การสอนในรอบหน้า</h5></th>
+                                                        <th width="10%"><h5 style="font-size:17px;">นัดรอบหน้า</h5></th>
                                                     </thead> 
                             
                                                     <tbody>
@@ -99,16 +101,17 @@
                                                         @else
                                                             @foreach($value->frequency as $data =>$val)
                                                             <tr class="data-table">
+                                                                <td><h5 class="sort" style="text-align: center;">{{$data+1}}</h5></td>
                                                                 <td><h5 class="level_name">{{date('d-m', strtotime($val->create_frequency))}}-{{date('Y', strtotime($val->create_frequency))+543}}</h5></td>
                                                                 <td><h5 class="day_name">{{$val->start_time}}</h5></td>
                                                                 <td><h5 class="duration_name">{{$val->end_time}}</h5></td>
-                                                                <td><h5 class="level_name">{{$val->price}}</h5></td>
-                                                                <td><h5 class="level_name">{{$val->comment}}</h5></td>
-                                                                <td><h5 class="level_name">{{$val->moredetail}}</h5></td>
-                                                                <td><h5 class="level_name">{{date('d-m', strtotime($val->nextdeal))}}-{{date('Y', strtotime($val->nextdeal))+543}}</h5></td>
+                                                                <td><h5 class="price" style="text-align: right;">{{$val->price}}</h5></td>
                                                                 <td>
                                                                     <x-star-rating style="pointer-events: none;" value="{{$val->point}}" number="5"></x-star-rating>
                                                                 </td>
+                                                                <td><h5 class="comment">{{$val->comment}}</h5></td>
+                                                                <td><h5 class="moredetail">{{$val->moredetail}}</h5></td>
+                                                                <td><h5 class="nextdeal">{{date('d-m', strtotime($val->nextdeal))}}-{{date('Y', strtotime($val->nextdeal))+543}}</h5></td>
                                                             </tr>
                                                             @endforeach
                                                         @endif

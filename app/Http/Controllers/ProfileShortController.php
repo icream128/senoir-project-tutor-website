@@ -70,7 +70,7 @@ class ProfileShortController extends BaseController
             
             $ls->countrate = $countrate;
 
-            if ($avg >= 4.7) {
+            if ($avg >= 4.5) {
                 $ls->frequency = round($avg);
             } else {
                 $ls->frequency = floor($avg);

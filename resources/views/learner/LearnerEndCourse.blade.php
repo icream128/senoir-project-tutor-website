@@ -2,7 +2,6 @@
 
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
     div h5 {
         font-size:20px;
@@ -19,7 +18,8 @@
     div label {
         font-size: 20px;
     }
-
+    
+    
 </style>
 
 @section('content')
@@ -38,7 +38,7 @@
             {{ csrf_field() }}
             <div class="col-md-12" style="margin-top:10px;">
                 
-                <h5 style="padding-bottom:7px">หากต้องการเรียนกับติวเตอร์ท่านนี้ในคอร์สเรียนถัดไปกรุณากรอกวันที่นัดหมาย</h5>
+                <h5 style="padding-bottom:7px">ถ้าต้องการเรียนกับติวเตอร์ท่านนี้ในคอร์สเรียนถัดไปกรุณาใส่ข้อมูลวันที่</h5>
                 <label style="font-size: 17px">วันนัดหมายครั้งต่อไป</label>
                     <input type="date" name="nextdeal" class="form-control" style="border-radius:10px;"/>  
                 </div>
@@ -61,13 +61,14 @@
 
 @endsection
 @section('script')
+<script src="js/sweetalert.min.js"></script>
 <script>
 
     $(document).ready(function(){
         $('#btn-save').click(function(){
             swal({
               title: "ยืนยันการจบคอร์ส",
-              text: "หากจบแล้วจะไม่สามารถเรียนในคอร์สนี้ได้อีก หากยังต้องเรียนกับติวเตอร์คนเดิมในคอร์สถัดไปกรุณากรอกวันนัดหมายครั้งต่อไป แต่หากต้องการเรียนกับติวเตอร์หรือคอร์สอื่นๆกรุณาเพิ่มคอร์เรียน",
+              text: "หากยังต้องเรียนกับติวเตอร์คนเดิมในคอร์สถัดไปกรุณากรอกวันนัดหมายครั้งต่อไป",
               icon: "warning",
               buttons: true,
               dangerMode: true,
@@ -85,7 +86,7 @@
                 });
             })
       } else {
-        swal("คอร์สเรียนของยังคงอยู่");
+        swal("ยกเลิกการจบคอร์สเรียน");
       }
     });
         })

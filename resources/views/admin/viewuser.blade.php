@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="css/rating.css">
 <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="css/StarRating.css">
+<link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @section('content')
 
     <style>
@@ -55,25 +57,19 @@
                             <td><h5 class="user_name">{{$value->firstname}} {{$value->lastname}}</h5></td>
                             <td><h5 class="user_name">{{$value->role_name}}</h5></td>
                             <td><h5 class="count" style="text-align: right;margin-right: 20px;">{{$value->countrate}} &nbspครั้ง</h5></td>
-                            <td>
-                                <div class="stars">
-                                    <input class="star star-5" id="{{ $key}}star-5" type="radio" name="{{ $key}}star" {{ $value->frequency == 5 ? "checked" : "" }} value="5"/>
-                                    <label class="star star-5" for="{{ $key}}star-5"></label>
-                                    <input class="star star-4" id="{{ $key}}star-4" type="radio" name="{{ $key}}star" {{ $value->frequency == 4 ? "checked" : "" }} value="4"/>
-                                    <label class="star star-4" for="{{ $key}}star-4"></label>
-                                    <input class="star star-3" id="{{ $key}}star-3" type="radio" name="{{ $key}}star" {{ $value->frequency == 3 ? "checked" : "" }} value="3"/>
-                                    <label class="star star-3" for="{{ $key}}star-3"></label>
-                                    <input class="star star-2" id="{{ $key}}star-2" type="radio" name="{{ $key}}star" {{ $value->frequency == 2 ? "checked" : "" }} value="2"/>
-                                    <label class="star star-2" for="{{ $key}}star-2"></label>
-                                    <input class="star star-1" id="{{ $key}}star-1" type="radio" name="{{ $key}}star" {{ $value->frequency == 1 ? "checked" : "" }} value="1"/>
-                                    <label class="star star-1" for="{{ $key}}star-1"></label>
-                                </div>
+                            <td>  
+                                <x-star-rating style="pointer-events: none;" value="{{$value->frequency}}" number="5"></x-star-rating>
                                 <h5 class="day_name">{{$value->frequency}}</h5>
                             </td>
                             <td><h5 class="user_name">{{$value->status_name}}</h5></td>
-                            <td><center><a class="btn" style="font-size:12px;background-color:#FF0000;color: white" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ระงับบัญชีผู้ใช้</a>
-                            <a class="btn" style="font-size:12px;background-color: green;color: white" href="#" onclick="document.getElementById('data{{$key}}').style.display='block'">ถอนการระงับ</a></center></td>
-
+                            <td><center>
+                            
+                            @if ($value->status_user_id == 1)
+                                <a class="btn" style="font-size:12px;background-color:#FF0000;color: white" href="#" onclick="document.getElementById('{{$key}}').style.display='block'">ระงับบัญชีผู้ใช้</a>
+                            @else
+                                <a class="btn" style="font-size:12px;background-color: green;color: white" href="#" onclick="document.getElementById('data{{$key}}').style.display='block'">ถอนการระงับ</a></center></td>
+                            @endif
+                            
                             <!-- Modal Popup -->
                             <div id="{{$key}}" class="w3-modal">
                                 <div class="w3-modal-content w3-animate-opacity" style="width: 500px">
@@ -161,8 +157,6 @@
 
     <script src="js/creative.min.js"></script>
 
-
-
     <script>
 
         function course_success(key){
@@ -176,6 +170,14 @@
         }
 
     </script>
+
+    <script>
+        $(":radio").click( function(){
+            return false;
+        });
+    </script>
+
+    <script src="js/StarRating.js"></script>
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {

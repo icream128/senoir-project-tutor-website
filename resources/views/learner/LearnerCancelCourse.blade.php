@@ -2,7 +2,7 @@
 
 <!-- link modal popup page -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <style>
     div h5 {
         font-size:15px;
@@ -38,8 +38,8 @@
             {{ csrf_field() }}
 
                 <div class="col-md-12" style="margin-top:10px;">
-                    <label>เหตุผลที่ยกเลิกการสอน</label>
-                    <textarea placeholder="เหตุผลที่ยกเลิกการสอน" rows="6" cols="60" name="comment" class="form-control"
+                    <label>เหตุผลที่ยกเลิกคอร์สนี้</label>
+                    <textarea placeholder="กรุณาใส่เหตุผลที่ยกเลิกคอร์สนี้" rows="6" cols="60" name="comment" class="form-control"
                                                             style="border-radius:10px;"></textarea>
                 </div>
 
@@ -67,13 +67,14 @@
 @endsection
 
 @section('script')
+<script src="js/sweetalert.min.js"></script>
 <script>
 
 $(document).ready(function(){
     $('#btn-save').click(function(){
         swal({
             title: "ยืนยันการยกเลิกคอร์ส",
-            text: "หากยกเลิกแล้วจะไม่สามารถเรียนในคอร์สนี้ได้อีก หากยังต้องการเรียนในคอร์สกรุณาเพิ่มคอร์เรียน",
+            text: "",
             icon: "warning",
             buttons: true,
             dangerMode: true,
@@ -93,7 +94,7 @@ $(document).ready(function(){
                 })
     
             } else {
-                swal("คอร์สเรียนของยังคงอยู่");
+                swal("ยกเลิกการจบคอร์สเรียน");
             }
         });
     })

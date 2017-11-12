@@ -42,7 +42,11 @@ class ViewCourseController extends BaseController
             ->where('agreement_id', $ls->agreement_id)
             ->count('frequency_id');
 
-            $ls->frequency = $frequency;
+            if ($avg >= 4.5) {
+                $ls->frequency = round($avg);
+            } else {
+                $ls->frequency = floor($avg);
+            }
             $ls->countfre = $frequency1;
         }
 
